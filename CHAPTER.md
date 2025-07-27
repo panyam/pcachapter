@@ -202,305 +202,190 @@ These results would suggest Maya could potentially reduce from 20 sensors to 5-6
 
 ### Implementation Structure
 
-The Hello World SensorScope implementation follows a modular architecture that separates universal PCA logic from platform-specific adapters:
+The Hello World SensorScope implementation follows a modular architecture that separates universal PCA logic from platform-specific adapters. **For complete setup instructions, see the README.md in the `src/hello-world-pca/` directory** - it provides step-by-step installation and testing guidance.
 
 ```
 src/hello-world-pca/
-├── shared/                    # Universal components
-│   ├── pca_core.py           # PCA processing logic
+├── shared/                    # Universal components (focus of this section)
+│   ├── pca_core.py           # Core PCA processing logic ← Key implementation
 │   ├── data_validation.py    # Input validation utilities  
-│   ├── response_formatter.py # Standardized output formatting
-│   └── performance_monitor.py# Timing and memory tracking
+│   └── response_formatter.py # Standardized output formatting
 ├── local/                    # Local development server
 │   ├── app.py               # Flask application
 │   └── test_client.py       # Testing utilities
-├── aws/                     # AWS Lambda deployment
-│   ├── lambda_function.py   # AWS-specific handler
-│   ├── template.yaml        # SAM deployment template
-│   └── deploy.sh            # Deployment automation
-├── gcp/                     # Google Cloud Functions deployment  
-│   ├── main.py              # GCP-specific handler
-│   ├── requirements.txt     # Dependencies
-│   └── deploy.sh            # Deployment automation
-└── azure/                   # Azure Functions deployment
-    ├── __init__.py          # Azure-specific handler
-    ├── function.json        # Function configuration
-    └── deploy.sh            # Deployment automation
+└── [aws|gcp|azure]/          # Cloud deployment adapters
+    └── deployment scripts    # Platform-specific handlers
 ```
 
 ### Core PCA Implementation
 
-The universal PCA processing logic handles the mathematical computation independent of deployment platform:
+The heart of SensorScope is the universal PCA processing logic in `pca_core.py`. This function handles Maya's sensor redundancy analysis independent of deployment platform:
 
 ```python
-# src/hello-world-pca/shared/pca_core.py
-import numpy as np
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
-import time
-import psutil
-import os
-
+# src/hello-world-pca/shared/pca_core.py (core logic)
 def process_pca_request(data, n_components=2, scale_features=True):
     """
-    Perform PCA analysis on input data with comprehensive error handling.
+    Perform PCA analysis on sensor data for redundancy analysis.
     
     Args:
-        data (array-like): Input dataset (n_samples, n_features)
-        n_components (int): Number of principal components to extract
-        scale_features (bool): Whether to standardize features before PCA
-        
-    Returns:
-        dict: Analysis results including transformed data and statistics
+        data: Input dataset (n_samples, n_features) - e.g., coffee shop sensor readings
+        n_components: Number of principal components - key sensors to retain
+        scale_features: Standardize features before PCA (recommended for sensors)
     """
-    start_time = time.time()
-    process = psutil.Process(os.getpid())
-    initial_memory = process.memory_info().rss / 1024 / 1024  # MB
+    # Input validation
+    data = np.array(data)
+    n_samples, n_features = data.shape
     
-    try:
-        # Input validation
-        data = np.array(data)
-        if data.ndim != 2:
-            raise ValueError("Data must be 2-dimensional (samples × features)")
-        
-        n_samples, n_features = data.shape
-        if n_components > min(n_samples, n_features):
-            raise ValueError(f"n_components ({n_components}) cannot exceed "
-                           f"min(n_samples, n_features) = {min(n_samples, n_features)}")
-        
-        # Feature scaling (optional but recommended)
-        if scale_features:
-            scaler = StandardScaler()
-            data_scaled = scaler.fit_transform(data)
-        else:
-            data_scaled = data
-            scaler = None
-        
-        # PCA computation
-        pca = PCA(n_components=n_components)
-        data_transformed = pca.fit_transform(data_scaled)
-        
-        # Performance metrics
-        execution_time = (time.time() - start_time) * 1000  # milliseconds
-        peak_memory = process.memory_info().rss / 1024 / 1024  # MB
-        memory_used = peak_memory - initial_memory
-        
-        # Prepare results
-        results = {
-            "status": "success",
-            "input_shape": [n_samples, n_features],
-            "output_shape": list(data_transformed.shape),
-            "explained_variance_ratio": pca.explained_variance_ratio_.tolist(),
-            "total_variance_explained": float(np.sum(pca.explained_variance_ratio_)),
-            "principal_components": pca.components_.tolist(),
-            "transformed_data": data_transformed.tolist(),
-            "scaling_applied": scale_features,
-            "performance": {
-                "execution_time_ms": round(execution_time, 2),
-                "memory_used_mb": round(memory_used, 2),
-                "peak_memory_mb": round(peak_memory, 2)
-            }
-        }
-        
-        return results
-        
-    except Exception as e:
-        execution_time = (time.time() - start_time) * 1000
-        return {
-            "status": "error",
-            "error_type": type(e).__name__,
-            "error_message": str(e),
-            "performance": {
-                "execution_time_ms": round(execution_time, 2)
-            }
-        }
+    # Feature scaling - critical for sensor data with different units/ranges
+    if scale_features:
+        scaler = StandardScaler()
+        data_scaled = scaler.fit_transform(data)
+    else:
+        data_scaled = data
+    
+    # Core PCA computation
+    pca = PCA(n_components=n_components)
+    data_transformed = pca.fit_transform(data_scaled)
+    
+    # Business insights for sensor optimization
+    return {
+        "input_shape": [n_samples, n_features],           # Original sensor count
+        "output_shape": list(data_transformed.shape),     # Reduced sensor count
+        "explained_variance_ratio": pca.explained_variance_ratio_.tolist(),
+        "total_variance_explained": float(np.sum(pca.explained_variance_ratio_)),
+        "principal_components": pca.components_.tolist(), # Which sensors matter most
+        "transformed_data": data_transformed.tolist()     # Reduced dataset
+    }
 ```
 
-### Local Development Environment
+**Key PCA Concepts for SensorScope**:
+- **Feature scaling**: Essential when sensors measure different phenomena (temperature, pressure, vibration)
+- **Explained variance ratio**: Shows importance of each principal component for business decisions  
+- **Principal components**: Mathematical combinations of original sensors that capture maximum variance
+- **Dimensionality reduction**: 20 sensors → 5 components retaining 79% of information
 
-The local Flask application provides immediate feedback during development and serves as the reference implementation:
+### Local Development and Testing
 
-```python
-# src/hello-world-pca/local/app.py
-from flask import Flask, request, jsonify
-import sys
-import os
+The Flask application in `local/app.py` provides immediate feedback during development. After following the setup instructions in README.md, start the development server:
 
-# Add shared modules to path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'shared'))
-
-from pca_core import process_pca_request
-from data_validation import generate_sample_data, validate_input_data
-from response_formatter import format_response
-
-app = Flask(__name__)
-
-@app.route('/pca', methods=['POST'])
-def pca_endpoint():
-    """PCA processing endpoint matching cloud function interface"""
-    try:
-        request_data = request.get_json()
-        
-        # Handle sample data generation
-        if request_data.get('use_sample_data', False):
-            data = generate_sample_data(
-                n_samples=request_data.get('n_samples', 100),
-                n_features=request_data.get('n_features', 5),
-                random_state=request_data.get('random_state', 42)
-            )
-        else:
-            # Validate uploaded data
-            if 'data' not in request_data:
-                return jsonify({
-                    "status": "error",
-                    "error_message": "Missing 'data' field in request"
-                }), 400
-            
-            data = validate_input_data(request_data['data'])
-        
-        # Process PCA request
-        results = process_pca_request(
-            data=data,
-            n_components=request_data.get('n_components', 2),
-            scale_features=request_data.get('scale_features', True)
-        )
-        
-        # Add platform identifier
-        results['platform'] = 'local-flask'
-        
-        # Format response
-        formatted_response = format_response(results)
-        
-        if results['status'] == 'error':
-            return jsonify(formatted_response), 400
-        else:
-            return jsonify(formatted_response), 200
-            
-    except Exception as e:
-        return jsonify({
-            "status": "error",
-            "error_type": type(e).__name__,
-            "error_message": str(e),
-            "platform": "local-flask"
-        }), 500
-
-@app.route('/health', methods=['GET'])
-def health_check():
-    """Health check endpoint"""
-    return jsonify({
-        "status": "healthy",
-        "platform": "local-flask",
-        "message": "PCA service running locally"
-    })
-
-if __name__ == '__main__':
-    print("Starting local PCA service...")
-    print("Test endpoint: POST http://localhost:8000/pca")
-    print("Health check: GET http://localhost:8000/health")
-    app.run(host='0.0.0.0', port=8000, debug=True)
+```bash
+cd src/hello-world-pca/local
+python app.py
 ```
+
+```
+🚀 Hello World PCA - Local Development Server
+============================================================
+
+Maya's Coffee Shop Sensor Analysis Service
+Serverless PCA for sensor redundancy optimization
+
+📡 Service URLs:
+   • Main service: http://localhost:8000/pca
+   • Health check: http://localhost:8000/health
+   • Documentation: http://localhost:8000/
+
+🧪 Quick Test:
+   curl -X POST http://localhost:8000/pca \
+     -H 'Content-Type: application/json' \
+     -d '{"use_sample_data": true, "n_components": 2}'
+
+⚡ Development Mode:
+   • Auto-reload on file changes
+   • Detailed error logging
+   • Performance monitoring
+============================================================
+```
+
+**Test 1: Basic sensor analysis** (20 sensors → 5 components):
+```bash
+curl -X POST http://localhost:8000/pca \
+  -H 'Content-Type: application/json' \
+  -d '{"use_sample_data": true, "n_components": 5, "n_features": 20}'
+```
+
+**Response** (abbreviated):
+```json
+{
+  "analysis": {
+    "input_dimensions": [100, 20],
+    "output_dimensions": [100, 5],
+    "variance_analysis": {
+      "explained_variance_ratio": [0.48, 0.18, 0.12, 0.08, 0.06],
+      "total_variance_explained": 0.79
+    }
+  },
+  "business_insights": {
+    "cost_impact": {
+      "current_annual_cost": "$470,000",
+      "potential_annual_savings": "$164,500 - $176,250"
+    },
+    "sensor_optimization": "79% of operational insights preserved with 75% sensor reduction"
+  }
+}
+```
+
+**Test 2: Coffee shop scenario** with business context:
+```bash
+curl -X POST http://localhost:8000/pca \
+  -H 'Content-Type: application/json' \
+  -d '{"coffee_shop_sample": true, "location": "downtown", "n_components": 3}'
+```
+
+This demonstrates Maya's exact use case: analyzing 20 coffee shop sensors to identify the 3-5 most critical measurements needed for operational monitoring.
 
 ### Cloud Function Implementations
 
-Each cloud platform requires a thin adapter layer that handles platform-specific request/response formats:
+Each cloud platform requires a thin adapter layer that handles platform-specific request/response formats while using the same core PCA logic:
 
-**AWS Lambda Handler:**
+**Pattern**: All cloud functions follow the same structure:
+1. Parse cloud-specific event format (API Gateway, HTTP trigger, etc.)
+2. Extract sensor data from request
+3. Call `process_pca_request()` (same logic across all platforms)
+4. Format cloud-specific response
+
+**Key differences across platforms**:
+- **AWS Lambda**: Handles API Gateway events, returns formatted HTTP response
+- **GCP Cloud Functions**: Direct HTTP request handling with Flask-like interface  
+- **Azure Functions**: Function app binding with JSON in/out
+
+**Example AWS Lambda adapter** (simplified):
 ```python
-# src/hello-world-pca/aws/lambda_function.py
-import json
-import sys
-import os
-
-# Add shared modules to path  
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'shared'))
-
-from pca_core import process_pca_request
-from data_validation import generate_sample_data, validate_input_data
-from response_formatter import format_response
-
 def lambda_handler(event, context):
-    """AWS Lambda handler for PCA processing"""
-    try:
-        # Parse request body
-        if 'body' in event:
-            request_data = json.loads(event['body'])
-        else:
-            request_data = event
-        
-        # Handle sample data generation or validate input
-        if request_data.get('use_sample_data', False):
-            data = generate_sample_data(
-                n_samples=request_data.get('n_samples', 100),
-                n_features=request_data.get('n_features', 5),
-                random_state=request_data.get('random_state', 42)
-            )
-        else:
-            data = validate_input_data(request_data.get('data'))
-        
-        # Process PCA request
-        results = process_pca_request(
-            data=data,
-            n_components=request_data.get('n_components', 2),
-            scale_features=request_data.get('scale_features', True)
-        )
-        
-        # Add platform identifier
-        results['platform'] = 'aws-lambda'
-        
-        # Format response for API Gateway
-        formatted_response = format_response(results)
-        
-        return {
-            'statusCode': 200 if results['status'] == 'success' else 400,
-            'headers': {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            'body': json.dumps(formatted_response)
-        }
-        
-    except Exception as e:
-        error_response = {
-            "status": "error",
-            "error_type": type(e).__name__,
-            "error_message": str(e),
-            "platform": "aws-lambda"
-        }
-        
-        return {
-            'statusCode': 500,
-            'headers': {'Content-Type': 'application/json'},
-            'body': json.dumps(error_response)
-        }
+    # Parse API Gateway event
+    request_data = json.loads(event['body'])
+    
+    # Use shared PCA logic (identical across clouds)
+    results = process_pca_request(
+        data=validate_input_data(request_data['data']),
+        n_components=request_data.get('n_components', 5)
+    )
+    
+    # Return API Gateway response format
+    return {
+        'statusCode': 200,
+        'body': json.dumps(results)
+    }
 ```
+
+The cloud adapters are lightweight wrappers - the core business logic for sensor analysis remains in the shared `pca_core.py` module.
 
 ### Deployment and Testing
 
-Each platform includes automated deployment scripts that handle dependencies, configuration, and resource provisioning:
+Each platform includes one-click deployment scripts and comprehensive testing. **See the individual README.md files in each platform directory for detailed deployment instructions.**
 
-**Local Testing:**
+**Development workflow**:
+1. **Test locally first**: Validate PCA logic and results using Flask development server
+2. **Deploy to clouds**: Use provided scripts for AWS (`aws/deploy.sh`), GCP (`gcp/deploy.sh`), Azure (`azure/deploy.sh`)
+3. **Cross-platform validation**: Confirm identical PCA results across all deployments
+
+**Quick deployment example**:
 ```bash
-cd src/hello-world-pca/local
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python app.py
+# Local testing (detailed setup in local/README.md)
+cd src/hello-world-pca/local && python app.py
 
-# Test with sample data
-curl -X POST http://localhost:8000/pca \
-  -H "Content-Type: application/json" \
-  -d '{"n_components": 2, "use_sample_data": true, "random_state": 42}'
-```
-
-**AWS Deployment:**
-```bash
-cd src/hello-world-pca/aws
-./deploy.sh
-
-# Test deployed function
-curl -X POST https://your-api-gateway-url/pca \
-  -H "Content-Type: application/json" \
-  -d '{"n_components": 2, "use_sample_data": true, "random_state": 42}'
+# Cloud deployment (detailed steps in aws/README.md) 
+cd ../aws && ./deploy.sh
 ```
 
 ### Performance Benchmarks
