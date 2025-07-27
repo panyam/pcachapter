@@ -9,6 +9,7 @@
 5. [Platform Comparisons & Trade-offs](#platform-comparisons--trade-offs)
 6. [Production Considerations](#production-considerations)
 7. [Advanced Patterns & Future Directions](#advanced-patterns--future-directions)
+8. [References](#introduction)
 
 ---
 
@@ -26,7 +27,55 @@ The mathematical foundation of PCA made it ideal for Maya's business context. Ra
 
 ### Why Serverless for PCA?
 
-Principal Component Analysis presents unique computational characteristics that align well with serverless execution models. The algorithm requires loading complete datasets into memory for eigenvalue decomposition, making it memory-intensive but temporally bounded - exactly the workload profile that serverless computing handles efficiently.
+Maya's infrastructure decision was driven as much by what the coffee chain couldn't justify as by what serverless offered. She named her solution **SensorScope** - a sensor redundancy analysis system designed to scope which of the coffee chain's sensors provided unique value versus expensive redundancy. Traditional approaches would have required convincing corporate to purchase dedicated hardware or cloud instances for SensorScope analysis that might run weekly or monthly at most. Given that the entire initiative aimed to reduce a $50K annual sensor budget, proposing additional infrastructure spending for the analysis itself would have been politically untenable. The coffee chain's IT department was already stretched thin managing POS systems, inventory software, and basic networking across 47 locations - they had no capacity to provision, maintain, and secure additional analytics infrastructure. Maya needed a solution that would appear on corporate expense reports only when generating value, not as ongoing operational overhead that needed explaining to executives who questioned why optimization analysis required its own infrastructure budget.
+
+The contrast between traditional and serverless approaches for SensorScope became stark when Maya mapped out the options:
+
+**Traditional Infrastructure Approach:**
+```
+┌─────────────────────────────────────────────────────────────┐
+│ SensorScope on Traditional Infrastructure                   │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│ [$15K] Dedicated Server → [IT Setup] → [Ongoing Maintenance]│
+│    ↓                          ↓              ↓             │
+│ Hardware Purchase         2-week setup    Monthly updates   │
+│ Software Licenses         Security config  Security patches │
+│ Network Setup            Load balancing    Backup management │
+│                                                             │
+│ Analysis Frequency: Monthly                                 │
+│ Infrastructure Cost: $15K upfront + $200/month             │
+│ IT Overhead: 10 hours/month                                │
+│ Time to First Analysis: 3-4 weeks                          │
+│                                                             │
+│ Corporate Reaction: "Why does cost-cutting need more       │
+│                     infrastructure spending?"              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Serverless SensorScope Approach:**
+```
+┌─────────────────────────────────────────────────────────────┐
+│ SensorScope on Serverless Infrastructure                   │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│ [Data Upload] → [Function Triggers] → [Analysis Complete]   │
+│      ↓               ↓                       ↓              │
+│   CSV files      Auto-scaling           Results + Insights  │
+│   API calls      Memory optimization    Cost breakdown      │
+│   Schedules      Built-in monitoring    Business recommendations │
+│                                                             │
+│ Analysis Frequency: On-demand or scheduled                 │
+│ Infrastructure Cost: $2-5 per analysis                     │
+│ IT Overhead: Zero maintenance                              │
+│ Time to First Analysis: Same day                           │
+│                                                             │
+│ Corporate Reaction: "Analysis costs appear only when       │
+│                     we're generating savings insights"     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+SensorScope's computational requirements aligned perfectly with serverless execution models. The underlying Principal Component Analysis algorithm requires loading complete datasets into memory for eigenvalue decomposition, making it memory-intensive but temporally bounded - exactly the workload profile that serverless computing handles efficiently. SensorScope would process months of sensor data in minutes, then remain dormant until the next analysis cycle, making traditional always-on infrastructure economically wasteful for Maya's intermittent optimization needs.
 
 **Cost Efficiency**: PCA processing occurs intermittently rather than continuously. Traditional infrastructure requires provisioning for peak capacity while paying for idle time. Serverless functions scale to zero, charging only for actual computation time.
 
@@ -48,19 +97,19 @@ Covariance matrix: p² × 8 bytes
 Working memory: ~1.5× base memory for intermediate calculations
 ```
 
-**Time Complexity**: Standard PCA algorithms exhibit O(min(n,p)² × max(n,p)) complexity, dominated by eigenvalue decomposition of the p×p covariance matrix.
+**Time Complexity**: Standard PCA algorithms exhibit O(np² + p³) complexity when p << n, dominated by O(p³) eigenvalue decomposition of the covariance matrix [1].
 
 **I/O Patterns**: PCA is compute-intensive rather than I/O-bound once data is loaded, making it suitable for serverless execution where network latency is amortized across substantial processing time.
 
 ### Serverless PCA Use Cases
 
-**Batch Data Processing**: Analyze sensor data, transaction logs, or user behavior patterns triggered by data arrival events.
+**Batch Data Processing**: Analyze sensor data, transaction logs, or user behavior patterns triggered by data arrival events. *Maya's SensorScope processes weekly sensor dumps from all 47 locations automatically when data arrives in cloud storage.*
 
-**On-Demand Dimensionality Reduction**: Provide PCA-as-a-Service for machine learning pipelines requiring feature reduction.
+**On-Demand Dimensionality Reduction**: Provide PCA-as-a-Service for machine learning pipelines requiring feature reduction. *Corporate can request SensorScope analysis for new locations or different sensor configurations without Maya manually running scripts.*
 
-**Cost-Effective Data Preprocessing**: Reduce dataset storage and bandwidth costs through automated dimensionality reduction before downstream processing.
+**Cost-Effective Data Preprocessing**: Reduce dataset storage and bandwidth costs through automated dimensionality reduction before downstream processing. *SensorScope identifies redundant sensors before expensive data transmission and storage at corporate headquarters.*
 
-**Scalable Feature Engineering**: Enable parallel processing of multiple datasets with different PCA configurations without resource pre-allocation.
+**Scalable Feature Engineering**: Enable parallel processing of multiple datasets with different PCA configurations without resource pre-allocation. *Maya can simultaneously analyze different time periods, seasonal patterns, and location-specific sensor configurations without requesting additional IT resources.*
 
 ### Chapter Scope and Learning Objectives
 
@@ -486,3 +535,13 @@ This consistency validates the cloud-agnostic architecture and provides confiden
 ---
 
 *[Chapter continues with the remaining sections building on this foundation...]*
+
+## References
+
+1. Jolliffe, I.T. (2002). *Principal Component Analysis* (2nd ed.). Springer-Verlag. Chapter 3: Computation of Principal Components, pp. 78-106.
+
+2. Golub, G.H. & Van Loan, C.F. (2013). *Matrix Computations* (4th ed.). Johns Hopkins University Press. Chapter 8: The Symmetric Eigenvalue Problem.
+
+3. Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning* (2nd ed.). Springer. Section 14.5.1: Principal Components.
+
+4. Jolliffe, I.T., & Cadima, J. (2016). Principal component analysis: a review and recent developments. *Philosophical Transactions of the Royal Society A*, 374(2065), 20150202. 
