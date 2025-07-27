@@ -87,9 +87,23 @@ The script will:
 
 ## Testing Your Deployment
 
+YOUR_FUNCTION_URL is the endpoint where your serverless function can accept calls from the user.  It will be in the form
+of:
+
+```
+<REGION>-<PROJECT_NAME>.cloudfunctions.net/<FUNCTION_NAME>
+```
+
+Eg:
+
+```
+us-central1-sensorscope-demo.cloudfunctions.net/sensorscope-pca
+```
+
 ### Health Check
+
 ```bash
-curl https://YOUR_FUNCTION_URL
+curl https://$YOUR_FUNCTION_URL
 ```
 
 Expected response:
@@ -103,7 +117,7 @@ Expected response:
 
 ### Basic Sensor Analysis (20 sensors → 5 components)
 ```bash
-curl -X POST https://YOUR_FUNCTION_URL \
+curl -X POST https://$YOUR_FUNCTION_URL \
   -H 'Content-Type: application/json' \
   -d '{
     "use_sample_data": true,
@@ -121,7 +135,7 @@ Expected results:
 
 ### Coffee Shop Scenario
 ```bash
-curl -X POST https://YOUR_FUNCTION_URL \
+curl -X POST https://$YOUR_FUNCTION_URL \
   -H 'Content-Type: application/json' \
   -d '{
     "coffee_shop_sample": true,
@@ -134,7 +148,7 @@ This simulates Maya's exact use case: analyzing a downtown coffee shop's sensors
 
 ### Custom Sensor Data
 ```bash
-curl -X POST https://YOUR_FUNCTION_URL \
+curl -X POST https://$YOUR_FUNCTION_URL \
   -H 'Content-Type: application/json' \
   -d '{
     "data": [

@@ -197,15 +197,14 @@ try:
     data = json.load(sys.stdin)
     analysis = data.get('analysis', {})
     variance = analysis.get('variance_analysis', {})
-    print(f\"  Input dimensions: {analysis.get('input_dimensions', 'unknown')}\"
-    print(f\"  Output dimensions: {analysis.get('output_dimensions', 'unknown')}\"
-    print(f\"  Total variance explained: {variance.get('total_variance_explained', 0):.1%}\"
+    print(f\"  Input dimensions: {analysis.get('input_dimensions', 'unknown')}\")
+    print(f\"  Output dimensions: {analysis.get('output_dimensions', 'unknown')}\")
+    print(f\"  Total variance explained: {variance.get('total_variance_explained', 0):.1%}\")
     
     # Business insights
     insights = data.get('business_insights', {})
     cost_impact = insights.get('cost_impact', {})
-    if cost_impact:
-        print(f\"  Potential savings: {cost_impact.get('potential_annual_savings', 'unknown')}\"
+    if cost_impact: print(f\"  Potential savings: {cost_impact.get('potential_annual_savings', 'unknown')}\")
 except:
     print('  Could not parse response details')
 "

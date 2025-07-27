@@ -80,8 +80,8 @@ SensorScope's computational requirements aligned perfectly with serverless execu
 **Cost Efficiency**: PCA processing occurs intermittently rather than continuously. Traditional infrastructure requires provisioning for peak capacity while paying for idle time. Serverless functions scale to zero, charging only for actual computation time.
 
 **Memory Scalability**: Modern serverless platforms provide substantial memory allocations:
-- AWS Lambda: Up to 10GB memory allocation
 - Google Cloud Functions: Up to 8GB memory allocation  
+- AWS Lambda: Up to 10GB memory allocation
 - Azure Functions: Up to 1.5GB memory allocation
 
 **Auto-scaling**: PCA workloads often involve batch processing multiple datasets simultaneously. Serverless functions automatically handle concurrency without manual cluster management.
@@ -115,7 +115,7 @@ Working memory: ~1.5× base memory for intermediate calculations
 
 This chapter demonstrates practical serverless PCA implementations across major cloud providers, focusing on production-ready patterns rather than academic examples. You'll learn to:
 
-- Implement cloud-agnostic PCA functions that deploy identically to AWS, GCP, and Azure
+- Implement cloud-agnostic PCA functions that deploy identically to GCP, AWS, and Azure
 - Design cost-effective architectures for different dataset sizes and processing patterns
 - Handle real-world constraints including memory limits, cold starts, and error recovery
 - Compare platform-specific features and make informed deployment decisions
@@ -141,7 +141,7 @@ The Hello World SensorScope implementation demonstrates core serverless patterns
 - Process typical datasets (100-10,000 samples, 20+ features) within serverless memory limits
 
 **Technical Requirements:**
-- Identical functionality across AWS Lambda, Google Cloud Functions, and Azure Functions
+- Identical functionality across Google Cloud Functions, AWS Lambda and Azure Functions
 - Local development environment matching cloud behavior
 - Response time under 5 seconds for sample datasets
 - Cost under $0.001 per request for typical usage
@@ -348,8 +348,8 @@ Each cloud platform requires a thin adapter layer that handles platform-specific
 4. Format cloud-specific response
 
 **Key differences across platforms**:
-- **AWS Lambda**: Handles API Gateway events, returns formatted HTTP response
 - **GCP Cloud Functions**: Direct HTTP request handling with Flask-like interface  
+- **AWS Lambda**: Handles API Gateway events, returns formatted HTTP response
 - **Azure Functions**: Function app binding with JSON in/out
 
 **Example AWS Lambda adapter** (simplified):
@@ -382,7 +382,9 @@ Maya's local SensorScope prototype perfectly demonstrated PCA concepts, but corp
 
 ### Production Deployment with Google Cloud Functions
 
-We'll demonstrate production deployment using Google Cloud Functions Gen 2, showcasing the serverless patterns that work across all major cloud providers. **Complete setup instructions are in `src/hello-world-pca/gcp/README.md`**.
+We'll demonstrate production deployment using Google Cloud Functions Gen 2, showcasing the serverless patterns that work across all major cloud providers.
+
+**Complete setup instructions are in `src/hello-world-pca/gcp/README.md`**.
 
 #### One-Command Deployment
 ```bash
@@ -410,7 +412,7 @@ curl https://us-central1-coffee-analytics.cloudfunctions.net/sensorscope-pca
 
 **Production Sensor Analysis**:
 ```bash
-curl -X POST https://us-central1-coffee-analytics.cloudfunctions.net/sensorscope-pca \
+curl -X POST https://$YOUR_FUNCTION_URL \
   -H 'Content-Type: application/json' \
   -d '{
     "use_sample_data": true,
@@ -418,6 +420,7 @@ curl -X POST https://us-central1-coffee-analytics.cloudfunctions.net/sensorscope
     "n_features": 20,
     "coffee_shop_sample": true
   }'
+    # "random_state": 42
 ```
 
 **Results** show identical PCA outputs to local development, confirming our cloud-agnostic architecture works seamlessly.
@@ -425,9 +428,9 @@ curl -X POST https://us-central1-coffee-analytics.cloudfunctions.net/sensorscope
 ### Multi-Cloud Options
 
 The same SensorScope system deploys to:
+- **Google Cloud Functions**: Complete implementation available now
 - **AWS Lambda**: Using SAM templates (deployment guide in `aws/README.md`)
 - **Azure Functions**: Using Bicep templates (deployment guide in `azure/README.md`)
-- **Google Cloud Functions**: Complete implementation available now
 
 Maya's insight: *"The beauty of our architecture is that corporate can choose their preferred cloud provider without changing any of the core sensor analysis logic."*
 
@@ -438,8 +441,8 @@ Initial benchmarking across platforms using the standard sample dataset (100 sam
 | Platform | Cold Start | Warm Request | Memory Usage | Cost per Request |
 |----------|------------|--------------|--------------|------------------|
 | Local Flask | - | 15ms | 45MB | Free |
-| AWS Lambda | 1.8s | 180ms | 128MB | $0.0008 |
 | GCP Cloud Functions | 2.1s | 220ms | 128MB | $0.0009 |
+| AWS Lambda | 1.8s | 180ms | 128MB | $0.0008 |
 | Azure Functions | 2.6s | 310ms | 128MB | $0.0012 |
 
 Maya's observation: *"The consistency across platforms was impressive. All three clouds returned identical PCA results within floating-point precision. Cold start times varied, but for batch processing workflows, this difference is negligible compared to the benefits of not managing infrastructure."*
