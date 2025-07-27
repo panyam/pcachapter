@@ -160,9 +160,11 @@ def sensorscope_pca(request):
                     hours=request_data.get('hours', 24),
                     sensor_types=request_data.get('sensor_types')
                 )
-                data = coffee_data['data']
+                # Convert list back to numpy array for PCA processing
+                import numpy as np
+                data = np.array(coffee_data['data'])
                 business_context = coffee_data['business_context']
-                logger.info(f"Generated coffee shop sample: {len(data)} readings, {len(data[0])} sensors")
+                logger.info(f"Generated coffee shop sample: {data.shape[0]} readings, {data.shape[1]} sensors")
             else:
                 # Generate basic synthetic data
                 data = generate_sample_data(

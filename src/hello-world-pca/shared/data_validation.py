@@ -336,7 +336,13 @@ def create_coffee_shop_sample(location: str = "downtown",
         dict: Complete dataset with metadata and sensor data
     """
     if sensor_types is None:
-        sensor_types = ["temperature", "humidity", "pressure", "vibration", "flow_rate"]
+        # Default to Maya's full 20-sensor coffee shop scenario
+        sensor_types = [
+            "temperature", "humidity", "pressure", "vibration", "flow_rate",
+            "sound_level", "light_level", "co2_level", "door_sensor", "wifi_connections",
+            "equipment_temp", "steam_pressure", "water_flow", "power_consumption", "customer_count",
+            "ambient_noise", "air_quality", "motion_detector", "refrigeration_temp", "grinder_vibration"
+        ]
     
     n_samples = hours * 4  # 15-minute intervals
     n_features = len(sensor_types)
