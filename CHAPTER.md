@@ -172,7 +172,9 @@ HTTP Request → Function Runtime → PCA Processing → JSON Response
 
 ### Sample Dataset and Expected Results
 
-To ensure consistent validation across platforms, the Hello World example uses synthetic sensor data that mimics Maya's coffee shop scenario:
+The Hello World example uses synthetic sensor data designed to demonstrate PCA concepts and serverless deployment patterns clearly. Since our primary focus is establishing the serverless architecture and seeing PCA in action across multiple cloud platforms, synthetic data serves our educational goals perfectly. Every reader gets identical, reproducible results that make troubleshooting straightforward, while the built-in redundancy patterns make PCA outputs immediately interpretable. This approach also prevents unexpected cloud charges from large datasets during the learning phase. Real-world sensor data - with its missing values, drift patterns, and complex correlations - involves data quality challenges that belong in the broader data collection and preprocessing pipeline rather than the serverless deployment architecture we're demonstrating here.
+
+To ensure consistent validation across platforms, the synthetic dataset mimics Maya's coffee shop scenario:
 
 ```python
 from sklearn.datasets import make_classification
@@ -326,6 +328,7 @@ curl -X POST http://localhost:8000/pca \
 ```
 
 **Test 2: Coffee shop scenario** with business context:
+
 ```bash
 curl -X POST http://localhost:8000/pca \
   -H 'Content-Type: application/json' \
@@ -350,6 +353,7 @@ Each cloud platform requires a thin adapter layer that handles platform-specific
 - **Azure Functions**: Function app binding with JSON in/out
 
 **Example AWS Lambda adapter** (simplified):
+
 ```python
 def lambda_handler(event, context):
     # Parse API Gateway event
