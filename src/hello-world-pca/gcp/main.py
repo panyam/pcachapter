@@ -14,23 +14,16 @@ import sys
 import os
 import json
 import logging
-from flask import Request
 from typing import Dict, Any
+import functions_framework
 
-# Add shared modules to Python path for local imports
-current_dir = os.path.dirname(os.path.abspath(__file__))
-shared_dir = os.path.join(current_dir, '..', 'shared')
-sys.path.insert(0, shared_dir)
-
+# Import shared modules (available via symlinks)
 try:
     from pca_core import process_pca_request
     from data_validation import generate_sample_data, validate_input_data, create_coffee_shop_sample
     from response_formatter import format_response, format_health_response
 except ImportError as e:
     logging.error(f"Failed to import shared modules: {e}")
-    logging.error(f"Current directory: {current_dir}")
-    logging.error(f"Shared directory: {shared_dir}")
-    logging.error(f"Python path: {sys.path}")
     raise
 
 
@@ -39,7 +32,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def sensorscope_pca(request: Request) -> Dict[str, Any]:
+@functions_framework.http
+def sensorscope_pca(request):
     """
     Cloud Functions entry point for SensorScope PCA analysis.
     
@@ -124,10 +118,14 @@ def sensorscope_pca(request: Request) -> Dict[str, Any]:
         
         # Parse request data
         try:
-            if request.is_json:
+            if hasattr(request, 'is_json') and request.is_json:
                 request_data = request.get_json()
             else:
-                request_data = json.loads(request.data.decode('utf-8'))
+                # Handle raw data
+                if hasattr(request, 'data'):
+                    request_data = json.loads(request.data.decode('utf-8'))
+                else:
+                    request_data = json.loads(request.get_data(as_text=True))
         except (json.JSONDecodeError, UnicodeDecodeError) as e:
             logger.error(f"Invalid JSON in request: {str(e)}")
             return (json.dumps({
@@ -238,13 +236,6 @@ def sensorscope_pca(request: Request) -> Dict[str, Any]:
 
 
 # For local testing with functions-framework
-if __name__ == "__main__":
-    # This allows local testing using functions-framework
-    # Install: pip install functions-framework
-    # Run: functions-framework --target=sensorscope_pca --debug
-    import functions_framework
-    
-    print("🧪 Local testing mode for GCP Cloud Functions")
-    print("Install functions-framework: pip install functions-framework")
-    print("Run locally: functions-framework --target=sensorscope_pca --debug")
-    print("Test endpoint: http://localhost:8080")
+# Install: pip install functions-framework
+# Run: functions-framework --target=sensorscope_pca --debug
+# Test endpoint: http://localhost:8080

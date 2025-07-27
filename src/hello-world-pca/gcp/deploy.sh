@@ -19,7 +19,7 @@ REGION="us-central1"
 MEMORY="512Mi"
 TIMEOUT="60s"
 ENTRY_POINT="sensorscope_pca"
-RUNTIME="python39"
+RUNTIME="python311"
 
 # Colors for output
 RED='\033[0;31m'
@@ -30,19 +30,19 @@ NC='\033[0m' # No Color
 
 # Helper functions
 print_status() {
-    echo -e "${BLUE}📋 $1${NC}"
+    printf "${BLUE}📋 %s${NC}\n" "$1"
 }
 
 print_success() {
-    echo -e "${GREEN}✅ $1${NC}"
+    printf "${GREEN}✅ %s${NC}\n" "$1"
 }
 
 print_warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}"
+    printf "${YELLOW}⚠️  %s${NC}\n" "$1"
 }
 
 print_error() {
-    echo -e "${RED}❌ $1${NC}"
+    printf "${RED}❌ %s${NC}\n" "$1"
 }
 
 # Check prerequisites
@@ -139,7 +139,7 @@ DEPLOY_CMD="gcloud functions deploy $FUNCTION_NAME \
     --region=$REGION \
     --source=. \
     --entry-point=$ENTRY_POINT \
-    --trigger=http \
+    --trigger-http \
     --allow-unauthenticated \
     --memory=$MEMORY \
     --timeout=$TIMEOUT \

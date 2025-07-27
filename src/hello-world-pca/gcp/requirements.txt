@@ -1,8 +1,17 @@
 # Google Cloud Functions requirements for SensorScope PCA analysis
 # These dependencies are installed automatically during function deployment
 
-# Include shared requirements
--r ../requirements.txt
+# Core ML and data processing libraries
+scikit-learn==1.3.2          # PCA and machine learning algorithms
+numpy==1.24.4                 # Numerical computing foundation
+pandas==2.0.3                 # Data manipulation and analysis
+
+# Flask and HTTP handling
+flask==3.0.0                  # HTTP request handling for Cloud Functions
+requests==2.31.0              # HTTP client for testing utilities
+
+# System monitoring and utilities
+psutil==5.9.6                 # Process and system monitoring
 
 # Cloud Functions specific dependencies
 functions-framework==3.5.0   # For local testing with functions-framework

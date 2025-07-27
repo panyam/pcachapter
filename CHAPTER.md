@@ -374,23 +374,62 @@ def lambda_handler(event, context):
 
 The cloud adapters are lightweight wrappers - the core business logic for sensor analysis remains in the shared `pca_core.py` module.
 
-### Deployment and Testing
+---
 
-Each platform includes one-click deployment scripts and comprehensive testing. **See the individual README.md files in each platform directory for detailed deployment instructions.**
+## From Development to Production: Cloud Deployment
 
-**Development workflow**:
-1. **Test locally first**: Validate PCA logic and results using Flask development server
-2. **Deploy to clouds**: Use provided scripts for AWS (`aws/deploy.sh`), GCP (`gcp/deploy.sh`), Azure (`azure/deploy.sh`)
-3. **Cross-platform validation**: Confirm identical PCA results across all deployments
+Maya's local SensorScope prototype perfectly demonstrated PCA concepts, but corporate needed a production-ready solution. As we established in our earlier serverless architecture analysis, Maya's requirements - intermittent processing, automatic scaling, and minimal operational overhead - aligned perfectly with serverless computing. Now let's see how she deployed SensorScope to production.
 
-**Quick deployment example**:
+### Production Deployment with Google Cloud Functions
+
+We'll demonstrate production deployment using Google Cloud Functions Gen 2, showcasing the serverless patterns that work across all major cloud providers. **Complete setup instructions are in `src/hello-world-pca/gcp/README.md`**.
+
+#### One-Command Deployment
 ```bash
-# Local testing (detailed setup in local/README.md)
-cd src/hello-world-pca/local && python app.py
+# Clone the SensorScope repository
+git clone https://github.com/panyam/sensorscope
+cd sensorscope/src/hello-world-pca/gcp
 
-# Cloud deployment (detailed steps in aws/README.md) 
-cd ../aws && ./deploy.sh
+# Deploy to Google Cloud (handles everything automatically)
+./deploy.sh
 ```
+
+The deployment script automates everything:
+- ✅ Prerequisites validation (authentication, billing, project setup)
+- ✅ API enablement (Cloud Functions, Cloud Run, Cloud Build) 
+- ✅ Function deployment with optimized configuration
+- ✅ Automatic testing and validation
+- ✅ Function URL provisioning for immediate use
+
+#### Production Testing Results
+
+**Health Check**:
+```bash
+curl https://us-central1-coffee-analytics.cloudfunctions.net/sensorscope-pca
+```
+
+**Production Sensor Analysis**:
+```bash
+curl -X POST https://us-central1-coffee-analytics.cloudfunctions.net/sensorscope-pca \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "use_sample_data": true,
+    "n_components": 5,
+    "n_features": 20,
+    "coffee_shop_sample": true
+  }'
+```
+
+**Results** show identical PCA outputs to local development, confirming our cloud-agnostic architecture works seamlessly.
+
+### Multi-Cloud Options
+
+The same SensorScope system deploys to:
+- **AWS Lambda**: Using SAM templates (deployment guide in `aws/README.md`)
+- **Azure Functions**: Using Bicep templates (deployment guide in `azure/README.md`)
+- **Google Cloud Functions**: Complete implementation available now
+
+Maya's insight: *"The beauty of our architecture is that corporate can choose their preferred cloud provider without changing any of the core sensor analysis logic."*
 
 ### Performance Benchmarks
 
