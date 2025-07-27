@@ -146,6 +146,71 @@ curl -X POST https://$YOUR_FUNCTION_URL \
 
 This simulates Maya's exact use case: analyzing a downtown coffee shop's sensors to identify the 3 most critical measurements.
 
+### File-Based Sensor Data (Test 3: Production Workflow)
+
+This test demonstrates Maya's production workflow where sensor data is uploaded to Google Cloud Storage and processed by the Cloud Function.
+
+#### Step 1: Generate Sample Datasets
+```bash
+# Generate sample sensor datasets locally
+cd ../datasets
+python generate_samples.py
+```
+
+This creates:
+- `coffee_shop_sensors.csv` - Realistic 20-sensor coffee shop data (48 hours)
+- `basic_sensors.csv` - Strong redundancy patterns (good compression)
+- `complex_sensors.csv` - Minimal redundancy (limited compression)
+- Corresponding `*_metadata.json` files with business context
+
+#### Step 2: Upload to Google Cloud Storage
+```bash
+# Create a GCS bucket (replace YOUR_BUCKET_NAME)
+gsutil mb gs://YOUR_BUCKET_NAME
+
+# Upload datasets to bucket
+gsutil cp *.csv gs://YOUR_BUCKET_NAME/datasets/
+gsutil cp *_metadata.json gs://YOUR_BUCKET_NAME/datasets/
+
+# Verify upload
+gsutil ls gs://YOUR_BUCKET_NAME/datasets/
+```
+
+#### Step 3: Process Files via Cloud Function
+```bash
+# Analyze coffee shop sensor data from GCS
+curl -X POST https://$YOUR_FUNCTION_URL \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "gcs_bucket": "YOUR_BUCKET_NAME",
+    "gcs_file_path": "datasets/coffee_shop_sensors.csv",
+    "n_components": 5
+  }'
+
+# Analyze basic redundancy patterns
+curl -X POST https://$YOUR_FUNCTION_URL \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "gcs_bucket": "YOUR_BUCKET_NAME", 
+    "gcs_file_path": "datasets/basic_sensors.csv",
+    "n_components": 3
+  }'
+
+# Test complex dataset with minimal redundancy
+curl -X POST https://$YOUR_FUNCTION_URL \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "gcs_bucket": "YOUR_BUCKET_NAME",
+    "gcs_file_path": "datasets/complex_sensors.csv", 
+    "n_components": 8
+  }'
+```
+
+Expected results show:
+- **Coffee shop**: ~75% variance with 5 components (realistic business scenario)
+- **Basic dataset**: ~85% variance with 3 components (strong redundancy)
+- **Complex dataset**: ~60% variance with 8 components (minimal redundancy)
+
 ### Custom Sensor Data
 ```bash
 curl -X POST https://$YOUR_FUNCTION_URL \

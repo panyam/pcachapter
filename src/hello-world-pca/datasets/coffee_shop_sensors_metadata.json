@@ -1,0 +1,70 @@
+{
+  "file_info": {
+    "file_path": "./coffee_shop_sensors.csv",
+    "file_size_mb": 0.07,
+    "num_rows": 192,
+    "num_sensor_columns": 20,
+    "columns": [
+      "timestamp",
+      "temperature",
+      "humidity",
+      "pressure",
+      "vibration",
+      "flow_rate",
+      "sound_level",
+      "light_level",
+      "co2_level",
+      "door_sensor",
+      "wifi_connections",
+      "equipment_temp",
+      "steam_pressure",
+      "water_flow",
+      "power_consumption",
+      "customer_count",
+      "ambient_noise",
+      "air_quality",
+      "motion_detector",
+      "refrigeration_temp",
+      "grinder_vibration"
+    ],
+    "created_timestamp": "2025-07-27T15:56:01.883878"
+  },
+  "dataset_metadata": {
+    "location": "downtown",
+    "duration_hours": 48,
+    "sampling_interval_minutes": 15,
+    "sensor_types": [
+      "temperature",
+      "humidity",
+      "pressure",
+      "vibration",
+      "flow_rate",
+      "sound_level",
+      "light_level",
+      "co2_level",
+      "door_sensor",
+      "wifi_connections",
+      "equipment_temp",
+      "steam_pressure",
+      "water_flow",
+      "power_consumption",
+      "customer_count",
+      "ambient_noise",
+      "air_quality",
+      "motion_detector",
+      "refrigeration_temp",
+      "grinder_vibration"
+    ],
+    "generation_timestamp": "synthetic",
+    "description": "Synthetic coffee shop sensor data for downtown location"
+  },
+  "business_context": {
+    "purpose": "Sensor redundancy analysis for cost optimization",
+    "expected_redundancies": [
+      "temperature sensors may correlate with equipment vibration",
+      "humidity and temperature often correlated"
+    ],
+    "cost_per_sensor_annual": 250,
+    "potential_savings": "Up to $1500 annually"
+  }
+}

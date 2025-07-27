@@ -486,21 +486,28 @@ curl -X POST https://us-central1-sensorscope-demo.cloudfunctions.net/sensorscope
 }
 ```
 
-### Business Insights from Real Testing
+### Business Decision Framework: Maya's Monthly Analysis Scenarios
 
-Maya's production results revealed important insights about real-world sensor analysis:
+SensorScope's production deployment demonstrates how Maya could analyze different data patterns and draw appropriate business conclusions:
 
-**Simplified vs. Realistic Data:**
-- **Basic synthetic data**: 73.3% variance explained → Strong redundancy patterns
-- **Coffee shop simulation**: 51.9% variance explained → More diverse operational data
+**Scenario A - Strong Redundancy Pattern (73.3% variance explained):**
+If Maya's monthly sensor data showed strong correlation patterns like the basic synthetic example, she could confidently present to corporate:
 
-**Real-World Implications:**
-The coffee shop scenario demonstrates that actual business environments often have **genuinely independent sensor measurements**. Maya's 20 sensors (temperature, humidity, equipment vibration, customer flow, power consumption, etc.) each capture different operational aspects that don't compress neatly into fewer dimensions.
+*"This month's analysis shows significant sensor redundancy. We can reduce from 20 sensors to 5 key measurements while preserving 73% of our operational insights. I recommend proceeding with sensor optimization for potential $3,750 annual savings per location."*
 
-**Maya's Corporate Presentation:**
-*"The SensorScope analysis shows our sensors are actually measuring distinct operational factors. While we could reduce to 5-6 key sensors, we'd lose nearly half our operational visibility. I recommend keeping 8-10 sensors that capture 75-80% of our monitoring capability while still achieving significant cost savings."*
+**Scenario B - Complex Operational Pattern (51.9% variance explained):**
+If Maya's analysis resembled the coffee shop simulation scenario, her recommendation would be different:
 
-This demonstrates SensorScope's real value: **providing data-driven evidence for infrastructure decisions** rather than blindly applying mathematical optimization.
+*"This month's data shows our sensors are measuring genuinely distinct operational factors. While we could reduce to 5 sensors, we'd lose nearly half our operational visibility. I recommend a more conservative approach: keep 8-10 sensors to maintain 75-80% monitoring capability while still achieving significant cost savings."*
+
+**SensorScope's Strategic Value:**
+The key insight is that SensorScope provides **Maya with data-driven evidence** to support different recommendations based on actual sensor patterns. Rather than applying blanket optimization rules, she can:
+
+- **Adapt recommendations** to actual data characteristics each month
+- **Quantify trade-offs** between cost savings and operational visibility  
+- **Present evidence-based proposals** to corporate with specific variance preservation metrics
+
+This demonstrates how serverless PCA analysis becomes a **decision support tool** rather than just mathematical optimization, enabling nuanced business judgment backed by quantitative analysis.
 
 ### Multi-Cloud Options
 

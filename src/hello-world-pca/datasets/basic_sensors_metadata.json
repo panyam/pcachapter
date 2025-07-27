@@ -1,0 +1,35 @@
+{
+  "file_info": {
+    "file_path": "./basic_sensors.csv",
+    "file_size_mb": 0.06,
+    "num_rows": 200,
+    "num_sensor_columns": 15,
+    "columns": [
+      "timestamp",
+      "sensor_1",
+      "sensor_2",
+      "sensor_3",
+      "sensor_4",
+      "sensor_5",
+      "sensor_6",
+      "sensor_7",
+      "sensor_8",
+      "sensor_9",
+      "sensor_10",
+      "sensor_11",
+      "sensor_12",
+      "sensor_13",
+      "sensor_14",
+      "sensor_15"
+    ],
+    "created_timestamp": "2025-07-27T15:56:01.887390"
+  },
+  "dataset_metadata": {
+    "dataset_type": "basic_synthetic",
+    "description": "Basic synthetic sensor data for PCA testing"
+  },
+  "business_context": {
+    "cost_per_sensor_annual": 250,
+    "analysis_type": "sensor_redundancy"
+  }
+}

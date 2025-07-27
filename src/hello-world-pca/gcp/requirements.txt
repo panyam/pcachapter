@@ -16,5 +16,6 @@ psutil==5.9.6                 # Process and system monitoring
 # Cloud Functions specific dependencies
 functions-framework==3.5.0   # For local testing with functions-framework
 
-# Additional GCP-specific packages (optional)
+# Additional GCP-specific packages
 google-cloud-logging==3.8.0  # Enhanced logging integration
+google-cloud-storage==2.10.0 # Google Cloud Storage for file operations

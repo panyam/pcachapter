@@ -1,0 +1,40 @@
+{
+  "file_info": {
+    "file_path": "./complex_sensors.csv",
+    "file_size_mb": 0.11,
+    "num_rows": 300,
+    "num_sensor_columns": 20,
+    "columns": [
+      "timestamp",
+      "sensor_1",
+      "sensor_2",
+      "sensor_3",
+      "sensor_4",
+      "sensor_5",
+      "sensor_6",
+      "sensor_7",
+      "sensor_8",
+      "sensor_9",
+      "sensor_10",
+      "sensor_11",
+      "sensor_12",
+      "sensor_13",
+      "sensor_14",
+      "sensor_15",
+      "sensor_16",
+      "sensor_17",
+      "sensor_18",
+      "sensor_19",
+      "sensor_20"
+    ],
+    "created_timestamp": "2025-07-27T15:56:01.893199"
+  },
+  "dataset_metadata": {
+    "dataset_type": "complex_synthetic",
+    "description": "Complex synthetic sensor data with minimal redundancy"
+  },
+  "business_context": {
+    "cost_per_sensor_annual": 300,
+    "analysis_type": "sensor_redundancy"
+  }
+}

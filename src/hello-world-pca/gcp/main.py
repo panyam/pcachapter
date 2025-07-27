@@ -20,7 +20,8 @@ import functions_framework
 # Import shared modules (available via symlinks)
 try:
     from pca_core import process_pca_request
-    from data_validation import generate_sample_data, validate_input_data, create_coffee_shop_sample
+    from data_validation import (generate_sample_data, validate_input_data, create_coffee_shop_sample,
+                                 load_dataset_from_gcs, create_sample_datasets_directory)
     from response_formatter import format_response, format_health_response
 except ImportError as e:
     logging.error(f"Failed to import shared modules: {e}")
@@ -149,8 +150,31 @@ def sensorscope_pca(request):
         
         logger.info(f"Processing PCA request: {len(str(request_data))} bytes")
         
-        # Handle sample data generation
-        if request_data.get('use_sample_data', False):
+        # Handle different data input methods
+        if request_data.get('gcs_bucket') and request_data.get('gcs_file_path'):
+            # Load data from Google Cloud Storage
+            bucket_name = request_data['gcs_bucket']
+            file_path = request_data['gcs_file_path']
+            logger.info(f"Loading sensor data from GCS: gs://{bucket_name}/{file_path}")
+            
+            try:
+                file_data = load_dataset_from_gcs(bucket_name, file_path)
+                data = file_data['data']
+                business_context = file_data['business_context']
+                logger.info(f"Loaded from GCS: {data.shape[0]} readings, {data.shape[1]} sensors")
+            except Exception as e:
+                logger.error(f"Failed to load from GCS: {str(e)}")
+                return (json.dumps({
+                    "status": "error",
+                    "error": {
+                        "type": "GCSLoadError",
+                        "message": f"Failed to load data from gs://{bucket_name}/{file_path}: {str(e)}",
+                        "platform": "gcp-cloud-functions"
+                    },
+                    "help": "Ensure bucket exists, file is accessible, and function has storage permissions"
+                }), 400, headers)
+                
+        elif request_data.get('use_sample_data', False):
             logger.info("Generating synthetic sensor data")
             
             # Check for coffee shop sample request
