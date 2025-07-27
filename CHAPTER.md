@@ -411,19 +411,96 @@ curl https://us-central1-coffee-analytics.cloudfunctions.net/sensorscope-pca
 ```
 
 **Production Sensor Analysis**:
+
+Test 1 - Basic 20-sensor analysis:
 ```bash
-curl -X POST https://$YOUR_FUNCTION_URL \
+curl -X POST https://us-central1-sensorscope-demo.cloudfunctions.net/sensorscope-pca \
   -H 'Content-Type: application/json' \
   -d '{
     "use_sample_data": true,
     "n_components": 5,
-    "n_features": 20,
-    "coffee_shop_sample": true
+    "n_features": 20
   }'
-    # "random_state": 42
 ```
 
-**Results** show identical PCA outputs to local development, confirming our cloud-agnostic architecture works seamlessly.
+**Results** (abbreviated):
+```json
+{
+  "analysis": {
+    "input_dimensions": [100, 20],
+    "output_dimensions": [100, 5],
+    "variance_analysis": {
+      "total_variance_explained": 0.7332,
+      "variance_percentages": [24.75, 17.97, 13.56, 9.0, 8.04]
+    }
+  },
+  "business_insights": {
+    "dimensionality_reduction": {
+      "summary": "Reduced 20 measurements to 5 key factors",
+      "information_preserved": "73.3%",
+      "potential_sensor_reduction": "75.0%"
+    },
+    "cost_impact": {
+      "current_annual_cost": "$5,000",
+      "potential_annual_savings": "$3,750",
+      "savings_percentage": "75.0%"
+    }
+  }
+}
+```
+
+Test 2 - Realistic coffee shop scenario:
+```bash
+curl -X POST https://us-central1-sensorscope-demo.cloudfunctions.net/sensorscope-pca \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "coffee_shop_sample": true,
+    "location": "downtown", 
+    "n_components": 5
+  }'
+```
+
+**Results** reveal more complex reality:
+```json
+{
+  "analysis": {
+    "input_dimensions": [96, 20],
+    "output_dimensions": [96, 5], 
+    "variance_analysis": {
+      "total_variance_explained": 0.519,
+      "variance_percentages": [16.29, 10.72, 9.11, 8.13, 7.68]
+    }
+  },
+  "business_insights": {
+    "dimensionality_reduction": {
+      "summary": "Reduced 20 measurements to 5 key factors",
+      "information_preserved": "51.9%"
+    },
+    "key_findings": [
+      "Limited dimensionality reduction: 5 components only capture 51.9% of variation"
+    ],
+    "recommendations": [
+      "Sensor data may not have strong redundancy patterns - minimal optimization opportunity"
+    ]
+  }
+}
+```
+
+### Business Insights from Real Testing
+
+Maya's production results revealed important insights about real-world sensor analysis:
+
+**Simplified vs. Realistic Data:**
+- **Basic synthetic data**: 73.3% variance explained → Strong redundancy patterns
+- **Coffee shop simulation**: 51.9% variance explained → More diverse operational data
+
+**Real-World Implications:**
+The coffee shop scenario demonstrates that actual business environments often have **genuinely independent sensor measurements**. Maya's 20 sensors (temperature, humidity, equipment vibration, customer flow, power consumption, etc.) each capture different operational aspects that don't compress neatly into fewer dimensions.
+
+**Maya's Corporate Presentation:**
+*"The SensorScope analysis shows our sensors are actually measuring distinct operational factors. While we could reduce to 5-6 key sensors, we'd lose nearly half our operational visibility. I recommend keeping 8-10 sensors that capture 75-80% of our monitoring capability while still achieving significant cost savings."*
+
+This demonstrates SensorScope's real value: **providing data-driven evidence for infrastructure decisions** rather than blindly applying mathematical optimization.
 
 ### Multi-Cloud Options
 
