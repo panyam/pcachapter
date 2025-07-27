@@ -1,0 +1,11 @@
+# Google Cloud Functions requirements for SensorScope PCA analysis
+# These dependencies are installed automatically during function deployment
+
+# Include shared requirements
+-r ../requirements.txt
+
+# Cloud Functions specific dependencies
+functions-framework==3.5.0   # For local testing with functions-framework
+
+# Additional GCP-specific packages (optional)
+google-cloud-logging==3.8.0  # Enhanced logging integration
