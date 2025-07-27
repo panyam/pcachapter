@@ -17,15 +17,15 @@ Every cloud example starts with a **local development version** using Flask/Fast
 ## Architecture Patterns
 
 ### Universal Function Pattern
-All serverless functions follow a consistent interface pattern across clouds:
+All serverless functions follow a consistent interface pattern across clouds, demonstrated through SensorScope - our sensor redundancy analysis system:
 
 ```python
-def pca_handler(event, context):
-    # 1. Parse cloud-specific event format
-    # 2. Extract/validate input data
-    # 3. Apply universal PCA logic 
-    # 4. Format cloud-specific response
-    # 5. Handle errors uniformly
+def sensorscope_handler(event, context):
+    # 1. Parse cloud-specific event format (HTTP request, storage trigger)
+    # 2. Extract/validate sensor data (coffee shop 20D measurements)
+    # 3. Apply universal PCA logic (reduce to 5D optimal sensors)
+    # 4. Format cloud-specific response (business insights + cost analysis)
+    # 5. Handle errors uniformly (validation, memory, computation errors)
 ```
 
 **Benefits**:

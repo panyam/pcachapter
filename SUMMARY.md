@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project creates a comprehensive technical chapter demonstrating **multi-cloud serverless Principal Component Analysis (PCA)** implementations. The goal is to provide readers with practical, deployable examples that work across AWS, Google Cloud Platform, and Azure without requiring advanced DevOps knowledge.
+This project creates a comprehensive technical chapter demonstrating **Serverless PCA** implementations through **SensorScope** - a sensor redundancy analysis system. The goal is to provide readers with practical, deployable examples that work across AWS, Google Cloud Platform, and Azure, using Maya Chen's coffee shop sensor optimization story as the educational narrative.
 
 ## Key Project Characteristics
 

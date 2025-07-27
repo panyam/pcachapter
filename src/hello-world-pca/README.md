@@ -16,22 +16,29 @@ This example demonstrates the core serverless PCA pattern across multiple deploy
 - curl or similar HTTP client
 
 ### Local Setup
+
 ```bash
 # 1. Navigate to this directory
+```
 cd src/hello-world-pca
+```
 
 # 2. Create virtual environment (essential for reproducibility)
-python -m venv venv
+```
+pyenv virtualenv hello-world-pca
+```
 
 # 3. Activate virtual environment
-# On macOS/Linux:
-source venv/bin/activate
-# On Windows:
-# venv\Scripts\activate
+
+```
+pyenv activate hello-world-pca
+```
 
 # 4. Upgrade pip and install dependencies
+```
 pip install --upgrade pip
 pip install -r requirements.txt
+```
 
 # 5. Start local server
 cd local
