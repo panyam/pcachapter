@@ -1,0 +1,19 @@
+# Core dependencies for Hello World PCA
+# No GPU dependencies - CPU-only for maximum compatibility
+
+# Web framework for local development
+flask==3.0.0
+
+# Machine learning and numerical computing
+scikit-learn==1.3.2
+numpy==1.24.4
+pandas==2.1.4
+
+# Performance monitoring
+psutil==5.9.6
+
+# Development and testing utilities
+requests==2.31.0
+
+# Optional: for better JSON formatting in responses
+jsonify==0.5

@@ -1,0 +1,10 @@
+# Local development requirements for Hello World PCA Flask app
+# Includes the base requirements plus development utilities
+
+# Include base requirements
+-r ../requirements.txt
+
+# Additional development utilities
+flask-cors==4.0.0    # Enable CORS for browser testing
+pytest==7.4.3        # Testing framework
+pytest-flask==1.3.0  # Flask-specific testing utilities
