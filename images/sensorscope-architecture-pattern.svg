@@ -1,0 +1,86 @@
+<svg width="800" height="250" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.1" />
+    </linearGradient>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="250" fill="url(#flowGrad)"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Hello World SensorScope: Stateless Request-Response Pattern
+  </text>
+  
+  <!-- Main flow boxes -->
+  <g>
+    <!-- HTTP Request -->
+    <rect x="50" y="80" width="120" height="60" fill="url(#boxGrad)" stroke="#667eea" stroke-width="2" rx="10"/>
+    <text x="110" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">HTTP Request</text>
+    <text x="110" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#555">POST /pca</text>
+    <text x="110" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">JSON payload</text>
+    
+    <!-- Function Runtime -->
+    <rect x="230" y="80" width="120" height="60" fill="url(#boxGrad)" stroke="#667eea" stroke-width="2" rx="10"/>
+    <text x="290" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Function Runtime</text>
+    <text x="290" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#555">Python 3.11+</text>
+    <text x="290" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Auto-scaling</text>
+    
+    <!-- PCA Processing -->
+    <rect x="410" y="80" width="120" height="60" fill="url(#boxGrad)" stroke="#667eea" stroke-width="2" rx="10"/>
+    <text x="470" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">PCA Processing</text>
+    <text x="470" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#555">scikit-learn</text>
+    <text x="470" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Mathematical computation</text>
+    
+    <!-- JSON Response -->
+    <rect x="590" y="80" width="120" height="60" fill="url(#boxGrad)" stroke="#667eea" stroke-width="2" rx="10"/>
+    <text x="650" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">JSON Response</text>
+    <text x="650" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#555">Results + Metadata</text>
+    <text x="650" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Business insights</text>
+  </g>
+  
+  <!-- Flow arrows -->
+  <g>
+    <path d="M 170 110 L 220 110" stroke="#667eea" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 350 110 L 400 110" stroke="#667eea" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 530 110 L 580 110" stroke="#667eea" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Universal Components Section -->
+  <g>
+    <rect x="50" y="170" width="300" height="60" fill="#f8f9fa" stroke="#6c757d" stroke-width="1" rx="5"/>
+    <text x="200" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Universal Components</text>
+    <text x="60" y="200" font-family="Arial, sans-serif" font-size="10" fill="#555">• Input validation and parsing</text>
+    <text x="60" y="215" font-family="Arial, sans-serif" font-size="10" fill="#555">• PCA computation using scikit-learn</text>
+    <text x="200" y="200" font-family="Arial, sans-serif" font-size="10" fill="#555">• Result serialization and formatting</text>
+    <text x="200" y="215" font-family="Arial, sans-serif" font-size="10" fill="#555">• Error handling and logging</text>
+  </g>
+  
+  <!-- Platform-Specific Adapters Section -->
+  <g>
+    <rect x="400" y="170" width="300" height="60" fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5"/>
+    <text x="550" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Platform-Specific Adapters</text>
+    <text x="410" y="200" font-family="Arial, sans-serif" font-size="10" fill="#555">• Cloud function entry points</text>
+    <text x="410" y="215" font-family="Arial, sans-serif" font-size="10" fill="#555">• Authentication handling</text>
+    <text x="550" y="200" font-family="Arial, sans-serif" font-size="10" fill="#555">• Platform-specific logging</text>
+    <text x="550" y="215" font-family="Arial, sans-serif" font-size="10" fill="#555">• Performance monitoring</text>
+  </g>
+  
+  <!-- Multi-cloud note -->
+  <text x="400" y="248" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-style="italic" fill="#666">
+    Works identically across clouds
+  </text>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#667eea"/>
+    </marker>
+  </defs>
+</svg>

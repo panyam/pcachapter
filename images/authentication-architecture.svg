@@ -1,0 +1,107 @@
+<svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sourceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9a9e;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#fecfef;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="authGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8edea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#fed6e3;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="funcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffecd2;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#fcb69f;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    SensorScope Security Architecture: Defense in Depth
+  </text>
+  
+  <!-- Data Sources -->
+  <g>
+    <rect x="50" y="70" width="140" height="140" fill="url(#sourceGrad)" stroke="#ff6b6b" stroke-width="2" rx="10"/>
+    <text x="120" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Data Sources</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="60" y="115">• Coffee Shop</text>
+      <text x="70" y="130">POS Systems</text>
+      <text x="60" y="150">• Sensor Arrays</text>
+      <text x="60" y="170">• Upload Scripts</text>
+      <text x="60" y="190">• Manager Portals</text>
+    </g>
+  </g>
+  
+  <!-- Authentication Layer -->
+  <g>
+    <rect x="320" y="70" width="140" height="140" fill="url(#authGrad)" stroke="#4ecdc4" stroke-width="2" rx="10"/>
+    <text x="390" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Authentication</text>
+    <text x="390" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Layer</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="330" y="130">• API Keys</text>
+      <text x="330" y="145">• JWT Tokens</text>
+      <text x="330" y="160">• RBAC</text>
+      <text x="330" y="175">• Network ACLs</text>
+      <text x="330" y="190">• IP Allowlisting</text>
+    </g>
+  </g>
+  
+  <!-- Cloud Functions -->
+  <g>
+    <rect x="590" y="70" width="140" height="140" fill="url(#funcGrad)" stroke="#ffa726" stroke-width="2" rx="10"/>
+    <text x="660" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Cloud Functions</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="600" y="115">• SensorScope</text>
+      <text x="610" y="130">Analysis</text>
+      <text x="600" y="150">• Data Validation</text>
+      <text x="600" y="170">• PCA Processing</text>
+      <text x="600" y="190">• Result Storage</text>
+    </g>
+  </g>
+  
+  <!-- Flow arrows -->
+  <g>
+    <path d="M 190 140 L 310 140" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 460 140 L 580 140" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Security Layers Below -->
+  <g>
+    <rect x="50" y="240" width="680" height="50" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+    <text x="390" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+      Three-Layer Security Implementation
+    </text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <!-- Layer 1 -->
+      <circle cx="120" cy="275" r="12" fill="#ff6b6b" stroke="#fff" stroke-width="2"/>
+      <text x="120" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#fff">1</text>
+      <text x="160" y="280" font-family="Arial, sans-serif" font-size="11" fill="#333">Network-Level: VPC, TLS 1.3, Private Access</text>
+      
+      <!-- Layer 2 -->
+      <circle cx="340" cy="275" r="12" fill="#4ecdc4" stroke="#fff" stroke-width="2"/>
+      <text x="340" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#fff">2</text>
+      <text x="380" y="280" font-family="Arial, sans-serif" font-size="11" fill="#333">Application-Level: API Keys, JWT, RBAC</text>
+      
+      <!-- Layer 3 -->
+      <circle cx="580" cy="275" r="12" fill="#ffa726" stroke="#fff" stroke-width="2"/>
+      <text x="580" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#fff">3</text>
+      <text x="620" y="280" font-family="Arial, sans-serif" font-size="11" fill="#333">Data-Level: Encryption at Rest, PII Filtering</text>
+    </g>
+  </g>
+  
+  <!-- Multi-cloud services note -->
+  <text x="400" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-style="italic" fill="#666">
+    Implemented using cloud-native services: GCP (IAM, VPC), AWS (IAM, VPC), Azure (AAD, VNet)
+  </text>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,160 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="coffeeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#D2691E;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#4682B4;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="funcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#32CD32;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#228B22;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="dashGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">
+    Production File Processing Pipeline
+  </text>
+  
+  <!-- Coffee Shop POS Systems -->
+  <g>
+    <rect x="50" y="70" width="150" height="120" fill="url(#coffeeGrad)" stroke="#8B4513" stroke-width="2" rx="10"/>
+    <text x="125" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Coffee Shop</text>
+    <text x="125" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">POS Systems</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="60" y="135">• 20 sensors</text>
+      <text x="60" y="150">• 15min cycles</text>
+      <text x="60" y="165">• Daily batches</text>
+      <text x="60" y="180">• CSV exports</text>
+    </g>
+  </g>
+  
+  <!-- Cloud Storage (GCS) -->
+  <g>
+    <rect x="300" y="70" width="150" height="120" fill="url(#cloudGrad)" stroke="#4682B4" stroke-width="2" rx="10"/>
+    <text x="375" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Cloud Storage</text>
+    <text x="375" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">(GCS)</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="310" y="135">• CSV uploads</text>
+      <text x="310" y="150">• Metadata files</text>
+      <text x="310" y="165">• Organized by</text>
+      <text x="310" y="180">  date/location</text>
+    </g>
+  </g>
+  
+  <!-- Cloud Function -->
+  <g>
+    <rect x="550" y="70" width="150" height="120" fill="url(#funcGrad)" stroke="#228B22" stroke-width="2" rx="10"/>
+    <text x="625" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Cloud Function</text>
+    <text x="625" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">SensorScope PCA</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="560" y="135">• Batch process</text>
+      <text x="560" y="150">• Data validation</text>
+      <text x="560" y="165">• PCA analysis</text>
+      <text x="560" y="180">• Business insights</text>
+    </g>
+  </g>
+  
+  <!-- Main flow arrows -->
+  <g>
+    <path d="M 200 130 L 290 130" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 450 130 L 540 130" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Maya's Operations Dashboard -->
+  <g>
+    <rect x="300" y="250" width="180" height="100" fill="url(#dashGrad)" stroke="#FFA500" stroke-width="2" rx="10"/>
+    <text x="390" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Maya's Operations</text>
+    <text x="390" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Dashboard</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="310" y="315">• Upload files</text>
+      <text x="310" y="330">• Monitor jobs</text>
+      <text x="310" y="345">• Review results</text>
+    </g>
+  </g>
+  
+  <!-- Executive Dashboard -->
+  <g>
+    <rect x="550" y="250" width="150" height="100" fill="url(#dashGrad)" stroke="#FFA500" stroke-width="2" rx="10"/>
+    <text x="625" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Executive</text>
+    <text x="625" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Dashboard</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="560" y="315">• Cost savings</text>
+      <text x="560" y="330">• Optimization</text>
+      <text x="560" y="345">  opportunities</text>
+    </g>
+  </g>
+  
+  <!-- Downward arrows -->
+  <g>
+    <path d="M 375 190 L 375 240" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 625 190 L 625 240" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Horizontal arrows to dashboards -->
+  <g>
+    <path d="M 480 300 L 540 300" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Workflow Steps -->
+  <g>
+    <rect x="50" y="400" width="800" height="80" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+    <text x="450" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">
+      Production Workflow Steps
+    </text>
+    
+    <g font-family="Arial, sans-serif" font-size="12" fill="#333">
+      <!-- Step 1 -->
+      <circle cx="100" cy="445" r="15" fill="#8B4513" stroke="#fff" stroke-width="2"/>
+      <text x="100" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">1</text>
+      <text x="100" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Data Collection</text>
+      
+      <!-- Step 2 -->
+      <circle cx="300" cy="445" r="15" fill="#4682B4" stroke="#fff" stroke-width="2"/>
+      <text x="300" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">2</text>
+      <text x="300" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Cloud Upload</text>
+      
+      <!-- Step 3 -->
+      <circle cx="500" cy="445" r="15" fill="#228B22" stroke="#fff" stroke-width="2"/>
+      <text x="500" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">3</text>
+      <text x="500" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">PCA Analysis</text>
+      
+      <!-- Step 4 -->
+      <circle cx="700" cy="445" r="15" fill="#FFA500" stroke="#fff" stroke-width="2"/>
+      <text x="700" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">4</text>
+      <text x="700" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Business Intelligence</text>
+      
+      <!-- Step arrows -->
+      <path d="M 130 445 L 270 445" stroke="#666" stroke-width="2" marker-end="url(#smallArrow)"/>
+      <path d="M 330 445 L 470 445" stroke="#666" stroke-width="2" marker-end="url(#smallArrow)"/>
+      <path d="M 530 445 L 670 445" stroke="#666" stroke-width="2" marker-end="url(#smallArrow)"/>
+    </g>
+  </g>
+  
+  <!-- Multi-cloud note -->
+  <text x="450" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-style="italic" fill="#666">
+    File-based architecture works across GCS + Cloud Functions, S3 + Lambda, or Blob Storage + Azure Functions
+  </text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="smallArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+</svg>
