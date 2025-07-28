@@ -1,4 +1,4 @@
-<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="610" viewBox="0 0 800 610" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="traditionalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:0.1" />
@@ -132,8 +132,8 @@
   
   <!-- VS indicator -->
   <g>
-    <circle cx="400" cy="160" r="25" fill="#fff" stroke="#666" stroke-width="2"/>
-    <text x="400" y="167" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#666">VS</text>
+    <circle cx="400" cy="165" r="25" fill="#fff" stroke="#666" stroke-width="2"/>
+    <text x="400" y="172" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#666">VS</text>
   </g>
   
   <!-- Arrow markers -->
@@ -148,29 +148,29 @@
   
   <!-- Bottom comparison summary -->
   <g>
-    <rect x="50" y="350" width="700" height="200" fill="#f9f9f9" stroke="#ddd" stroke-width="1" rx="10"/>
-    <text x="400" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">
+    <rect x="50" y="360" width="700" height="200" fill="#f9f9f9" stroke="#ddd" stroke-width="1" rx="10"/>
+    <text x="400" y="385" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">
       Key Differences: Why Maya Chose Serverless
     </text>
     
     <g font-family="Arial, sans-serif" font-size="12" fill="#333">
       <!-- Traditional column -->
-      <text x="80" y="400" font-weight="bold" fill="#ff6b6b">Traditional Infrastructure</text>
-      <text x="80" y="420">• High upfront capital investment</text>
-      <text x="80" y="440">• Continuous operational overhead</text>
-      <text x="80" y="460">• IT team maintenance burden</text>
-      <text x="80" y="480">• Fixed costs regardless of usage</text>
-      <text x="80" y="500">• Complex security management</text>
-      <text x="80" y="520">• Slow deployment cycles</text>
+      <text x="80" y="410" font-weight="bold" fill="#ff6b6b">Traditional Infrastructure</text>
+      <text x="80" y="430">• High upfront capital investment</text>
+      <text x="80" y="450">• Continuous operational overhead</text>
+      <text x="80" y="470">• IT team maintenance burden</text>
+      <text x="80" y="490">• Fixed costs regardless of usage</text>
+      <text x="80" y="510">• Complex security management</text>
+      <text x="80" y="530">• Slow deployment cycles</text>
       
       <!-- Serverless column -->
-      <text x="450" y="400" font-weight="bold" fill="#4ecdc4">Serverless Infrastructure</text>
-      <text x="450" y="420">• Zero upfront infrastructure costs</text>
-      <text x="450" y="440">• Pay only for actual compute time</text>
-      <text x="450" y="460">• Automatic scaling and management</text>
-      <text x="450" y="480">• Built-in security and monitoring</text>
-      <text x="450" y="500">• Instant deployment and updates</text>
-      <text x="450" y="520">• Focus on business logic, not infrastructure</text>
+      <text x="450" y="410" font-weight="bold" fill="#4ecdc4">Serverless Infrastructure</text>
+      <text x="450" y="430">• Zero upfront infrastructure costs</text>
+      <text x="450" y="450">• Pay only for actual compute time</text>
+      <text x="450" y="470">• Automatic scaling and management</text>
+      <text x="450" y="490">• Built-in security and monitoring</text>
+      <text x="450" y="510">• Instant deployment and updates</text>
+      <text x="450" y="530">• Focus on business logic, not infrastructure</text>
     </g>
   </g>
 </svg>
