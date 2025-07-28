@@ -69,7 +69,7 @@ gcloud billing projects describe $(gcloud config get-value project)
 ### 2. Clone Repository
 ```bash
 git clone https://github.com/panyam/sensorscope
-cd sensorscope/src/hello-world-pca/gcp
+cd sensorscope/src/sensorscope/gcp
 ```
 
 ### 3. Deploy Function

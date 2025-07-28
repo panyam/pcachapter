@@ -1,4 +1,4 @@
-# Hello World PCA: Multi-Cloud Foundation Example
+# SensorScope: Example
 
 This example demonstrates the core serverless PCA pattern across multiple deployment targets: local development, AWS Lambda, Google Cloud Functions, and Azure Functions.
 
@@ -20,18 +20,18 @@ This example demonstrates the core serverless PCA pattern across multiple deploy
 ```bash
 # 1. Navigate to this directory
 ```
-cd src/hello-world-pca
+cd src/sensorscope
 ```
 
 # 2. Create virtual environment (essential for reproducibility)
 ```
-pyenv virtualenv hello-world-pca
+pyenv virtualenv sensorscope
 ```
 
 # 3. Activate virtual environment
 
 ```
-pyenv activate hello-world-pca
+pyenv activate sensorscope
 ```
 
 # 4. Upgrade pip and install dependencies
@@ -94,7 +94,7 @@ This means: **75% of sensor information is captured in just 2 dimensions**, sugg
 ## Project Structure
 
 ```
-hello-world-pca/
+sensorscope/
 ├── README.md                     # This file
 ├── requirements.txt              # Python dependencies
 ├── shared/                       # Universal components
@@ -323,7 +323,7 @@ curl -H "Content-Type: application/json" ...
 
 ## Next Steps
 
-1. **Validate Local Setup**: Ensure Hello World works perfectly locally
+1. **Validate Local Setup**: Ensure works perfectly locally
 2. **Choose Cloud Platform**: Pick AWS, GCP, or Azure based on your preference  
 3. **Deploy and Test**: Follow cloud-specific README for deployment
 4. **Cross-Platform Validation**: Confirm identical results everywhere
@@ -331,7 +331,7 @@ curl -H "Content-Type: application/json" ...
 
 ## Business Context
 
-This Hello World example simulates Maya's sensor redundancy analysis:
+This example simulates Maya's sensor redundancy analysis:
 - **5 sensor types** representing temperature, humidity, pressure, vibration, flow
 - **2 principal components** capture 75% of variation
 - **Result**: Potential to reduce 5 sensors to 2-3 key measurements

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Local Flask application for Hello World PCA development and testing.
+Local Flask application for development and testing.
 
 This serves as the reference implementation and development environment
 for Maya's sensor redundancy analysis before cloud deployment.
@@ -202,7 +202,7 @@ def root():
     Root endpoint with service information and usage examples.
     """
     return jsonify({
-        "service": "Hello World PCA - Local Development Server",
+        "service": "SensorScope - Local Development Server",
         "description": "Serverless PCA analysis for coffee shop sensor optimization",
         "endpoints": {
             "pca_analysis": {
@@ -250,7 +250,7 @@ def method_not_allowed(error):
 
 if __name__ == '__main__':
     print("=" * 60)
-    print("🚀 Hello World PCA - Local Development Server")
+    print("🚀 SensorScope - Local Development Server")
     print("=" * 60)
     print()
     print("Maya's Coffee Shop Sensor Analysis Service")
@@ -287,7 +287,7 @@ if __name__ == '__main__':
             threaded=True    # Handle multiple concurrent requests
         )
     except KeyboardInterrupt:
-        print("\n👋 Server stopped. Thanks for using Hello World PCA!")
+        print("\n👋 Server stopped!")
     except Exception as e:
         print(f"\n❌ Server failed to start: {e}")
         print("\n🔧 Troubleshooting:")

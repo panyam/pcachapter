@@ -108,7 +108,7 @@ done
 
 # Validate shared directory exists
 if [ ! -d "../shared" ]; then
-    print_error "Shared directory not found. Please run from src/hello-world-pca/gcp/"
+    print_error "Shared directory not found. Please run from src/sensorscope/gcp/"
     exit 1
 fi
 

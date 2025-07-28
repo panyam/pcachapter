@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test client for Hello World PCA local development server.
+Test client for local development server.
 
 This script provides comprehensive testing of the PCA service,
 demonstrating various usage patterns for Maya's sensor analysis.
@@ -209,7 +209,7 @@ class PCATestClient:
     
     def run_comprehensive_tests(self) -> None:
         """Run all tests and provide summary."""
-        print("🧪 Hello World PCA - Comprehensive Test Suite")
+        print("🧪 SensorScope - Comprehensive Test Suite")
         print("=" * 55)
         print("Testing Maya's sensor redundancy analysis service")
         print()
@@ -217,7 +217,7 @@ class PCATestClient:
         # Check if server is running
         if not self.test_health_check():
             print("\n❌ Server not accessible. Please start the server first:")
-            print("   cd src/hello-world-pca/local")
+            print("   cd src/sensorscope/local")
             print("   python app.py")
             return
         

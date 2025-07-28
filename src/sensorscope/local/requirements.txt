@@ -1,4 +1,4 @@
-# Local development requirements for Hello World PCA Flask app
+# Local development requirements for Flask app
 # Includes the base requirements plus development utilities
 
 # Include base requirements

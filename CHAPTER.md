@@ -1,18 +1,5 @@
 # Serverless PCA: Implementing Dimension Reduction in Cloud-Native AI Architectures
 
-## Table of Contents
-
-1. [Introduction](#introduction)
-2. [Hello World PCA: Multi-Cloud Foundation](#hello-world-pca-multi-cloud-foundation)
-3. [Serverless Architecture Patterns for PCA](#serverless-architecture-patterns-for-pca)
-4. [Implementation Deep-Dive: Three Progressive Examples](#implementation-deep-dive-three-progressive-examples)
-5. [Platform Comparisons & Trade-offs](#platform-comparisons--trade-offs)
-6. [Production Considerations](#production-considerations)
-7. [Advanced Patterns & Future Directions](#advanced-patterns--future-directions)
-8. [References](#introduction)
-
----
-
 ## Introduction
 
 Dr. Maya Chen, Lead Data Scientist at Bean There, Done That coffee chain, thought her biggest challenge would be building customer recommendation algorithms. Three months into the job, corporate presented her with a deceptively simple cost-optimization request that revealed the hidden complexity of their existing infrastructure. Like most established coffee chains, Bean There, Done That had accumulated sensors organically over years - HVAC systems monitoring temperature and humidity, equipment maintenance sensors tracking vibration and pressure, customer flow counters at entrances, and various other monitoring devices installed by different vendors for different purposes. Their POS systems dutifully recorded transactions, corporate dashboards displayed daily sales summaries, and equipment alerts fired whenever machines malfunctioned. However, their substantial annual sensor investment was generating data in silos, with each system operating independently and no one analyzing the relationships between measurements.
@@ -31,49 +18,7 @@ Maya's infrastructure decision was driven as much by what the coffee chain could
 
 The contrast between traditional and serverless approaches for SensorScope became stark when Maya mapped out the options:
 
-**Traditional Infrastructure Approach:**
-```
-┌─────────────────────────────────────────────────────────────┐
-│ SensorScope on Traditional Infrastructure                   │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│ [Hardware] Dedicated Server → [IT Setup] → [Ongoing Maint] │
-│    ↓                          ↓              ↓             │
-│ Hardware Purchase         2-week setup    Monthly updates   │
-│ Software Licenses         Security config  Security patches │
-│ Network Setup            Load balancing    Backup management │
-│                                                             │
-│ Analysis Frequency: Monthly                                 │
-│ Infrastructure Cost: High upfront + ongoing monthly        │
-│ IT Overhead: Significant monthly burden                    │
-│ Time to First Analysis: 3-4 weeks                          │
-│                                                             │
-│ Corporate Reaction: "Why does cost-cutting need more       │
-│                     infrastructure spending?"              │
-└─────────────────────────────────────────────────────────────┘
-```
-
-**Serverless SensorScope Approach:**
-```
-┌─────────────────────────────────────────────────────────────┐
-│ SensorScope on Serverless Infrastructure                   │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│ [Data Upload] → [Function Triggers] → [Analysis Complete]   │
-│      ↓               ↓                       ↓              │
-│   CSV files      Auto-scaling           Results + Insights  │
-│   API calls      Memory optimization    Cost breakdown      │
-│   Schedules      Built-in monitoring    Business recommendations │
-│                                                             │
-│ Analysis Frequency: On-demand or scheduled                 │
-│ Infrastructure Cost: Pay-per-use only                      │
-│ IT Overhead: Zero maintenance                              │
-│ Time to First Analysis: Same day                           │
-│                                                             │
-│ Corporate Reaction: "Analysis costs appear only when       │
-│                     we're generating savings insights"     │
-└─────────────────────────────────────────────────────────────┘
-```
+![Traditional vs Serverless Infrastructure Comparison](images/traditional-vs-serverless-infrastructure.svg)
 
 SensorScope's computational requirements aligned perfectly with serverless execution models. The underlying Principal Component Analysis algorithm requires loading complete datasets into memory for eigenvalue decomposition, making it memory-intensive but temporally bounded - exactly the workload profile that serverless computing handles efficiently. SensorScope would process months of sensor data in minutes, then remain dormant until the next analysis cycle, making traditional always-on infrastructure economically wasteful for Maya's intermittent optimization needs.
 
@@ -125,13 +70,13 @@ Each implementation includes working code, deployment scripts, performance bench
 
 ---
 
-## Hello World SensorScope: Foundation Implementation
+## SensorScope: Foundation Implementation
 
-Faced with the sensor redundancy challenge, Maya's first SensorScope implementation had a clear business objective: analyze one coffee shop's 20 sensor types to identify which measurements provided unique versus redundant information. This Hello World implementation would serve as the foundation for her complete SensorScope system, establishing the core PCA processing pipeline and multi-cloud deployment patterns before scaling to all 47 locations. The twist: she insisted on building once and deploying everywhere, refusing to lock herself into a single cloud provider. "Corporate might change their mind about cloud providers faster than they change coffee bean suppliers," Maya reasoned. "I want the flexibility to adapt without rewriting everything from scratch."
+Faced with the sensor redundancy challenge, Maya's first SensorScope implementation had a clear business objective: analyze one coffee shop's 20 sensor types to identify which measurements provided unique versus redundant information. This implementation would serve as the foundation for her complete SensorScope system, establishing the core PCA processing pipeline and multi-cloud deployment patterns before scaling to all 47 locations. The twist: she insisted on building once and deploying everywhere, refusing to lock herself into a single cloud provider. "Corporate might change their mind about cloud providers faster than they change coffee bean suppliers," Maya reasoned. "I want the flexibility to adapt without rewriting everything from scratch."
 
 ### Problem Statement and Requirements
 
-The Hello World SensorScope implementation demonstrates core serverless patterns through a practical PCA-based dimensionality reduction service:
+The SensorScope implementation demonstrates core serverless patterns through a practical PCA-based dimensionality reduction service:
 
 **Functional Requirements:**
 - Accept high-dimensional data via HTTP POST request
@@ -148,20 +93,9 @@ The Hello World SensorScope implementation demonstrates core serverless patterns
 
 ### Architecture Pattern
 
-The Hello World SensorScope implementation follows a stateless request-response pattern that translates consistently across serverless platforms:
+The SensorScope implementation follows a stateless request-response pattern that translates consistently across serverless platforms:
 
-```
-HTTP Request → Function Runtime → PCA Processing → JSON Response
-     ↓                ↓               ↓               ↓
-[POST /pca]    [Python 3.11+]   [scikit-learn]  [Results + Metadata]
-```
-
-**Universal Components:**
-- Input validation and parsing
-- PCA computation using scikit-learn
-- Result serialization and formatting
-- Error handling and logging
-- Performance timing and memory tracking
+![Architecture Pattern](images/sensorscope-architecture-pattern.svg)
 
 **Platform-Specific Adapters:**
 - Cloud function entry points
@@ -171,7 +105,7 @@ HTTP Request → Function Runtime → PCA Processing → JSON Response
 
 ### Sample Dataset and Expected Results
 
-The Hello World example uses synthetic sensor data designed to demonstrate PCA concepts and serverless deployment patterns clearly. Since our primary focus is establishing the serverless architecture and seeing PCA in action across multiple cloud platforms, synthetic data serves our educational goals perfectly. Every reader gets identical, reproducible results that make troubleshooting straightforward, while the built-in redundancy patterns make PCA outputs immediately interpretable. This approach also prevents unexpected cloud charges from large datasets during the learning phase. Real-world sensor data - with its missing values, drift patterns, and complex correlations - involves data quality challenges that belong in the broader data collection and preprocessing pipeline rather than the serverless deployment architecture we're demonstrating here.
+This example uses synthetic sensor data designed to demonstrate PCA concepts and serverless deployment patterns clearly. Since our primary focus is establishing the serverless architecture and seeing PCA in action across multiple cloud platforms, synthetic data serves our educational goals perfectly. Every reader gets identical, reproducible results that make troubleshooting straightforward, while the built-in redundancy patterns make PCA outputs immediately interpretable. This approach also prevents unexpected cloud charges from large datasets during the learning phase. Real-world sensor data - with its missing values, drift patterns, and complex correlations - involves data quality challenges that belong in the broader data collection and preprocessing pipeline rather than the serverless deployment architecture we're demonstrating here.
 
 To ensure consistent validation across platforms, the synthetic dataset mimics Maya's coffee shop scenario:
 
@@ -203,10 +137,10 @@ These results would suggest Maya could potentially reduce from 20 sensors to 5-6
 
 ### Implementation Structure
 
-The Hello World SensorScope implementation follows a modular architecture that separates universal PCA logic from platform-specific adapters. **For complete setup instructions, see the README.md in the `src/hello-world-pca/` directory** - it provides step-by-step installation and testing guidance.
+The SensorScope implementation follows a modular architecture that separates universal PCA logic from platform-specific adapters. **For complete setup instructions, see the README.md in the `src/sensorscope/` directory** - it provides step-by-step installation and testing guidance.
 
 ```
-src/hello-world-pca/
+src/sensorscope/
 ├── shared/                    # Universal components (focus of this section)
 │   ├── pca_core.py           # Core PCA processing logic ← Key implementation
 │   ├── data_validation.py    # Input validation utilities  
@@ -223,7 +157,7 @@ src/hello-world-pca/
 The heart of SensorScope is the universal PCA processing logic in `pca_core.py`. This function handles Maya's sensor redundancy analysis independent of deployment platform:
 
 ```python
-# src/hello-world-pca/shared/pca_core.py (core logic)
+# src/sensorscope/shared/pca_core.py (core logic)
 def process_pca_request(data, n_components=2, scale_features=True):
     """
     Perform PCA analysis on sensor data for redundancy analysis.
@@ -270,12 +204,12 @@ def process_pca_request(data, n_components=2, scale_features=True):
 The Flask application in `local/app.py` provides immediate feedback during development. After following the setup instructions in README.md, start the development server:
 
 ```bash
-cd src/hello-world-pca/local
+cd src/sensorscope/local
 python app.py
 ```
 
 ```
-🚀 Hello World PCA - Local Development Server
+🚀 SensorScope - Local Development Server
 ============================================================
 
 Maya's Coffee Shop Sensor Analysis Service
@@ -346,7 +280,7 @@ Maya's local SensorScope prototype perfectly demonstrated PCA concepts, but corp
 
 We'll demonstrate production deployment using Google Cloud Functions Gen 2, showcasing the serverless patterns that work across all major cloud providers. The same SensorScope implementation can be deployed to AWS Lambda using SAM templates or Azure Functions using ARM templates, with identical mathematical results and similar operational characteristics.
 
-**Complete setup instructions are in `src/hello-world-pca/gcp/README.md`**.
+**Complete setup instructions are in `src/sensorscope/gcp/README.md`**.
 
 Once the environment is setup, you will have a "Function Endpoint" (the YOUR_FUNCTION_URL variable) against which the PCA requsts an be submitted.  It will be of the form:
 
@@ -367,7 +301,7 @@ us-central1-sensorscope-demo.cloudfunctions.net/sensorscope-pca
 ```bash
 # Clone the SensorScope repository
 git clone https://github.com/panyam/sensorscope
-cd sensorscope/src/hello-world-pca/gcp
+cd sensorscope/src/sensorscope/gcp
 
 # Deploy to Google Cloud (handles everything automatically)
 ./deploy.sh
@@ -500,28 +434,7 @@ Maya's operational challenge: *"Our 47 coffee shops generate 20-sensor readings 
 
 The production SensorScope system implements a file-based processing architecture that aligns with typical enterprise data workflows:
 
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Coffee Shop   │    │  Cloud Storage   │    │ Cloud Function  │
-│   POS Systems   ├───▶│     (GCS)       ├───▶│  SensorScope    │
-│                 │    │                  │    │     PCA         │
-│ • 20 sensors    │    │ • CSV uploads    │    │                 │
-│ • 15min cycles  │    │ • Metadata files │    │ • Batch process │
-│ • Daily batches │    │ • Organized by   │    │ • Business      │
-│                 │    │   date/location  │    │   insights      │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-                                 │                        │
-                                 ▼                        ▼
-                       ┌──────────────────┐    ┌─────────────────┐
-                       │   Maya's         │    │   Executive     │
-                       │  Operations      │    │   Dashboard     │
-                       │   Dashboard      │    │                 │
-                       │                  │    │ • Cost savings  │
-                       │ • Upload files   │    │ • Optimization  │
-                       │ • Monitor jobs   │    │   opportunities │
-                       │ • Review results │    │ • Monthly ROI   │
-                       └──────────────────┘    └─────────────────┘
-```
+![File Processing Pipeline](images/file-processing-pipeline.svg)
 
 ### File Processing Workflow
 
@@ -642,17 +555,7 @@ The coffee chain's sensor data contained surprisingly sensitive operational inte
 
 **Authentication and Authorization Patterns**
 
-```
-┌──────────────────┐    ┌─────────────────┐    ┌──────────────────┐
-│   Data Sources   │    │  Authentication │    │ Cloud Functions  │
-│                  │    │     Layer       │    │                  │
-│ • Coffee Shop    ├───▶│                 ├───▶│ • SensorScope    │
-│   POS Systems    │    │ • API Keys      │    │   Analysis       │
-│ • Sensor Arrays  │    │ • JWT Tokens    │    │ • Data Validation│
-│ • Upload Scripts │    │ • RBAC          │    │ • PCA Processing │
-│                  │    │ • Network ACLs  │    │                  │
-└──────────────────┘    └─────────────────┘    └──────────────────┘
-```
+![Authentication Architecture](images/authentication-architecture.svg)
 
 Maya implemented layered security following the principle of defense in depth:
 
@@ -694,33 +597,7 @@ Production serverless PCA requires comprehensive monitoring to detect performanc
 
 **Three-Tier Monitoring Strategy**
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    Maya's Monitoring Dashboard                  │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│ Tier 1: Business Metrics (Executive View)                      │
-│ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐   │
-│ │ Cost Savings    │ │ Analysis        │ │ Data Quality    │   │
-│ │ $12.3K MTD      │ │ Coverage: 94%   │ │ Score: 98.2%    │   │
-│ │ Target: $14K    │ │ 44/47 locations │ │ 2 failed jobs   │   │
-│ └─────────────────┘ └─────────────────┘ └─────────────────┘   │
-│                                                                 │
-│ Tier 2: Operational Metrics (Maya's Daily View)                │
-│ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐   │
-│ │ Function Health │ │ Processing Time │ │ Error Rates     │   │
-│ │ 99.7% uptime    │ │ Avg: 1.2s       │ │ 0.3% failures   │   │
-│ │ Cold starts: 2% │ │ P95: 3.1s       │ │ Retries: 1.1%   │   │
-│ └─────────────────┘ └─────────────────┘ └─────────────────┘   │
-│                                                                 │
-│ Tier 3: Technical Metrics (Development/Debug View)             │
-│ ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐   │
-│ │ Memory Usage    │ │ CPU Utilization │ │ Data Volumes    │   │
-│ │ Peak: 387MB     │ │ Avg: 23%        │ │ 2.1GB processed │   │
-│ │ Avg: 234MB      │ │ Peak: 67%       │ │ 47 files/day    │   │
-│ └─────────────────┘ └─────────────────┘ └─────────────────┘   │
-└─────────────────────────────────────────────────────────────────┘
-```
+![Maya's Monitoring Dashboard](images/monitoring-dashboard.svg)
 
 **Cloud Services for Monitoring Implementation:**
 
@@ -821,18 +698,7 @@ Maya established deployment practices that ensure mathematical correctness and b
 
 **Deployment Pipeline Stages**
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Development   │    │     Staging     │    │   Production    │
-│                 │    │                 │    │                 │
-│ • Unit tests    ├───▶│ • Integration   ├───▶│ • Blue/green    │
-│ • Math accuracy │    │   tests         │    │   deployment    │
-│ • Synthetic     │    │ • Real data     │    │ • Gradual       │
-│   data tests    │    │   validation    │    │   rollout       │
-│ • Performance   │    │ • Load testing  │    │ • Rollback      │
-│   benchmarks    │    │ • Security scan │    │   capability    │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![CI/CD Pipeline Stages](images/deployment-pipeline-stages.svg)
 
 **Cloud Services for CI/CD Implementation:**
 - **Google Cloud**: Cloud Build for pipelines, Cloud Source Repositories, Cloud Deploy for progressive delivery

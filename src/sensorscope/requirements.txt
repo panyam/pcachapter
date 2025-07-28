@@ -1,4 +1,4 @@
-# Core dependencies for Hello World PCA
+# Core dependencies
 # No GPU dependencies - CPU-only for maximum compatibility
 
 # Web framework for local development
