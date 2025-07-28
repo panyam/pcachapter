@@ -27,7 +27,7 @@ The mathematical foundation of PCA made it ideal for Maya's business context. Ra
 
 ### Why Serverless for PCA?
 
-Maya's infrastructure decision was driven as much by what the coffee chain couldn't justify as by what serverless offered. She named her solution **SensorScope** - a sensor redundancy analysis system designed to scope which of the coffee chain's sensors provided unique value versus expensive redundancy. Traditional approaches would have required convincing corporate to purchase dedicated hardware or cloud instances for SensorScope analysis that might run weekly or monthly at most. Given that the entire initiative aimed to reduce the substantial annual sensor budget, proposing additional infrastructure spending for the analysis itself would have been politically untenable. The coffee chain's IT department was already stretched thin managing POS systems, inventory software, and basic networking across 47 locations - they had no capacity to provision, maintain, and secure additional analytics infrastructure. Maya needed a solution that would appear on corporate expense reports only when generating value, not as ongoing operational overhead that needed explaining to executives who questioned why optimization analysis required its own infrastructure budget.
+Maya's infrastructure decision was driven as much by what the coffee chain couldn't justify as by what serverless offered. She named her solution **SensorScope** - a sensor redundancy analysis system designed to scope which of the coffee chain's sensors provided unique value versus expensive redundancy. The serverless approach would work identically across Google Cloud Functions, AWS Lambda, or Azure Functions, giving corporate flexibility in cloud provider selection. Traditional approaches would have required convincing corporate to purchase dedicated hardware or cloud instances for SensorScope analysis that might run weekly or monthly at most. Given that the entire initiative aimed to reduce the substantial annual sensor budget, proposing additional infrastructure spending for the analysis itself would have been politically untenable. The coffee chain's IT department was already stretched thin managing POS systems, inventory software, and basic networking across 47 locations - they had no capacity to provision, maintain, and secure additional analytics infrastructure. Maya needed a solution that would appear on corporate expense reports only when generating value, not as ongoing operational overhead that needed explaining to executives who questioned why optimization analysis required its own infrastructure budget.
 
 The contrast between traditional and serverless approaches for SensorScope became stark when Maya mapped out the options:
 
@@ -344,7 +344,7 @@ Maya's local SensorScope prototype perfectly demonstrated PCA concepts, but corp
 
 ### Production Deployment with Google Cloud Functions
 
-We'll demonstrate production deployment using Google Cloud Functions Gen 2, showcasing the serverless patterns that work across all major cloud providers.
+We'll demonstrate production deployment using Google Cloud Functions Gen 2, showcasing the serverless patterns that work across all major cloud providers. The same SensorScope implementation can be deployed to AWS Lambda using SAM templates or Azure Functions using ARM templates, with identical mathematical results and similar operational characteristics.
 
 **Complete setup instructions are in `src/hello-world-pca/gcp/README.md`**.
 
@@ -488,7 +488,7 @@ This demonstrates how serverless PCA analysis becomes a **decision support tool*
 
 ## Test 3: Production File Processing Architecture
 
-Maya's analysis workflow matures significantly when transitioning from API-based testing to production file processing. In the real world, coffee shop sensor data accumulates continuously, requiring systematic batch processing rather than individual API calls.
+Maya's analysis workflow matures significantly when transitioning from API-based testing to production file processing. In the real world, coffee shop sensor data accumulates continuously, requiring systematic batch processing rather than individual API calls. This file-based architecture pattern works consistently across Google Cloud Storage + Cloud Functions, AWS S3 + Lambda, or Azure Blob Storage + Functions.
 
 ### Business Context: From Monthly Analysis to Automated Insights
 
@@ -634,7 +634,7 @@ Maya's reflection: *"The transition from API testing to file processing was the 
 
 ## Production Considerations
 
-As Maya's SensorScope system evolved from prototype to production across 47 coffee shop locations, she encountered the typical challenges of running serverless analytics at enterprise scale. The mathematical correctness of PCA implementation became just one concern among many operational requirements that determined system reliability and business acceptance.
+As Maya's SensorScope system evolved from prototype to production across 47 coffee shop locations, she encountered the typical challenges of running serverless analytics at enterprise scale. The mathematical correctness of PCA implementation became just one concern among many operational requirements that determined system reliability and business acceptance. These production patterns apply universally across cloud providers, though we'll demonstrate with GCP services alongside AWS and Azure equivalents.
 
 ### Security Architecture: Protecting Sensor Data
 
@@ -848,7 +848,7 @@ Maya's production insight: *"The most important lesson was that serverless doesn
 
 ## Serverless Architecture Patterns for PCA
 
-As Maya's SensorScope system evolved beyond single-function deployments, she discovered that PCA workloads have unique architectural requirements that differ significantly from typical web applications or simple data processing tasks. The mathematical nature of Principal Component Analysis, combined with the unpredictable data volumes and processing times, demanded specialized patterns for state management, data flow, and error recovery.
+As Maya's SensorScope system evolved beyond single-function deployments, she discovered that PCA workloads have unique architectural requirements that differ significantly from typical web applications or simple data processing tasks. The mathematical nature of Principal Component Analysis, combined with the unpredictable data volumes and processing times, demanded specialized patterns for state management, data flow, and error recovery. These patterns translate consistently across all major serverless platforms - we'll show GCP implementations with equivalent AWS and Azure services.
 
 ### Event-Driven PCA Processing
 
@@ -1084,7 +1084,7 @@ Maya's architectural insight: *"The biggest mistake I made early on was treating
 
 ## Advanced Patterns & Future Directions
 
-Eighteen months after launching SensorScope, Maya found herself fielding requests from other divisions within Bean There, Done That, and eventually from partner organizations seeking similar optimization insights. What started as coffee shop sensor analysis had evolved into a platform for various dimensionality reduction challenges. This section explores advanced serverless PCA patterns that emerged from real-world scaling requirements and points toward future developments in cloud-native analytics.
+Eighteen months after launching SensorScope, Maya found herself fielding requests from other divisions within Bean There, Done That, and eventually from partner organizations seeking similar optimization insights. What started as coffee shop sensor analysis had evolved into a platform for various dimensionality reduction challenges. This section explores advanced serverless PCA patterns that emerged from real-world scaling requirements and points toward future developments in cloud-native analytics. These advanced patterns demonstrate the maturity of serverless platforms across Google Cloud, AWS, and Azure for sophisticated mathematical workloads.
 
 ### Streaming PCA for Real-Time Insights
 
@@ -1245,7 +1245,38 @@ Industry standards for serverless analytics functions will enable true multi-clo
 **5. AI-Driven Optimization**
 Machine learning models will optimize serverless function configuration automatically, predicting optimal memory allocation, timeout settings, and concurrency limits based on historical workload patterns.
 
-Maya's reflection on the future: *"When I started SensorScope, I thought I was solving a simple cost optimization problem for coffee shop sensors. What I learned is that serverless analytics represents a fundamental shift in how organizations approach data science. We're moving from infrastructure-heavy, specialized analytics teams to democratized, business-embedded analysis capabilities. The next generation of SensorScope won't just reduce sensor costs - it will enable every operations manager to ask sophisticated questions about their data and get immediate, actionable answers."*
+Maya's reflection on the future: *"When I started SensorScope, I thought I was solving a simple cost optimization problem for coffee shop sensors. What I learned is that serverless analytics represents a fundamental shift in how organizations approach data science. We're moving from infrastructure-heavy, specialized analytics teams to democratized, business-embedded analysis capabilities. The next generation of SensorScope won't just reduce sensor costs - it will enable every operations manager to ask mathematical questions about their data and get immediate, actionable answers."*
+
+### Multi-Cloud Serverless PCA: Platform Equivalents
+
+Throughout this chapter, we've demonstrated SensorScope using Google Cloud services, but Maya's architecture translates directly to AWS and Azure with equivalent functionality:
+
+**Core Function Runtime:**
+- **Google Cloud**: Cloud Functions Gen 2 (Python 3.11)
+- **AWS**: Lambda (Python 3.11 runtime)
+- **Azure**: Azure Functions (Python 3.11 on Linux)
+
+**File Storage & Event Triggers:**
+- **Google Cloud**: Cloud Storage + Pub/Sub triggers
+- **AWS**: S3 + Event Notifications or EventBridge
+- **Azure**: Blob Storage + Event Grid
+
+**Monitoring & Observability:**
+- **Google Cloud**: Cloud Monitoring + Cloud Logging
+- **AWS**: CloudWatch + X-Ray
+- **Azure**: Azure Monitor + Application Insights
+
+**Orchestration & Workflows:**
+- **Google Cloud**: Cloud Workflows + Cloud Scheduler
+- **AWS**: Step Functions + EventBridge Scheduler
+- **Azure**: Logic Apps + Azure Scheduler
+
+**State Management:**
+- **Google Cloud**: Cloud Firestore + Cloud Storage
+- **AWS**: DynamoDB + S3
+- **Azure**: Cosmos DB + Blob Storage
+
+Maya's architectural insight on multi-cloud: *"The beauty of our serverless PCA approach is that the mathematical logic remains identical across platforms. Only the plumbing changes - the science stays the same. This gives organizations flexibility to choose cloud providers based on cost, compliance, or existing relationships rather than being locked into a specific platform for analytics capabilities."*
 
 ## Conclusion
 
