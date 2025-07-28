@@ -30,7 +30,7 @@ Create a comprehensive technical chapter demonstrating serverless Principal Comp
 - Identical PCA results across all 4 environments
 - <30 second deployment to any cloud
 - Complete local development workflow with test client
-- Business insights for Maya's sensor cost optimization (targeting 70-75% reduction)
+- Business insights for Sita's sensor cost optimization (targeting 70-75% reduction)
 
 ### Milestone 2: Three Progressive Examples 📋
 **Goal**: Build upon Hello World foundation with realistic use cases

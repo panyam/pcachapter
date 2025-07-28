@@ -2,7 +2,7 @@
 Data validation and sample data generation for PCA analysis.
 Handles input validation and creates realistic synthetic sensor data.
 
-Maya's Note: This module ensures data quality before PCA analysis
+Sita's Note: This module ensures data quality before PCA analysis
 and generates coffee shop sensor simulations for testing.
 """
 
@@ -24,7 +24,7 @@ def generate_sample_data(n_samples: int = 100,
     Generate synthetic sensor data resembling coffee shop measurements.
     
     Creates realistic sensor data with known redundancy patterns,
-    perfect for testing Maya's sensor optimization algorithms.
+    perfect for testing Sita's sensor optimization algorithms.
     
     Args:
         n_samples: Number of sensor readings (like hourly measurements)
@@ -217,7 +217,7 @@ def get_data_summary(data: np.ndarray) -> Dict[str, Any]:
     """
     Generate descriptive statistics and data quality summary.
     
-    Provides Maya with insights about the data before PCA analysis,
+    Provides Sita with insights about the data before PCA analysis,
     helping identify potential issues or interesting patterns.
     
     Args:
@@ -339,7 +339,7 @@ def create_coffee_shop_sample(location: str = "downtown",
         dict: Complete dataset with metadata and sensor data
     """
     if sensor_types is None:
-        # Default to Maya's full 20-sensor coffee shop scenario
+        # Default to Sita's full 20-sensor coffee shop scenario
         sensor_types = [
             "temperature", "humidity", "pressure", "vibration", "flow_rate",
             "sound_level", "light_level", "co2_level", "door_sensor", "wifi_connections",
@@ -404,7 +404,7 @@ def save_sample_dataset_to_file(file_path: str, dataset_type: str = "coffee_shop
     """
     Generate and save a sample dataset to file for upload testing.
     
-    Creates realistic sensor data files that Maya could use to test
+    Creates realistic sensor data files that Sita could use to test
     file-based data processing workflows.
     
     Args:
@@ -510,7 +510,7 @@ def load_dataset_from_file(file_path: str, timestamp_column: str = "timestamp") 
     """
     Load sensor dataset from CSV file for PCA analysis.
     
-    Handles Maya's uploaded sensor data files and prepares them
+    Handles Sita's uploaded sensor data files and prepares them
     for PCA processing with proper validation and formatting.
     
     Args:
@@ -574,7 +574,7 @@ def create_sample_datasets_directory(base_path: str = "./datasets") -> Dict[str,
     """
     Create sample dataset files for testing file upload workflows.
     
-    Generates the datasets Maya would use to test SensorScope's
+    Generates the datasets Sita would use to test SensorScope's
     file processing capabilities.
     
     Args:
@@ -626,7 +626,7 @@ def load_dataset_from_gcs(bucket_name: str, file_path: str, timestamp_column: st
     """
     Load sensor dataset from Google Cloud Storage for PCA analysis.
     
-    Handles Maya's uploaded sensor data files from GCS bucket and prepares them
+    Handles Sita's uploaded sensor data files from GCS bucket and prepares them
     for PCA processing with proper validation and formatting.
     
     Args:

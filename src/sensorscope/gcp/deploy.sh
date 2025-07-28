@@ -3,14 +3,14 @@ set -e
 
 # SensorScope PCA Analysis - Google Cloud Functions Deployment Script
 # 
-# This script deploys Maya's sensor redundancy analysis system to Google Cloud
+# This script deploys Sita's sensor redundancy analysis system to Google Cloud
 # Functions Gen 2 with one command. It handles all prerequisites validation,
 # function packaging, and deployment automation.
 
 echo "🚀 SensorScope PCA Analysis - Google Cloud Deployment"
 echo "======================================================"
 echo
-echo "Deploying Maya's sensor redundancy analysis to Google Cloud Functions..."
+echo "Deploying Sita's sensor redundancy analysis to Google Cloud Functions..."
 echo
 
 # Configuration

@@ -2,7 +2,7 @@
 """
 Generate sample datasets for SensorScope file upload testing.
 
-This script creates realistic sensor data files that Maya would upload to
+This script creates realistic sensor data files that Sita would upload to
 Google Cloud Storage for analysis. Run locally to generate CSV files,
 then upload to GCS bucket for cloud function processing.
 
@@ -27,7 +27,7 @@ def main():
     print("SensorScope Dataset Generator")
     print("=" * 40)
     print()
-    print("Generating sample sensor datasets for Maya's analysis...")
+    print("Generating sample sensor datasets for Sita's analysis...")
     print()
     
     # Create datasets in current directory

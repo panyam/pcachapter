@@ -1,6 +1,6 @@
 # SensorScope PCA Analysis - Google Cloud Functions Deployment
 
-Deploy Maya's sensor redundancy analysis system to Google Cloud Functions Gen 2 with one command. This implementation demonstrates serverless PCA processing for coffee shop sensor optimization in a production cloud environment.
+Deploy Sita's sensor redundancy analysis system to Google Cloud Functions Gen 2 with one command. This implementation demonstrates serverless PCA processing for coffee shop sensor optimization in a production cloud environment.
 
 ## Prerequisites
 
@@ -144,11 +144,11 @@ curl -X POST https://$YOUR_FUNCTION_URL \
   }'
 ```
 
-This simulates Maya's exact use case: analyzing a downtown coffee shop's sensors to identify the 3 most critical measurements.
+This simulates Sita's exact use case: analyzing a downtown coffee shop's sensors to identify the 3 most critical measurements.
 
 ### File-Based Sensor Data (Test 3: Production Workflow)
 
-This test demonstrates Maya's production workflow where sensor data is uploaded to Google Cloud Storage and processed by the Cloud Function.
+This test demonstrates Sita's production workflow where sensor data is uploaded to Google Cloud Storage and processed by the Cloud Function.
 
 #### Step 1: Generate Sample Datasets
 
@@ -365,4 +365,4 @@ gcloud services disable cloudfunctions.googleapis.com --force
 
 ---
 
-This deployment demonstrates how Maya's sensor redundancy analysis scales from local development to production cloud deployment in under 5 minutes, providing the foundation for real-world serverless PCA implementations.
+This deployment demonstrates how Sita's sensor redundancy analysis scales from local development to production cloud deployment in under 5 minutes, providing the foundation for real-world serverless PCA implementations.

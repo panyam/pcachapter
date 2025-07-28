@@ -3,7 +3,7 @@
 Local Flask application for development and testing.
 
 This serves as the reference implementation and development environment
-for Maya's sensor redundancy analysis before cloud deployment.
+for Sita's sensor redundancy analysis before cloud deployment.
 
 Usage:
     python app.py
@@ -222,7 +222,7 @@ def root():
         },
         "business_context": {
             "purpose": "Sensor redundancy analysis for cost optimization",
-            "scenario": "Maya's coffee shop chain sensor reduction project",
+            "scenario": "Sita's coffee shop chain sensor reduction project",
             "goal": "Identify which sensors provide unique vs redundant information"
         },
         "documentation": "See README.md for complete setup and usage instructions"
@@ -253,7 +253,7 @@ if __name__ == '__main__':
     print("🚀 SensorScope - Local Development Server")
     print("=" * 60)
     print()
-    print("Maya's Coffee Shop Sensor Analysis Service")
+    print("Sita's Coffee Shop Sensor Analysis Service")
     print("Serverless PCA for sensor redundancy optimization")
     print()
     print("📡 Service URLs:")

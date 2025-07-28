@@ -96,11 +96,11 @@
     <path d="M 460 215 L 580 210" marker-end="url(#arrowhead)"/>
   </g>
   
-  <!-- Maya's Implementation Example -->
+  <!-- Sita's Implementation Example -->
   <g>
     <rect x="50" y="390" width="800" height="45" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="8"/>
     <text x="450" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
-      Maya's Corporate Real Estate Portfolio Analysis
+      Sita's Corporate Real Estate Portfolio Analysis
     </text>
     <g font-family="Arial, sans-serif" font-size="11" fill="#555">
       <text x="60" y="425">Challenge: 847 buildings, 50,000+ sensors → timeout in single-function processing</text>

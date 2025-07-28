@@ -71,10 +71,10 @@
     <path d="M 450 130 L 540 130" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
   </g>
   
-  <!-- Maya's Operations Dashboard -->
+  <!-- Sita's Operations Dashboard -->
   <g>
     <rect x="300" y="250" width="180" height="100" fill="url(#dashGrad)" stroke="#FFA500" stroke-width="2" rx="10"/>
-    <text x="390" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Maya's Operations</text>
+    <text x="390" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Sita's Operations</text>
     <text x="390" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Dashboard</text>
     
     <g font-family="Arial, sans-serif" font-size="11" fill="#555">

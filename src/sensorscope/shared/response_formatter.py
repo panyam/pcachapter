@@ -2,7 +2,7 @@
 Response formatting utilities for consistent API responses across platforms.
 Standardizes output format whether running locally or in any cloud provider.
 
-Maya's Note: Ensures business stakeholders get the same information format
+Sita's Note: Ensures business stakeholders get the same information format
 regardless of which cloud platform is processing their sensor data.
 """
 
@@ -135,7 +135,7 @@ def _generate_business_insights(pca_results: Dict[str, Any],
     Generate business-friendly insights from PCA results.
     
     Translates technical PCA output into actionable business intelligence
-    that Maya can present to coffee shop management.
+    that Sita can present to coffee shop management.
     """
     variance_ratios = pca_results["explained_variance_ratio"]
     total_variance = pca_results["total_variance_explained"]

@@ -103,11 +103,11 @@
     <text x="720" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">Dashboard: Optimization</text>
   </g>
   
-  <!-- Maya's Implementation Example -->
+  <!-- Sita's Implementation Example -->
   <g>
     <rect x="50" y="330" width="800" height="35" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="8"/>
     <text x="450" y="348" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">
-      Maya's Edge Computing Pilot Results
+      Sita's Edge Computing Pilot Results
     </text>
     <text x="450" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
       "3 high-traffic locations: 80% reduction in cloud costs, 95% faster critical alerts, maintained analysis quality"

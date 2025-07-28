@@ -2,7 +2,7 @@
 Core PCA processing logic for serverless implementations.
 Universal module that works identically across all deployment platforms.
 
-Maya's Note: This is the heart of the sensor redundancy analysis - 
+Sita's Note: This is the heart of the sensor redundancy analysis - 
 pure mathematical logic that doesn't care about clouds or coffee shops.
 """
 
@@ -21,7 +21,7 @@ def process_pca_request(data: Union[List[List[float]], np.ndarray],
     """
     Perform PCA analysis on input data with comprehensive error handling.
     
-    This function handles the core PCA computation that Maya uses to identify
+    This function handles the core PCA computation that Sita uses to identify
     redundant sensors in coffee shop operations. It works the same whether
     running on a laptop or in the cloud.
     
@@ -157,7 +157,7 @@ def validate_pca_results(results: Dict[str, Any]) -> bool:
     """
     Validate PCA results for consistency and correctness.
     
-    Maya's validation checklist - ensures results make mathematical sense
+    Sita's validation checklist - ensures results make mathematical sense
     before making business decisions about sensor optimization.
     
     Args:
@@ -216,7 +216,7 @@ def get_pca_insights(results: Dict[str, Any]) -> Dict[str, Any]:
     """
     Generate business-friendly insights from PCA results.
     
-    Translates Maya's mathematical results into actionable business intelligence
+    Translates Sita's mathematical results into actionable business intelligence
     about sensor redundancy and cost optimization opportunities.
     
     Args:

@@ -150,7 +150,7 @@
   <g>
     <rect x="50" y="360" width="700" height="200" fill="#f9f9f9" stroke="#ddd" stroke-width="1" rx="10"/>
     <text x="400" y="385" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">
-      Key Differences: Why Maya Chose Serverless
+      Key Differences: Why Sita Chose Serverless
     </text>
     
     <g font-family="Arial, sans-serif" font-size="12" fill="#333">

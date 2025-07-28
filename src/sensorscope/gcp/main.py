@@ -2,7 +2,7 @@
 """
 Google Cloud Functions handler for SensorScope PCA analysis.
 
-This module provides the Cloud Functions entry point for Maya's sensor
+This module provides the Cloud Functions entry point for Sita's sensor
 redundancy analysis system, handling HTTP requests and returning PCA results.
 
 Usage:

@@ -4,7 +4,7 @@ This example demonstrates the core serverless PCA pattern across multiple deploy
 
 ## Overview
 
-**Business Context**: Maya's coffee shop sensor redundancy analysis - identifying which of 5 sensor types provide unique vs redundant information for cost optimization.
+**Business Context**: Sita's coffee shop sensor redundancy analysis - identifying which of 5 sensor types provide unique vs redundant information for cost optimization.
 
 **Technical Goal**: Implement identical PCA functionality that works locally and deploys to any major cloud provider.
 
@@ -89,7 +89,7 @@ curl -X POST http://localhost:8000/pca \
 }
 ```
 
-This means: **75% of sensor information is captured in just 2 dimensions**, suggesting Maya could reduce sensor complexity significantly.
+This means: **75% of sensor information is captured in just 2 dimensions**, suggesting Sita could reduce sensor complexity significantly.
 
 ## Project Structure
 
@@ -331,10 +331,10 @@ curl -H "Content-Type: application/json" ...
 
 ## Business Context
 
-This example simulates Maya's sensor redundancy analysis:
+This example simulates Sita's sensor redundancy analysis:
 - **5 sensor types** representing temperature, humidity, pressure, vibration, flow
 - **2 principal components** capture 75% of variation
 - **Result**: Potential to reduce 5 sensors to 2-3 key measurements
 - **Cost savings**: 40-60% reduction in sensor infrastructure
 
-The same pattern scales to Maya's full challenge: 20 sensor types across 47 locations, enabling data-driven decisions about sensor optimization.
+The same pattern scales to Sita's full challenge: 20 sensor types across 47 locations, enabling data-driven decisions about sensor optimization.

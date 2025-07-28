@@ -110,11 +110,11 @@
     <text x="730" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Monitoring</text>
   </g>
   
-  <!-- Maya's Implementation Example -->
+  <!-- Sita's Implementation Example -->
   <g>
     <rect x="50" y="350" width="800" height="35" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="8"/>
     <text x="450" y="368" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">
-      Maya's Predictive Maintenance Success Story
+      Sita's Predictive Maintenance Success Story
     </text>
     <text x="450" y="382" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
       "Reduced training time by 60% and improved model accuracy by 23% using PCA-preprocessed features for equipment failure prediction"

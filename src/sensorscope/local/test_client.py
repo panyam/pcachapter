@@ -3,7 +3,7 @@
 Test client for local development server.
 
 This script provides comprehensive testing of the PCA service,
-demonstrating various usage patterns for Maya's sensor analysis.
+demonstrating various usage patterns for Sita's sensor analysis.
 
 Usage:
     # Start the server first: python app.py
@@ -21,7 +21,7 @@ class PCATestClient:
     Test client for comprehensive PCA service validation.
     
     Provides methods to test different scenarios and validate
-    the service behavior for Maya's sensor redundancy analysis.
+    the service behavior for Sita's sensor redundancy analysis.
     """
     
     def __init__(self, base_url: str = "http://localhost:8000"):
@@ -211,7 +211,7 @@ class PCATestClient:
         """Run all tests and provide summary."""
         print("🧪 SensorScope - Comprehensive Test Suite")
         print("=" * 55)
-        print("Testing Maya's sensor redundancy analysis service")
+        print("Testing Sita's sensor redundancy analysis service")
         print()
         
         # Check if server is running

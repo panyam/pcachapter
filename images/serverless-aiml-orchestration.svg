@@ -118,11 +118,11 @@
     </g>
   </g>
   
-  <!-- Maya's Vision Example -->
+  <!-- Sita's Vision Example -->
   <g>
     <rect x="50" y="390" width="800" height="45" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="8"/>
     <text x="450" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">
-      Maya's Vision: Democratizing Advanced Analytics
+      Sita's Vision: Democratizing Advanced Analytics
     </text>
     <g font-family="Arial, sans-serif" font-size="10" fill="#666">
       <text x="60" y="425">Vision: "Coffee shop managers select 'optimize sensors' → system automatically chooses algorithms → delivers actionable insights"</text>

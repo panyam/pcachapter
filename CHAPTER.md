@@ -2,25 +2,25 @@
 
 ## Introduction
 
-Dr. Maya Chen, Lead Data Scientist at Bean There, Done That coffee chain, thought her biggest challenge would be building customer recommendation algorithms. Three months into the job, corporate presented her with a deceptively simple cost-optimization request that revealed the hidden complexity of their existing infrastructure. Like most established coffee chains, Bean There, Done That had accumulated sensors organically over years - HVAC systems monitoring temperature and humidity, equipment maintenance sensors tracking vibration and pressure, customer flow counters at entrances, and various other monitoring devices installed by different vendors for different purposes. Their POS systems dutifully recorded transactions, corporate dashboards displayed daily sales summaries, and equipment alerts fired whenever machines malfunctioned. However, their substantial annual sensor investment was generating data in silos, with each system operating independently and no one analyzing the relationships between measurements.
+Dr. Sita Zhou, Lead Data Scientist at Bean There, Done That coffee chain, thought her biggest challenge would be building customer recommendation algorithms. Three months into the job, corporate presented her with a deceptively simple cost-optimization request that revealed the hidden complexity of their existing infrastructure. Like most established coffee chains, Bean There, Done That had accumulated sensors organically over years - HVAC systems monitoring temperature and humidity, equipment maintenance sensors tracking vibration and pressure, customer flow counters at entrances, and various other monitoring devices installed by different vendors for different purposes. Their POS systems dutifully recorded transactions, corporate dashboards displayed daily sales summaries, and equipment alerts fired whenever machines malfunctioned. However, their substantial annual sensor investment was generating data in silos, with each system operating independently and no one analyzing the relationships between measurements.
 
-Maya's task wasn't to figure out what sensors to install, but rather to determine which of their existing 20 sensor types per location actually provided unique operational insights versus expensive redundancy. The coffee shops were drowning in data but starving for actionable intelligence. Each location generated 20 different sensor readings every 30 seconds, creating 20 million monthly data points that fed various monitoring systems but were never analyzed collectively for patterns or optimization opportunities. Corporate had grown suspicious that they were paying for numerous sensors that essentially measured the same underlying operational factors, just from different angles. When Principal Component Analysis seemed like the perfect solution to identify these redundant measurements mathematically [1,4], Maya faced a choice: convince corporate to buy expensive hardware for comprehensive data analysis or find a fundamentally different approach to large-scale dimensionality reduction. She did not expect to become an expert in serverless computing. But life has a funny way of brewing up surprises.
+Sita's task wasn't to figure out what sensors to install, but rather to determine which of their existing 20 sensor types per location actually provided unique operational insights versus expensive redundancy. The coffee shops were drowning in data but starving for actionable intelligence. Each location generated 20 different sensor readings every 30 seconds, creating 20 million monthly data points that fed various monitoring systems but were never analyzed collectively for patterns or optimization opportunities. Corporate had grown suspicious that they were paying for numerous sensors that essentially measured the same underlying operational factors, just from different angles. When Principal Component Analysis seemed like the perfect solution to identify these redundant measurements mathematically [1,4], Sita faced a choice: convince corporate to buy expensive hardware for comprehensive data analysis or find a fundamentally different approach to large-scale dimensionality reduction. She did not expect to become an expert in serverless computing. But life has a funny way of brewing up surprises.
 
-Maya's challenge represented a perfect storm of modern data analytics problems. The scale was substantial but not overwhelming - 47 locations generating 2.7 million data points daily, requiring approximately 1.6GB of memory for comprehensive monthly analysis. The dimensionality was high enough to warrant sophisticated analysis but manageable enough for standard algorithms. Most importantly, the business objective aligned precisely with Principal Component Analysis strengths: identifying which of many correlated measurements provided unique information versus redundant observations. Corporate needed mathematical proof of which sensors were essential and which were expensive noise, with quantifiable confidence levels that could justify infrastructure changes.
+Sita's challenge represented a perfect storm of modern data analytics problems. The scale was substantial but not overwhelming - 47 locations generating 2.7 million data points daily, requiring approximately 1.6GB of memory for comprehensive monthly analysis. The dimensionality was high enough to warrant sophisticated analysis but manageable enough for standard algorithms. Most importantly, the business objective aligned precisely with Principal Component Analysis strengths: identifying which of many correlated measurements provided unique information versus redundant observations. Corporate needed mathematical proof of which sensors were essential and which were expensive noise, with quantifiable confidence levels that could justify infrastructure changes.
 
-The coffee chain's sensor ecosystem had evolved organically, creating natural candidates for redundancy analysis. Temperature sensors installed for HVAC optimization likely correlated with equipment vibration sensors used for predictive maintenance. Customer flow counters probably tracked patterns similar to transaction volume data already captured by POS systems. Humidity sensors for coffee bean storage might mirror broader environmental patterns detected by building management systems. Principal Component Analysis excels at uncovering these hidden relationships, transforming 20 correlated sensor readings into a smaller set of uncorrelated components that capture the essential operational information. For Maya's optimization challenge, PCA could reveal whether three principal components explaining most sensor variance meant the coffee chain could confidently reduce from 20 sensors to 4-5 critical measurements, achieving significant cost savings while preserving operational visibility.
+The coffee chain's sensor ecosystem had evolved organically, creating natural candidates for redundancy analysis. Temperature sensors installed for HVAC optimization likely correlated with equipment vibration sensors used for predictive maintenance. Customer flow counters probably tracked patterns similar to transaction volume data already captured by POS systems. Humidity sensors for coffee bean storage might mirror broader environmental patterns detected by building management systems. Principal Component Analysis excels at uncovering these hidden relationships, transforming 20 correlated sensor readings into a smaller set of uncorrelated components that capture the essential operational information. For Sita's optimization challenge, PCA could reveal whether three principal components explaining most sensor variance meant the coffee chain could confidently reduce from 20 sensors to 4-5 critical measurements, achieving significant cost savings while preserving operational visibility.
 
-The mathematical foundation of PCA made it ideal for Maya's business context. Rather than subjective decisions about sensor importance, PCA provides objective variance rankings that translate directly to cost-benefit analysis. If the first principal component explained a large portion of sensor variation, Maya could present corporate with concrete evidence about the most important operational factor their sensors detected. If the first three components captured most total variance, she could quantify how much operational insight would be preserved by significant sensor reduction. This mathematical rigor transformed a potentially contentious cost-cutting exercise into a data-driven optimization opportunity with measurable confidence intervals.
+The mathematical foundation of PCA made it ideal for Sita's business context. Rather than subjective decisions about sensor importance, PCA provides objective variance rankings that translate directly to cost-benefit analysis. If the first principal component explained a large portion of sensor variation, Sita could present corporate with concrete evidence about the most important operational factor their sensors detected. If the first three components captured most total variance, she could quantify how much operational insight would be preserved by significant sensor reduction. This mathematical rigor transformed a potentially contentious cost-cutting exercise into a data-driven optimization opportunity with measurable confidence intervals.
 
 ### Why Serverless for PCA?
 
-Maya's infrastructure decision was driven as much by what the coffee chain couldn't justify as by what serverless offered. She named her solution **SensorScope** - a sensor redundancy analysis system designed to scope which of the coffee chain's sensors provided unique value versus expensive redundancy. The serverless approach would work identically across Google Cloud Functions, AWS Lambda, or Azure Functions, giving corporate flexibility in cloud provider selection. Traditional approaches would have required convincing corporate to purchase dedicated hardware or cloud instances for SensorScope analysis that might run weekly or monthly at most. Given that the entire initiative aimed to reduce the substantial annual sensor budget, proposing additional infrastructure spending for the analysis itself would have been politically untenable. The coffee chain's IT department was already stretched thin managing POS systems, inventory software, and basic networking across 47 locations - they had no capacity to provision, maintain, and secure additional analytics infrastructure. Maya needed a solution that would appear on corporate expense reports only when generating value, not as ongoing operational overhead that needed explaining to executives who questioned why optimization analysis required its own infrastructure budget.
+Sita's infrastructure decision was driven as much by what the coffee chain couldn't justify as by what serverless offered. She named her solution **SensorScope** - a sensor redundancy analysis system designed to scope which of the coffee chain's sensors provided unique value versus expensive redundancy. The serverless approach would work identically across Google Cloud Functions, AWS Lambda, or Azure Functions, giving corporate flexibility in cloud provider selection. Traditional approaches would have required convincing corporate to purchase dedicated hardware or cloud instances for SensorScope analysis that might run weekly or monthly at most. Given that the entire initiative aimed to reduce the substantial annual sensor budget, proposing additional infrastructure spending for the analysis itself would have been politically untenable. The coffee chain's IT department was already stretched thin managing POS systems, inventory software, and basic networking across 47 locations - they had no capacity to provision, maintain, and secure additional analytics infrastructure. Sita needed a solution that would appear on corporate expense reports only when generating value, not as ongoing operational overhead that needed explaining to executives who questioned why optimization analysis required its own infrastructure budget.
 
-The contrast between traditional and serverless approaches for SensorScope became stark when Maya mapped out the options:
+The contrast between traditional and serverless approaches for SensorScope became stark when Sita mapped out the options:
 
 ![Traditional vs Serverless Infrastructure Comparison](images/traditional-vs-serverless-infrastructure.svg)
 
-SensorScope's computational requirements aligned perfectly with serverless execution models. The underlying Principal Component Analysis algorithm requires loading complete datasets into memory for eigenvalue decomposition, making it memory-intensive but temporally bounded - exactly the workload profile that serverless computing handles efficiently. SensorScope would process months of sensor data in minutes, then remain dormant until the next analysis cycle, making traditional always-on infrastructure economically wasteful for Maya's intermittent optimization needs.
+SensorScope's computational requirements aligned perfectly with serverless execution models. The underlying Principal Component Analysis algorithm requires loading complete datasets into memory for eigenvalue decomposition, making it memory-intensive but temporally bounded - exactly the workload profile that serverless computing handles efficiently. SensorScope would process months of sensor data in minutes, then remain dormant until the next analysis cycle, making traditional always-on infrastructure economically wasteful for Sita's intermittent optimization needs.
 
 **Cost Efficiency**: PCA processing occurs intermittently rather than continuously. Traditional infrastructure requires provisioning for peak capacity while paying for idle time. Serverless functions scale to zero, charging only for actual computation time.
 
@@ -48,13 +48,13 @@ Working memory: ~1.5× base memory for intermediate calculations
 
 ### Serverless PCA Use Cases
 
-**Batch Data Processing**: Analyze sensor data, transaction logs, or user behavior patterns triggered by data arrival events. *Maya's SensorScope processes weekly sensor dumps from all 47 locations automatically when data arrives in cloud storage.*
+**Batch Data Processing**: Analyze sensor data, transaction logs, or user behavior patterns triggered by data arrival events. *Sita's SensorScope processes weekly sensor dumps from all 47 locations automatically when data arrives in cloud storage.*
 
-**On-Demand Dimensionality Reduction**: Provide PCA-as-a-Service for machine learning pipelines requiring feature reduction. *Corporate can request SensorScope analysis for new locations or different sensor configurations without Maya manually running scripts.*
+**On-Demand Dimensionality Reduction**: Provide PCA-as-a-Service for machine learning pipelines requiring feature reduction. *Corporate can request SensorScope analysis for new locations or different sensor configurations without Sita manually running scripts.*
 
 **Cost-Effective Data Preprocessing**: Reduce dataset storage and bandwidth costs through automated dimensionality reduction before downstream processing. *SensorScope identifies redundant sensors before expensive data transmission and storage at corporate headquarters.*
 
-**Scalable Feature Engineering**: Enable parallel processing of multiple datasets with different PCA configurations without resource pre-allocation. *Maya can simultaneously analyze different time periods, seasonal patterns, and location-specific sensor configurations without requesting additional IT resources.*
+**Scalable Feature Engineering**: Enable parallel processing of multiple datasets with different PCA configurations without resource pre-allocation. *Sita can simultaneously analyze different time periods, seasonal patterns, and location-specific sensor configurations without requesting additional IT resources.*
 
 ### Chapter Scope and Learning Objectives
 
@@ -72,7 +72,7 @@ Each implementation includes working code, deployment scripts, performance bench
 
 ## SensorScope: Foundation Implementation
 
-Faced with the sensor redundancy challenge, Maya's first SensorScope implementation had a clear business objective: analyze one coffee shop's 20 sensor types to identify which measurements provided unique versus redundant information. This implementation would serve as the foundation for her complete SensorScope system, establishing the core PCA processing pipeline and multi-cloud deployment patterns before scaling to all 47 locations. The twist: she insisted on building once and deploying everywhere, refusing to lock herself into a single cloud provider. "Corporate might change their mind about cloud providers faster than they change coffee bean suppliers," Maya reasoned. "I want the flexibility to adapt without rewriting everything from scratch."
+Faced with the sensor redundancy challenge, Sita's first SensorScope implementation had a clear business objective: analyze one coffee shop's 20 sensor types to identify which measurements provided unique versus redundant information. This implementation would serve as the foundation for her complete SensorScope system, establishing the core PCA processing pipeline and multi-cloud deployment patterns before scaling to all 47 locations. The twist: she insisted on building once and deploying everywhere, refusing to lock herself into a single cloud provider. "Corporate might change their mind about cloud providers faster than they change coffee bean suppliers," Sita reasoned. "I want the flexibility to adapt without rewriting everything from scratch."
 
 ### Problem Statement and Requirements
 
@@ -107,7 +107,7 @@ The SensorScope implementation follows a stateless request-response pattern that
 
 This example uses synthetic sensor data designed to demonstrate PCA concepts and serverless deployment patterns clearly. Since our primary focus is establishing the serverless architecture and seeing PCA in action across multiple cloud platforms, synthetic data serves our educational goals perfectly. Every reader gets identical, reproducible results that make troubleshooting straightforward, while the built-in redundancy patterns make PCA outputs immediately interpretable. This approach also prevents unexpected cloud charges from large datasets during the learning phase. Real-world sensor data - with its missing values, drift patterns, and complex correlations - involves data quality challenges that belong in the broader data collection and preprocessing pipeline rather than the serverless deployment architecture we're demonstrating here.
 
-To ensure consistent validation across platforms, the synthetic dataset mimics Maya's coffee shop scenario:
+To ensure consistent validation across platforms, the synthetic dataset mimics Sita's coffee shop scenario:
 
 ```python
 from sklearn.datasets import make_classification
@@ -125,7 +125,7 @@ X, y = make_classification(
 )
 ```
 
-This synthetic data represents the actual sensor redundancy analysis Maya needs to perform across Bean There, Done That's locations, matching the real-world scenario of 20 sensor types per coffee shop.
+This synthetic data represents the actual sensor redundancy analysis Sita needs to perform across Bean There, Done That's locations, matching the real-world scenario of 20 sensor types per coffee shop.
 
 **Expected PCA Output:**
 - Input shape: (100, 20) - 100 readings from 20 sensor types
@@ -133,7 +133,7 @@ This synthetic data represents the actual sensor redundancy analysis Maya needs 
 - Explained variance ratio: approximately [0.35, 0.18, 0.12, 0.08, 0.06] - Progressive importance
 - Strong variance explained - Most sensor information preserved in 5 dimensions
 
-These results would suggest Maya could potentially reduce from 20 sensors to 5-6 key measurements while retaining most operational insights, directly addressing the cost optimization objective.
+These results would suggest Sita could potentially reduce from 20 sensors to 5-6 key measurements while retaining most operational insights, directly addressing the cost optimization objective.
 
 ### Implementation Structure
 
@@ -154,7 +154,7 @@ src/sensorscope/
 
 ### Core PCA Implementation
 
-The heart of SensorScope is the universal PCA processing logic in `pca_core.py`. This function handles Maya's sensor redundancy analysis independent of deployment platform:
+The heart of SensorScope is the universal PCA processing logic in `pca_core.py`. This function handles Sita's sensor redundancy analysis independent of deployment platform:
 
 ```python
 # src/sensorscope/shared/pca_core.py (core logic)
@@ -212,7 +212,7 @@ python app.py
 🚀 SensorScope - Local Development Server
 ============================================================
 
-Maya's Coffee Shop Sensor Analysis Service
+Sita's Coffee Shop Sensor Analysis Service
 Serverless PCA for sensor redundancy optimization
 
 📡 Service URLs:
@@ -268,13 +268,13 @@ curl -X POST http://localhost:8000/pca \
   -d '{"coffee_shop_sample": true, "location": "downtown", "n_components": 3}'
 ```
 
-This demonstrates Maya's exact use case: analyzing 20 coffee shop sensors to identify the 3-5 most critical measurements needed for operational monitoring.
+This demonstrates Sita's exact use case: analyzing 20 coffee shop sensors to identify the 3-5 most critical measurements needed for operational monitoring.
 
 ---
 
 ## From Development to Production: Cloud Deployment
 
-Maya's local SensorScope prototype perfectly demonstrated PCA concepts, but corporate needed a production-ready solution. As we established in our earlier serverless architecture analysis, Maya's requirements - intermittent processing, automatic scaling, and minimal operational overhead - aligned perfectly with serverless computing. Now let's see how she deployed SensorScope to production.
+Sita's local SensorScope prototype perfectly demonstrated PCA concepts, but corporate needed a production-ready solution. As we established in our earlier serverless architecture analysis, Sita's requirements - intermittent processing, automatic scaling, and minimal operational overhead - aligned perfectly with serverless computing. Now let's see how she deployed SensorScope to production.
 
 ### Production Deployment with Google Cloud Functions
 
@@ -397,22 +397,22 @@ curl -X POST https://$YOUR_FUNCTION_URL \
 }
 ```
 
-### Business Decision Framework: Maya's Monthly Analysis Scenarios
+### Business Decision Framework: Sita's Monthly Analysis Scenarios
 
-SensorScope's production deployment demonstrates how Maya could analyze different data patterns and draw appropriate business conclusions:
+SensorScope's production deployment demonstrates how Sita could analyze different data patterns and draw appropriate business conclusions:
 
 **Scenario A - Strong Redundancy Pattern (High variance explained):**
-If Maya's monthly sensor data showed strong correlation patterns like the basic synthetic example, she could confidently present to corporate:
+If Sita's monthly sensor data showed strong correlation patterns like the basic synthetic example, she could confidently present to corporate:
 
 *"This month's analysis shows significant sensor redundancy. We can reduce from 20 sensors to 5 key measurements while preserving most of our operational insights. I recommend proceeding with sensor optimization for substantial annual savings per location."*
 
 **Scenario B - Complex Operational Pattern (Moderate variance explained):**
-If Maya's analysis resembled the coffee shop simulation scenario, her recommendation would be different:
+If Sita's analysis resembled the coffee shop simulation scenario, her recommendation would be different:
 
 *"This month's data shows our sensors are measuring genuinely distinct operational factors. While we could reduce to 5 sensors, we'd lose considerable operational visibility. I recommend a more conservative approach: keep 8-10 sensors to maintain adequate monitoring capability while still achieving meaningful cost savings."*
 
 **SensorScope's Strategic Value:**
-The key insight is that SensorScope provides **Maya with data-driven evidence** to support different recommendations based on actual sensor patterns. Rather than applying blanket optimization rules, she can:
+The key insight is that SensorScope provides **Sita with data-driven evidence** to support different recommendations based on actual sensor patterns. Rather than applying blanket optimization rules, she can:
 
 - **Adapt recommendations** to actual data characteristics each month
 - **Quantify trade-offs** between cost savings and operational visibility  
@@ -422,13 +422,13 @@ This demonstrates how serverless PCA analysis becomes a **decision support tool*
 
 ## Test 3: Production File Processing Architecture
 
-Maya's analysis workflow matures significantly when transitioning from API-based testing to production file processing. In the real world, coffee shop sensor data accumulates continuously, requiring systematic batch processing rather than individual API calls. This file-based architecture pattern works consistently across Google Cloud Storage + Cloud Functions, AWS S3 + Lambda, or Azure Blob Storage + Functions.
+Sita's analysis workflow matures significantly when transitioning from API-based testing to production file processing. In the real world, coffee shop sensor data accumulates continuously, requiring systematic batch processing rather than individual API calls. This file-based architecture pattern works consistently across Google Cloud Storage + Cloud Functions, AWS S3 + Lambda, or Azure Blob Storage + Functions.
 
 ### Business Context: From Monthly Analysis to Automated Insights
 
-Six months after implementing SensorScope, Maya has established a routine monthly analysis cycle. Each location generates approximately 2GB of sensor data monthly - This is too much for manual API calls but perfect for automated cloud processing.
+Six months after implementing SensorScope, Sita has established a routine monthly analysis cycle. Each location generates approximately 2GB of sensor data monthly - This is too much for manual API calls but perfect for automated cloud processing.
 
-Maya's operational challenge: *"Our 47 coffee shops generate 20-sensor readings every 15 minutes. That's rougly 60,000 data points per location per month. I need a scalable way to process this data systematically rather than running individual analyses."*
+Sita's operational challenge: *"Our 47 coffee shops generate 20-sensor readings every 15 minutes. That's rougly 60,000 data points per location per month. I need a scalable way to process this data systematically rather than running individual analyses."*
 
 ### Production Architecture: File-Based Processing Pipeline
 
@@ -462,7 +462,7 @@ gs://sensorscope-production/
 ```
 
 **Step 3: Serverless Processing**
-Maya triggers analysis through simple HTTP calls to the Cloud Function:
+Sita triggers analysis through simple HTTP calls to the Cloud Function:
 ```bash
 # Process a specific location's data
 curl -X POST https://$YOUR_FUNCTION_URL \
@@ -490,7 +490,7 @@ File-based processing dramatically improves cost efficiency.  While costs may de
 can be reduced in favor of variable ones:
 - **Storage costs**: Only pay for the storage consumed.
 - **Processing costs**: Only pay for processing needed.
-- **Staff efficiency**: Maya processes 47 locations in minuts to hours instead of in days or weeks.
+- **Staff efficiency**: Sita processes 47 locations in minuts to hours instead of in days or weeks.
 - **Consistency**: Identical analysis parameters across all locations
 
 **3. Strategic Analysis Capabilities**
@@ -500,13 +500,13 @@ Accumulated data enables deeper insights:
 - **Trend analysis**: Monthly sensor efficiency improvements
 - **ROI validation**: Actual vs. projected savings from implemented optimizations
 
-### Maya's Production Workflow
+### Sita's Production Workflow
 
-Maya's monthly routine now follows a systematic process:
+Sita's monthly routine now follows a systematic process:
 
 **Week 1**: Data Collection
 - Coffee shops upload previous month's sensor data
-- Maya validates file completeness and format consistency
+- Sita validates file completeness and format consistency
 - Metadata verification ensures business context accuracy
 
 **Week 2**: Batch Analysis
@@ -542,26 +542,26 @@ The file-based architecture provides natural integration points for enterprise s
 **Monitoring Integration**: Sensor optimization results integrate with existing facility management dashboards  
 **Compliance Integration**: Complete audit trails support regulatory compliance and internal auditing requirements
 
-Maya's reflection: *"The transition from API testing to file processing was the key to making SensorScope operationally viable. Now I can process our entire network of locations systematically rather than manually analyzing individual coffee shops. The file-based approach also gives us the audit trail and scalability needed for corporate approval of optimization recommendations."*
+Sita's reflection: *"The transition from API testing to file processing was the key to making SensorScope operationally viable. Now I can process our entire network of locations systematically rather than manually analyzing individual coffee shops. The file-based approach also gives us the audit trail and scalability needed for corporate approval of optimization recommendations."*
 
 
 ## Production Considerations
 
-As Maya's SensorScope system evolved from prototype to production across 47 coffee shop locations, she encountered the typical challenges of running serverless analytics at enterprise scale. The mathematical correctness of PCA implementation became just one concern among many operational requirements that determined system reliability and business acceptance. These production patterns apply universally across cloud providers, though we'll demonstrate with GCP services alongside AWS and Azure equivalents.
+As Sita's SensorScope system evolved from prototype to production across 47 coffee shop locations, she encountered the typical challenges of running serverless analytics at enterprise scale. The mathematical correctness of PCA implementation became just one concern among many operational requirements that determined system reliability and business acceptance. These production patterns apply universally across cloud providers, though we'll demonstrate with GCP services alongside AWS and Azure equivalents.
 
 ### Security Architecture: Protecting Sensor Data
 
-The coffee chain's sensor data contained surprisingly sensitive operational intelligence. Temperature and humidity patterns could reveal equipment efficiency issues, customer flow data exposed peak business hours, and aggregate sensor patterns might indicate competitive advantages worth protecting. Maya needed a security architecture that protected this data without creating operational friction.
+The coffee chain's sensor data contained surprisingly sensitive operational intelligence. Temperature and humidity patterns could reveal equipment efficiency issues, customer flow data exposed peak business hours, and aggregate sensor patterns might indicate competitive advantages worth protecting. Sita needed a security architecture that protected this data without creating operational friction.
 
 **Authentication and Authorization Patterns**
 
 ![Authentication Architecture](images/authentication-architecture.svg)
 
-Maya implemented layered security following the principle of defense in depth [10,11]:
+Sita implemented layered security following the principle of defense in depth [10,11]:
 
 **Layer 1: Network-Level Protection**
 - Cloud Function deployment in private VPC with restricted ingress
-- IP allowlisting for coffee shop locations and Maya's analytics workstation  
+- IP allowlisting for coffee shop locations and Sita's analytics workstation  
 - TLS 1.3 encryption for all data in transit with certificate pinning
 
 **Cloud Services for Network Security:**
@@ -571,7 +571,7 @@ Maya implemented layered security following the principle of defense in depth [1
 
 **Layer 2: Application-Level Authentication**
 - API key authentication for programmatic access from coffee shop systems
-- JWT tokens with short expiration windows for Maya's interactive analysis sessions
+- JWT tokens with short expiration windows for Sita's interactive analysis sessions
 - Role-based access control distinguishing between data upload and analysis permissions
 
 **Cloud Services for Authentication:**
@@ -589,15 +589,15 @@ Maya implemented layered security following the principle of defense in depth [1
 - **AWS**: KMS with envelope encryption, Macie for data discovery, S3 Lifecycle policies
 - **Azure**: Key Vault for encryption, Purview for data governance, Storage Lifecycle Management
 
-Maya's security insight: *"The key was making security transparent to operations teams. Coffee shop managers couldn't be expected to manage complex authentication flows, so we automated most security controls while providing clear audit trails for compliance."*
+Sita's security insight: *"The key was making security transparent to operations teams. Coffee shop managers couldn't be expected to manage complex authentication flows, so we automated most security controls while providing clear audit trails for compliance."*
 
-### Monitoring and Observability: Maya's Operational Dashboard
+### Monitoring and Observability: Sita's Operational Dashboard
 
 Production serverless PCA requires comprehensive monitoring to detect performance degradation, cost anomalies, and analysis quality issues before they impact business operations [12,13].
 
 **Three-Tier Monitoring Strategy**
 
-![Maya's Monitoring Dashboard](images/monitoring-dashboard.svg)
+![Sita's Monitoring Dashboard](images/monitoring-dashboard.svg)
 
 **Cloud Services for Monitoring Implementation:**
 
@@ -613,7 +613,7 @@ Production serverless PCA requires comprehensive monitoring to detect performanc
 
 **Critical Alerting Scenarios**
 
-Maya configured alerts for specific business-impact scenarios rather than generic technical thresholds:
+Sita configured alerts for specific business-impact scenarios rather than generic technical thresholds:
 
 1. **Analysis Quality Degradation**: Alert when PCA variance explanation drops significantly for any location
 2. **Cost Anomaly Detection**: Alert when daily processing costs exceed expected thresholds
@@ -658,7 +658,7 @@ While serverless promises pay-per-use economics, production PCA workloads requir
 
 **Function Sizing Strategy**
 
-Maya discovered that default function configurations rarely match PCA computational requirements optimally (costs may
+Sita discovered that default function configurations rarely match PCA computational requirements optimally (costs may
 vary with region and times):
 
 ```
@@ -681,7 +681,7 @@ Memory Allocation vs Performance Analysis (20-sensor dataset)
 
 **Batching and Concurrency Patterns**
 
-For Maya's monthly analysis across 47 locations, choosing between sequential and parallel processing significantly impacted both cost and completion time:
+For Sita's monthly analysis across 47 locations, choosing between sequential and parallel processing significantly impacted both cost and completion time:
 
 **Sequential Processing**: Process locations one by one - slow but simple
 **Parallel Processing**: Process all locations simultaneously - fast but may hit limits  
@@ -694,7 +694,7 @@ For Maya's monthly analysis across 47 locations, choosing between sequential and
 
 ### CI/CD for Serverless PCA Systems
 
-Maya established deployment practices that ensure mathematical correctness and business continuity across SensorScope updates [15,16,17].
+Sita established deployment practices that ensure mathematical correctness and business continuity across SensorScope updates [15,16,17].
 
 **Deployment Pipeline Stages**
 
@@ -710,11 +710,11 @@ Maya established deployment practices that ensure mathematical correctness and b
 - **AWS**: AWS CDK, CloudFormation templates, SAM for serverless applications
 - **Azure**: ARM templates, Bicep for infrastructure, Azure CLI with scripting
 
-Maya's production insight: *"The most important lesson was that serverless doesn't eliminate operational concerns - it changes them. Instead of worrying about server capacity, I worried about cost spikes. Instead of patching operating systems, I worried about function timeouts. The key was building monitoring and processes around the new failure modes rather than the old ones, and leveraging cloud-native services to handle the complexity."*
+Sita's production insight: *"The most important lesson was that serverless doesn't eliminate operational concerns - it changes them. Instead of worrying about server capacity, I worried about cost spikes. Instead of patching operating systems, I worried about function timeouts. The key was building monitoring and processes around the new failure modes rather than the old ones, and leveraging cloud-native services to handle the complexity."*
 
 ## Serverless Architecture Patterns for PCA
 
-As Maya's SensorScope system evolved beyond single-function deployments, she discovered that PCA workloads have unique architectural requirements that differ significantly from typical web applications or simple data processing tasks. The mathematical nature of Principal Component Analysis, combined with the unpredictable data volumes and processing times, demanded specialized patterns for state management, data flow, and error recovery [5,6,23]. These patterns translate consistently across all major serverless platforms - we'll show GCP implementations with equivalent AWS and Azure services.
+As Sita's SensorScope system evolved beyond single-function deployments, she discovered that PCA workloads have unique architectural requirements that differ significantly from typical web applications or simple data processing tasks. The mathematical nature of Principal Component Analysis, combined with the unpredictable data volumes and processing times, demanded specialized patterns for state management, data flow, and error recovery [5,6,23]. These patterns translate consistently across all major serverless platforms - we'll show GCP implementations with equivalent AWS and Azure services.
 
 ### Event-Driven PCA Processing
 
@@ -724,8 +724,8 @@ Traditional PCA implementations assume synchronous processing where data arrives
 
 ![Upload-Trigger-Analyze Pattern](images/upload-trigger-analyze-pattern.svg)
 
-**Maya's SensorScope Application:**
-When coffee shop managers upload monthly sensor data at irregular times (end of month, after busy periods, or when they remember), Maya no longer needs to monitor for uploads manually. The moment a file lands in the GCS bucket, analysis begins automatically. This eliminated the bottleneck where Maya had to manually trigger 47 separate analyses each month. Coffee shops now get their optimization reports within minutes of upload completion, and Maya's workload shifted from monitoring uploads to reviewing results. The pattern also handles weekend uploads and holiday data drops without requiring Maya to work outside business hours.
+**Sita's SensorScope Application:**
+When coffee shop managers upload monthly sensor data at irregular times (end of month, after busy periods, or when they remember), Sita no longer needs to monitor for uploads manually. The moment a file lands in the GCS bucket, analysis begins automatically. This eliminated the bottleneck where Sita had to manually trigger 47 separate analyses each month. Coffee shops now get their optimization reports within minutes of upload completion, and Sita's workload shifted from monitoring uploads to reviewing results. The pattern also handles weekend uploads and holiday data drops without requiring Sita to work outside business hours.
 
 **Cloud Service Implementations:**
 - **Google Cloud**: Cloud Storage triggers → Pub/Sub → Cloud Functions
@@ -734,12 +734,12 @@ When coffee shop managers upload monthly sensor data at irregular times (end of 
 
 **Pattern 2: Scheduled Batch Processing Pattern**
 
-For Maya's monthly analysis across 47 locations, she needed orchestrated batch processing that could handle failures gracefully and provide progress visibility.
+For Sita's monthly analysis across 47 locations, she needed orchestrated batch processing that could handle failures gracefully and provide progress visibility.
 
 ![Scheduled Batch Processing Pattern](images/scheduled-batch-processing-pattern.svg)
 
-**Maya's SensorScope Application:**
-Maya discovered that not all coffee shops upload data by month-end, and some locations consistently lag by several days. The scheduled batch processor runs on the 5th of each month, automatically discovers which locations have submitted data, and processes them in parallel batches of 10. If a location's data fails to process (corrupted files, sensor malfunctions), the system continues with other locations and queues the failed ones for manual review. Maya now gets a single comprehensive monthly report instead of tracking 47 individual analyses, and late-uploading shops are automatically processed in a follow-up batch a week later.
+**Sita's SensorScope Application:**
+Sita discovered that not all coffee shops upload data by month-end, and some locations consistently lag by several days. The scheduled batch processor runs on the 5th of each month, automatically discovers which locations have submitted data, and processes them in parallel batches of 10. If a location's data fails to process (corrupted files, sensor malfunctions), the system continues with other locations and queues the failed ones for manual review. Sita now gets a single comprehensive monthly report instead of tracking 47 individual analyses, and late-uploading shops are automatically processed in a follow-up batch a week later.
 
 **Cloud Service Implementations:**
 - **Google Cloud**: Cloud Scheduler → Cloud Workflows → multiple Cloud Functions
@@ -748,14 +748,14 @@ Maya discovered that not all coffee shops upload data by month-end, and some loc
 
 ### State Management in Stateless Functions
 
-PCA processing often requires coordination across multiple function invocations, particularly for large datasets that must be processed in chunks or analyses that span multiple locations. Maya developed patterns for managing state without violating serverless statelessness principles.
+PCA processing often requires coordination across multiple function invocations, particularly for large datasets that must be processed in chunks or analyses that span multiple locations. Sita developed patterns for managing state without violating serverless statelessness principles.
 
 **Pattern 3: External State Store Pattern**
 
 ![External State Store Pattern](images/external-state-store-pattern.svg)
 
-**Maya's SensorScope Application:**
-When Maya's largest coffee shop (the airport location) started generating 5GB monthly sensor files that exceeded memory limits, she needed to process the data in chunks without losing intermediate PCA calculations. The state store pattern allows her to process 20 sensors in groups of 5, storing covariance matrices and eigenvalue calculations between function calls. Each chunk updates a progress indicator that corporate executives can monitor, showing "Processing sensors 11-15 of 20" rather than a black box. If any chunk fails due to timeout, only that specific sensor group needs reprocessing, not the entire month's data.
+**Sita's SensorScope Application:**
+When Sita's largest coffee shop (the airport location) started generating 5GB monthly sensor files that exceeded memory limits, she needed to process the data in chunks without losing intermediate PCA calculations. The state store pattern allows her to process 20 sensors in groups of 5, storing covariance matrices and eigenvalue calculations between function calls. Each chunk updates a progress indicator that corporate executives can monitor, showing "Processing sensors 11-15 of 20" rather than a black box. If any chunk fails due to timeout, only that specific sensor group needs reprocessing, not the entire month's data.
 
 **Cloud Service Implementations:**
 - **Google Cloud**: Cloud Firestore for coordination, Cloud Storage for intermediate results, Pub/Sub for progress events
@@ -764,12 +764,12 @@ When Maya's largest coffee shop (the airport location) started generating 5GB mo
 
 **Pattern 4: Saga Pattern for Complex Analysis Workflows**
 
-When Maya needed to run multiple analysis types (PCA, correlation analysis, business impact calculation) as part of a single request, she implemented the Saga pattern to ensure consistent completion or rollback.
+When Sita needed to run multiple analysis types (PCA, correlation analysis, business impact calculation) as part of a single request, she implemented the Saga pattern to ensure consistent completion or rollback.
 
 ![Saga Pattern Workflow](images/saga-pattern-workflow.svg)
 
-**Maya's SensorScope Application:**
-Corporate requested that Maya's monthly reports include not just PCA results, but also correlation analysis, cost-benefit calculations, and formatted executive summaries. Initially, Maya ran these steps manually, often losing work when later steps failed. The Saga pattern ensures that if report generation fails (due to formatting errors or template issues), the PCA and business calculations aren't lost - they're preserved and the report step simply retries with corrected templates. This saved Maya from re-running expensive PCA calculations when only the final presentation step had problems, reducing analysis time from 3 hours to 45 minutes when issues occurred.
+**Sita's SensorScope Application:**
+Corporate requested that Sita's monthly reports include not just PCA results, but also correlation analysis, cost-benefit calculations, and formatted executive summaries. Initially, Sita ran these steps manually, often losing work when later steps failed. The Saga pattern ensures that if report generation fails (due to formatting errors or template issues), the PCA and business calculations aren't lost - they're preserved and the report step simply retries with corrected templates. This saved Sita from re-running expensive PCA calculations when only the final presentation step had problems, reducing analysis time from 3 hours to 45 minutes when issues occurred.
 
 **Cloud Service Implementations:**
 - **Google Cloud**: Cloud Workflows with conditional logic and error handling
@@ -778,25 +778,25 @@ Corporate requested that Maya's monthly reports include not just PCA results, bu
 
 ### Data Pipeline Architectures
 
-PCA workloads often involve complex data transformations before mathematical processing can begin. Maya designed pipeline patterns that separate concerns while maintaining end-to-end observability.
+PCA workloads often involve complex data transformations before mathematical processing can begin. Sita designed pipeline patterns that separate concerns while maintaining end-to-end observability.
 
 **Pattern 5: Lambda Architecture for Real-Time and Batch PCA**
 
-Maya realized that coffee shop operations needed both real-time anomaly detection and monthly optimization analysis, requiring different processing approaches for the same sensor data.
+Sita realized that coffee shop operations needed both real-time anomaly detection and monthly optimization analysis, requiring different processing approaches for the same sensor data.
 
 ![Lambda Architecture for PCA](images/lambda-architecture-pca.svg)
 
-**Maya's SensorScope Application:**
-After a coffee machine fire went undetected for 20 minutes (all temperature sensors failed simultaneously but Maya only ran monthly analysis), corporate demanded real-time monitoring alongside optimization analysis. Maya's lambda architecture now runs lightweight PCA every 5 minutes on streaming sensor data to detect when all sensors in a category (temperature, humidity, vibration) show identical readings - indicating sensor failure rather than environmental consistency. Monthly optimization analysis continues using complete historical datasets for thorough redundancy analysis. The dual approach caught 3 sensor malfunctions in the first month, preventing equipment damage that would have cost more than the entire annual sensor budget.
+**Sita's SensorScope Application:**
+After a coffee machine fire went undetected for 20 minutes (all temperature sensors failed simultaneously but Sita only ran monthly analysis), corporate demanded real-time monitoring alongside optimization analysis. Sita's lambda architecture now runs lightweight PCA every 5 minutes on streaming sensor data to detect when all sensors in a category (temperature, humidity, vibration) show identical readings - indicating sensor failure rather than environmental consistency. Monthly optimization analysis continues using complete historical datasets for thorough redundancy analysis. The dual approach caught 3 sensor malfunctions in the first month, preventing equipment damage that would have cost more than the entire annual sensor budget.
 
 **Pattern 6: ETL Pipeline with PCA Integration**
 
-Maya needed to transform raw sensor logs into analysis-ready datasets before PCA processing could begin.
+Sita needed to transform raw sensor logs into analysis-ready datasets before PCA processing could begin.
 
 ![ETL Pipeline with PCA Integration](images/etl-pipeline-pca-integration.svg)
 
-**Maya's SensorScope Application:**
-Coffee shop POS systems generate sensor logs in different formats - some as CSV, others as JSON, and newer locations using XML exports. Maya's ETL pipeline standardizes all formats into consistent datasets before PCA analysis, automatically handling timezone conversions (shops span 3 time zones), unit standardization (some sensors report Celsius, others Fahrenheit), and missing data interpolation. The pipeline prevented a month of failed analyses when the mall location's POS system started exporting sensor data with different column names after a software update. Now format changes are handled automatically, and Maya focuses on interpreting results rather than debugging data inconsistencies.
+**Sita's SensorScope Application:**
+Coffee shop POS systems generate sensor logs in different formats - some as CSV, others as JSON, and newer locations using XML exports. Sita's ETL pipeline standardizes all formats into consistent datasets before PCA analysis, automatically handling timezone conversions (shops span 3 time zones), unit standardization (some sensors report Celsius, others Fahrenheit), and missing data interpolation. The pipeline prevented a month of failed analyses when the mall location's POS system started exporting sensor data with different column names after a software update. Now format changes are handled automatically, and Sita focuses on interpreting results rather than debugging data inconsistencies.
 
 **Cloud Service Implementations:**
 - **Google Cloud**: Cloud Functions triggered by Pub/Sub for each pipeline stage
@@ -805,18 +805,18 @@ Coffee shop POS systems generate sensor logs in different formats - some as CSV,
 
 ### Error Handling and Retry Patterns
 
-PCA algorithms can fail for mathematical reasons (singular matrices, insufficient data) or infrastructure reasons (timeouts, memory limits). Maya designed specialized error handling patterns for mathematical workloads.
+PCA algorithms can fail for mathematical reasons (singular matrices, insufficient data) or infrastructure reasons (timeouts, memory limits). Sita designed specialized error handling patterns for mathematical workloads.
 
 **Pattern 7: Circuit Breaker with Mathematical Fallbacks** [7,8]
 
 ![Circuit Breaker with Mathematical Fallbacks](images/circuit-breaker-mathematical-fallbacks.svg)
 
-**Maya's SensorScope Application:**
-The university coffee shop had a sensor malfunction where 8 of 20 sensors reported identical readings for three weeks, creating singular matrices that crashed PCA analysis. Instead of manual intervention, Maya's circuit breaker detected the repeated mathematical failures and automatically switched to approximate PCA with fewer components. The fallback analysis still identified optimization opportunities (5 sensors instead of the requested 3), and Maya received clear error reports explaining the mathematical issues. This kept monthly reporting on schedule while technical teams fixed the sensor calibration, rather than blocking all analysis until hardware issues were resolved.
+**Sita's SensorScope Application:**
+The university coffee shop had a sensor malfunction where 8 of 20 sensors reported identical readings for three weeks, creating singular matrices that crashed PCA analysis. Instead of manual intervention, Sita's circuit breaker detected the repeated mathematical failures and automatically switched to approximate PCA with fewer components. The fallback analysis still identified optimization opportunities (5 sensors instead of the requested 3), and Sita received clear error reports explaining the mathematical issues. This kept monthly reporting on schedule while technical teams fixed the sensor calibration, rather than blocking all analysis until hardware issues were resolved.
 
 **Pattern 8: Exponential Backoff with Jitter for Mathematical Convergence**
 
-Some PCA algorithms may require multiple iterations to converge. Maya implemented intelligent retry patterns that account for mathematical properties rather than just infrastructure failures.
+Some PCA algorithms may require multiple iterations to converge. Sita implemented intelligent retry patterns that account for mathematical properties rather than just infrastructure failures.
 
 ```python
 def pca_with_intelligent_retry(data, max_retries=3):
@@ -836,32 +836,32 @@ def pca_with_intelligent_retry(data, max_retries=3):
             continue
 ```
 
-**Maya's SensorScope Application:**
-During peak summer months, air conditioning sensors at several locations showed extremely high correlation (>0.99), creating numerical instability in PCA calculations [24]. Maya's intelligent retry pattern automatically adds small amounts of mathematical noise to break perfect correlations, allowing analysis to complete with meaningful results. The system also reduces precision requirements on retry, trading exact eigenvalue calculations for business-useful approximations. This prevented summer analysis failures while maintaining the core insight that HVAC sensors were highly redundant during extreme weather periods - exactly the business intelligence corporate needed for optimization decisions.
+**Sita's SensorScope Application:**
+During peak summer months, air conditioning sensors at several locations showed extremely high correlation (>0.99), creating numerical instability in PCA calculations [24]. Sita's intelligent retry pattern automatically adds small amounts of mathematical noise to break perfect correlations, allowing analysis to complete with meaningful results. The system also reduces precision requirements on retry, trading exact eigenvalue calculations for business-useful approximations. This prevented summer analysis failures while maintaining the core insight that HVAC sensors were highly redundant during extreme weather periods - exactly the business intelligence corporate needed for optimization decisions.
 
 **Cloud Service Implementations:**
 - **Google Cloud**: Cloud Functions with custom retry logic, Cloud Monitoring for circuit breaker state
 - **AWS**: Lambda with custom backoff algorithms, CloudWatch for failure tracking
 - **Azure**: Azure Functions with Application Insights for failure pattern analysis
 
-Maya's architectural insight: *"The biggest mistake I made early on was treating PCA like a web service - request in, response out. PCA is fundamentally different because the processing time and resource requirements depend on mathematical properties of the data, not just data size. Our architecture needed to be elastic not just for scale, but for the inherent unpredictability of mathematical computation."*
+Sita's architectural insight: *"The biggest mistake I made early on was treating PCA like a web service - request in, response out. PCA is fundamentally different because the processing time and resource requirements depend on mathematical properties of the data, not just data size. Our architecture needed to be elastic not just for scale, but for the inherent unpredictability of mathematical computation."*
 
 ## Advanced Patterns & Future Directions
 
-Eighteen months after launching SensorScope, Maya found herself fielding requests from other divisions within Bean There, Done That, and eventually from partner organizations seeking similar optimization insights. What started as coffee shop sensor analysis had evolved into a platform for various dimensionality reduction challenges. This section explores advanced serverless PCA patterns that emerged from real-world scaling requirements and points toward future developments in cloud-native analytics. These advanced patterns demonstrate the maturity of serverless platforms across Google Cloud, AWS, and Azure for sophisticated mathematical workloads.
+Eighteen months after launching SensorScope, Sita found herself fielding requests from other divisions within Bean There, Done That, and eventually from partner organizations seeking similar optimization insights. What started as coffee shop sensor analysis had evolved into a platform for various dimensionality reduction challenges. This section explores advanced serverless PCA patterns that emerged from real-world scaling requirements and points toward future developments in cloud-native analytics. These advanced patterns demonstrate the maturity of serverless platforms across Google Cloud, AWS, and Azure for sophisticated mathematical workloads.
 
 ### Streaming PCA for Real-Time Insights
 
-Maya's success with batch processing led to demands for real-time sensor optimization. The marketing team wanted to adjust promotional campaigns based on real-time foot traffic patterns, while operations needed immediate alerts when sensor redundancy patterns indicated equipment failures.
+Sita's success with batch processing led to demands for real-time sensor optimization. The marketing team wanted to adjust promotional campaigns based on real-time foot traffic patterns, while operations needed immediate alerts when sensor redundancy patterns indicated equipment failures.
 
 **Pattern: Incremental PCA with Streaming Windows**
 
-Traditional PCA requires complete datasets for eigenvalue computation, but streaming scenarios demand continuous updates as new data arrives. Maya developed an incremental PCA pattern using sliding windows and mathematical approximation techniques.
+Traditional PCA requires complete datasets for eigenvalue computation, but streaming scenarios demand continuous updates as new data arrives. Sita developed an incremental PCA pattern using sliding windows and mathematical approximation techniques.
 
 ![Incremental PCA with Streaming Windows](images/incremental-pca-streaming-windows.svg)
 
-**Maya's Implementation:**
-When the downtown location experienced fluctuating customer patterns during a street festival, traditional monthly analysis couldn't capture the rapid operational changes. Maya's streaming PCA detected that customer flow sensors became highly correlated with ambient noise during events - a pattern invisible in monthly aggregates. This insight allowed operations to temporarily reduce monitoring complexity during special events while maintaining operational visibility. The streaming approach processes 15-minute sensor batches, updating PCA models continuously and alerting when correlation patterns shift significantly from baseline behavior.
+**Sita's Implementation:**
+When the downtown location experienced fluctuating customer patterns during a street festival, traditional monthly analysis couldn't capture the rapid operational changes. Sita's streaming PCA detected that customer flow sensors became highly correlated with ambient noise during events - a pattern invisible in monthly aggregates. This insight allowed operations to temporarily reduce monitoring complexity during special events while maintaining operational visibility. The streaming approach processes 15-minute sensor batches, updating PCA models continuously and alerting when correlation patterns shift significantly from baseline behavior.
 
 **Cloud Service Implementations:**
 - **Google Cloud**: Dataflow for stream processing, Cloud Functions for PCA updates, Pub/Sub for event distribution
@@ -870,7 +870,7 @@ When the downtown location experienced fluctuating customer patterns during a st
 
 ### Distributed PCA for Large-Scale Analysis
 
-Maya's success attracted attention from corporate real estate, which manages sensor networks across shopping malls, office buildings, and mixed-use developments. These environments generate terabytes of monthly sensor data across thousands of measurement points, requiring distributed processing approaches.
+Sita's success attracted attention from corporate real estate, which manages sensor networks across shopping malls, office buildings, and mixed-use developments. These environments generate terabytes of monthly sensor data across thousands of measurement points, requiring distributed processing approaches.
 
 **Pattern: MapReduce PCA with Serverless Coordination**
 
@@ -878,8 +878,8 @@ Large-scale PCA computation can be decomposed into distributed covariance matrix
 
 ![MapReduce PCA with Serverless Coordination](images/mapreduce-pca-serverless-coordination.svg)
 
-**Maya's Application:**
-When corporate real estate wanted to optimize sensor placement across their entire portfolio (847 buildings, 50,000+ sensors), single-function processing became impractical. Maya's distributed approach processes sensor groups in parallel, computing partial covariance matrices simultaneously across multiple Cloud Functions. A coordination function aggregates results and performs final eigenvalue decomposition. This enabled analysis of building portfolios that would timeout in single-function approaches, revealing cross-building patterns like shared HVAC optimization opportunities and equipment failure correlations across properties.
+**Sita's Application:**
+When corporate real estate wanted to optimize sensor placement across their entire portfolio (847 buildings, 50,000+ sensors), single-function processing became impractical. Sita's distributed approach processes sensor groups in parallel, computing partial covariance matrices simultaneously across multiple Cloud Functions. A coordination function aggregates results and performs final eigenvalue decomposition. This enabled analysis of building portfolios that would timeout in single-function approaches, revealing cross-building patterns like shared HVAC optimization opportunities and equipment failure correlations across properties.
 
 **Cloud Service Implementations:**
 - **Google Cloud**: Cloud Functions for parallel processing, Cloud Workflows for orchestration, Cloud Storage for intermediate results
@@ -888,16 +888,16 @@ When corporate real estate wanted to optimize sensor placement across their enti
 
 ### Integration with Modern ML Pipelines
 
-As Maya's analysis capabilities matured, corporate began requesting integration with broader machine learning initiatives. They wanted PCA preprocessing to feed predictive models for equipment maintenance, customer behavior analysis, and energy optimization.
+As Sita's analysis capabilities matured, corporate began requesting integration with broader machine learning initiatives. They wanted PCA preprocessing to feed predictive models for equipment maintenance, customer behavior analysis, and energy optimization.
 
 **Pattern: PCA as a Service in MLOps Pipelines**
 
-Modern ML workflows require PCA as a preprocessing step rather than standalone analysis. Maya designed SensorScope to integrate seamlessly with MLOps platforms while maintaining its serverless characteristics.
+Modern ML workflows require PCA as a preprocessing step rather than standalone analysis. Sita designed SensorScope to integrate seamlessly with MLOps platforms while maintaining its serverless characteristics.
 
 ![PCA as a Service in MLOps Pipelines](images/pca-service-mlops-pipelines.svg)
 
-**Maya's Implementation:**
-The predictive maintenance team wanted to forecast equipment failures using sensor data, but raw 20-dimensional sensor readings created overfitting in their models. Maya integrated SensorScope into their MLflow pipeline, automatically reducing sensor dimensions to 5-7 key components before model training. The PCA preprocessing significantly improved model accuracy while substantially reducing training time. SensorScope now runs automatically whenever new sensor data arrives, feeding dimensionality-reduced features into multiple downstream ML models for different business applications.
+**Sita's Implementation:**
+The predictive maintenance team wanted to forecast equipment failures using sensor data, but raw 20-dimensional sensor readings created overfitting in their models. Sita integrated SensorScope into their MLflow pipeline, automatically reducing sensor dimensions to 5-7 key components before model training. The PCA preprocessing significantly improved model accuracy while substantially reducing training time. SensorScope now runs automatically whenever new sensor data arrives, feeding dimensionality-reduced features into multiple downstream ML models for different business applications.
 
 **Cloud Service Implementations:**
 - **Google Cloud**: Vertex AI Pipelines with Cloud Functions components, MLflow on GKE
@@ -906,16 +906,16 @@ The predictive maintenance team wanted to forecast equipment failures using sens
 
 ### Emerging Serverless Analytics Trends
 
-Maya's experience with SensorScope positioned her to evaluate emerging trends that could enhance serverless analytics capabilities.
+Sita's experience with SensorScope positioned her to evaluate emerging trends that could enhance serverless analytics capabilities.
 
 **Pattern: Edge-Cloud Hybrid PCA**
 
-With increasing sensor sophistication and 5G connectivity, some coffee shops began deploying edge computing devices capable of lightweight analytics. Maya explored hybrid patterns where edge devices perform initial PCA approximation, with cloud functions handling complex analysis.
+With increasing sensor sophistication and 5G connectivity, some coffee shops began deploying edge computing devices capable of lightweight analytics. Sita explored hybrid patterns where edge devices perform initial PCA approximation, with cloud functions handling complex analysis.
 
 ![Edge-Cloud Hybrid PCA](images/edge-cloud-hybrid-pca.svg)
 
-**Maya's Exploration:**
-Maya piloted edge-cloud hybrid processing at three high-traffic locations with dedicated edge devices. Local edge computation identifies obvious sensor failures within seconds (all temperature readings identical), while cloud functions perform comprehensive monthly optimization analysis. This hybrid approach substantially reduced cloud processing costs while significantly improving response time for critical alerts. The pattern shows promise for IoT scenarios where bandwidth costs and latency requirements favor local preprocessing with cloud-based deep analysis.
+**Sita's Exploration:**
+Sita piloted edge-cloud hybrid processing at three high-traffic locations with dedicated edge devices. Local edge computation identifies obvious sensor failures within seconds (all temperature readings identical), while cloud functions perform comprehensive monthly optimization analysis. This hybrid approach substantially reduced cloud processing costs while significantly improving response time for critical alerts. The pattern shows promise for IoT scenarios where bandwidth costs and latency requirements favor local preprocessing with cloud-based deep analysis.
 
 **Pattern: Serverless AI/ML Orchestration**
 
@@ -923,12 +923,12 @@ The convergence of serverless computing and AI services creates opportunities fo
 
 ![Serverless AI/ML Orchestration](images/serverless-aiml-orchestration.svg)
 
-**Maya's Vision:**
-Maya envisions SensorScope evolution toward intelligent analytics that automatically selects optimal PCA variants based on data characteristics. Sparse sensor data would trigger sparse PCA algorithms, while non-linear sensor relationships would invoke kernel PCA approaches. Serverless functions would orchestrate algorithm selection, resource allocation, and output formatting based on business context and data properties. This adaptive approach could make advanced analytics accessible to non-technical users while optimizing computational efficiency.
+**Sita's Vision:**
+Sita envisions SensorScope evolution toward intelligent analytics that automatically selects optimal PCA variants based on data characteristics. Sparse sensor data would trigger sparse PCA algorithms, while non-linear sensor relationships would invoke kernel PCA approaches. Serverless functions would orchestrate algorithm selection, resource allocation, and output formatting based on business context and data properties. This adaptive approach could make advanced analytics accessible to non-technical users while optimizing computational efficiency.
 
 ### Future Directions: The Next Generation of Serverless Analytics
 
-Based on Maya's SensorScope journey and emerging technology trends, several developments will shape the future of serverless analytics:
+Based on Sita's SensorScope journey and emerging technology trends, several developments will shape the future of serverless analytics:
 
 **1. Mathematical Function Libraries as a Service**
 Cloud providers are developing specialized function runtimes optimized for mathematical computation, featuring pre-loaded scientific libraries, GPU acceleration, and mathematical convergence guarantees.
@@ -945,11 +945,11 @@ Industry standards for serverless analytics functions will enable true multi-clo
 **5. AI-Driven Optimization**
 Machine learning models will optimize serverless function configuration automatically, predicting optimal memory allocation, timeout settings, and concurrency limits based on historical workload patterns.
 
-Maya's reflection on the future: *"When I started SensorScope, I thought I was solving a simple cost optimization problem for coffee shop sensors. What I learned is that serverless analytics represents a fundamental shift in how organizations approach data science. We're moving from infrastructure-heavy, specialized analytics teams to democratized, business-embedded analysis capabilities. The next generation of SensorScope won't just reduce sensor costs - it will enable every operations manager to ask mathematical questions about their data and get immediate, actionable answers."*
+Sita's reflection on the future: *"When I started SensorScope, I thought I was solving a simple cost optimization problem for coffee shop sensors. What I learned is that serverless analytics represents a fundamental shift in how organizations approach data science. We're moving from infrastructure-heavy, specialized analytics teams to democratized, business-embedded analysis capabilities. The next generation of SensorScope won't just reduce sensor costs - it will enable every operations manager to ask mathematical questions about their data and get immediate, actionable answers."*
 
 ### Multi-Cloud Serverless PCA: Platform Equivalents
 
-Throughout this chapter, we've demonstrated SensorScope using Google Cloud services, but Maya's architecture translates directly to AWS and Azure with equivalent functionality:
+Throughout this chapter, we've demonstrated SensorScope using Google Cloud services, but Sita's architecture translates directly to AWS and Azure with equivalent functionality:
 
 | **Service Category** | **Google Cloud** | **AWS** | **Azure** |
 |---------------------|------------------|---------|-----------|
@@ -959,29 +959,27 @@ Throughout this chapter, we've demonstrated SensorScope using Google Cloud servi
 | **Orchestration & Workflows** | Cloud Workflows +<br/>Cloud Scheduler | Step Functions +<br/>EventBridge Scheduler | Logic Apps +<br/>Azure Scheduler |
 | **State Management** | Cloud Firestore +<br/>Cloud Storage | DynamoDB +<br/>S3 | Cosmos DB +<br/>Blob Storage |
 
-Maya's architectural insight on multi-cloud: *"The beauty of our serverless PCA approach is that the mathematical logic remains identical across platforms. Only the plumbing changes - the science stays the same. This gives organizations flexibility to choose cloud providers based on cost, compliance, or existing relationships rather than being locked into a specific platform for analytics capabilities."*
+Sita's architectural insight on multi-cloud: *"The beauty of our serverless PCA approach is that the mathematical logic remains identical across platforms. Only the plumbing changes - the science stays the same. This gives organizations flexibility to choose cloud providers based on cost, compliance, or existing relationships rather than being locked into a specific platform for analytics capabilities."*
 
 ## Conclusion
 
-Dr. Maya Chen's journey from a simple cost optimization request to building enterprise-scale serverless analytics demonstrates the fundamental advantages of applying serverless architectures to mathematical computing workloads. Her experience reveals that serverless PCA implementations offer compelling benefits over traditional deployment approaches across multiple dimensions.
+Dr. Sita Zhou's journey from a simple cost optimization request to building enterprise-scale serverless analytics demonstrates the fundamental advantages of applying serverless architectures to mathematical computing workloads. Her experience reveals that serverless PCA implementations offer compelling benefits over traditional deployment approaches across multiple dimensions.
 
-**Economic Advantages**: Serverless PCA fundamentally changes the cost structure of mathematical analytics. Traditional approaches require provisioning and maintaining infrastructure for peak computational demands, even when analysis runs intermittently. Maya's serverless implementation eliminated infrastructure costs during idle periods while automatically scaling for computational peaks. The pay-per-execution model aligned costs directly with business value, making advanced analytics economically viable for organizations that couldn't justify dedicated infrastructure investments.
+**Economic Advantages**: Serverless PCA fundamentally changes the cost structure of mathematical analytics. Traditional approaches require provisioning and maintaining infrastructure for peak computational demands, even when analysis runs intermittently. Sita's serverless implementation eliminated infrastructure costs during idle periods while automatically scaling for computational peaks. The pay-per-execution model aligned costs directly with business value, making advanced analytics economically viable for organizations that couldn't justify dedicated infrastructure investments.
 
-**Operational Simplicity**: Mathematical workloads traditionally require specialized infrastructure management, performance tuning, and capacity planning. Serverless abstracts these operational concerns, allowing practitioners to focus on algorithmic implementation rather than deployment complexity. Maya's experience demonstrates that serverless platforms handle scaling, availability, and resource management automatically, reducing operational overhead from infrastructure management to business logic development.
+**Operational Simplicity**: Mathematical workloads traditionally require specialized infrastructure management, performance tuning, and capacity planning. Serverless abstracts these operational concerns, allowing practitioners to focus on algorithmic implementation rather than deployment complexity. Sita's experience demonstrates that serverless platforms handle scaling, availability, and resource management automatically, reducing operational overhead from infrastructure management to business logic development.
 
-**Architectural Scalability**: PCA computations exhibit natural parallelization opportunities that align well with serverless execution models. The mathematical decomposition of covariance matrix calculations maps directly to distributed function execution, enabling horizontal scaling without architectural redesign. Maya's MapReduce pattern demonstrates how serverless functions can process arbitrarily large datasets by distributing computation across multiple parallel executions, achieving linear scalability without infrastructure complexity.
+**Architectural Scalability**: PCA computations exhibit natural parallelization opportunities that align well with serverless execution models. The mathematical decomposition of covariance matrix calculations maps directly to distributed function execution, enabling horizontal scaling without architectural redesign. Sita's MapReduce pattern demonstrates how serverless functions can process arbitrarily large datasets by distributing computation across multiple parallel executions, achieving linear scalability without infrastructure complexity.
 
-**Development Velocity**: Serverless deployment models accelerate development cycles for mathematical applications. Maya's implementation showed that practitioners can iterate rapidly on algorithmic approaches without managing deployment infrastructure. The combination of automated scaling, simplified deployment, and integrated monitoring reduces the time from mathematical concept to production implementation, enabling faster experimentation and validation of analytical approaches.
+**Development Velocity**: Serverless deployment models accelerate development cycles for mathematical applications. Sita's implementation showed that practitioners can iterate rapidly on algorithmic approaches without managing deployment infrastructure. The combination of automated scaling, simplified deployment, and integrated monitoring reduces the time from mathematical concept to production implementation, enabling faster experimentation and validation of analytical approaches.
 
-**Integration Flexibility**: Modern analytical workflows require seamless integration with diverse data sources, ML pipelines, and business systems. Serverless PCA implementations naturally support event-driven architectures, enabling real-time processing of streaming data, batch analysis of historical datasets, and integration with existing business applications through standardized APIs. Maya's patterns demonstrate how serverless functions can serve as universal connectors between mathematical processing and enterprise systems.
+**Integration Flexibility**: Modern analytical workflows require seamless integration with diverse data sources, ML pipelines, and business systems. Serverless PCA implementations naturally support event-driven architectures, enabling real-time processing of streaming data, batch analysis of historical datasets, and integration with existing business applications through standardized APIs. Sita's patterns demonstrate how serverless functions can serve as universal connectors between mathematical processing and enterprise systems.
 
-**Fault Tolerance and Reliability**: Mathematical computations can fail due to singular matrices, memory constraints, or algorithmic instability. Serverless platforms provide built-in retry mechanisms, automatic failover, and isolation between executions that improve overall system reliability. Maya's circuit breaker patterns show how serverless architectures can implement sophisticated mathematical fallback strategies that maintain service availability even when primary algorithms encounter edge cases.
+**Fault Tolerance and Reliability**: Mathematical computations can fail due to singular matrices, memory constraints, or algorithmic instability. Serverless platforms provide built-in retry mechanisms, automatic failover, and isolation between executions that improve overall system reliability. Sita's circuit breaker patterns show how serverless architectures can implement sophisticated mathematical fallback strategies that maintain service availability even when primary algorithms encounter edge cases.
 
 **Multi-Cloud Portability**: Serverless PCA implementations achieve remarkable portability across cloud platforms. The mathematical algorithms remain identical whether executing on AWS Lambda, Google Cloud Functions, or Azure Functions, with only configuration and deployment scripts requiring platform-specific adaptation. This portability provides organizations with vendor flexibility and risk mitigation while maintaining consistent analytical capabilities.
 
-The technical patterns demonstrated through Maya's implementation—from basic Hello World functions to sophisticated MLOps integration—establish serverless computing as a compelling architectural choice for mathematical analytics. These patterns enable organizations to implement advanced analytics capabilities with reduced operational complexity, improved economic efficiency, and enhanced scalability compared to traditional infrastructure approaches.
-
-Serverless PCA represents more than a deployment choice; it exemplifies how cloud-native architectures can democratize sophisticated mathematical techniques, making advanced analytics accessible to organizations regardless of their infrastructure expertise or capital investment capacity.
+The technical patterns demonstrated through Sita's implementation—from basic Hello World functions to sophisticated MLOps integration—establish serverless computing as a compelling architectural choice for mathematical analytics. These patterns enable organizations to implement advanced analytics capabilities with reduced operational complexity, improved economic efficiency, and enhanced scalability compared to traditional infrastructure approaches.  Serverless PCA represents more than a deployment choice; it exemplifies how cloud-native architectures can democratize sophisticated mathematical techniques, making advanced analytics accessible to organizations regardless of their infrastructure expertise or capital investment capacity.
 
 ## References
 
