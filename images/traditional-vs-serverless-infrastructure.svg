@@ -13,7 +13,7 @@
   <!-- Traditional Infrastructure Section -->
   <g>
     <!-- Main container -->
-    <rect x="20" y="20" width="360" height="280" fill="url(#traditionalGrad)" stroke="#ff6b6b" stroke-width="2" rx="10"/>
+    <rect x="20" y="20" width="360" height="290" fill="url(#traditionalGrad)" stroke="#ff6b6b" stroke-width="2" rx="10"/>
     
     <!-- Title -->
     <text x="200" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">
@@ -61,16 +61,19 @@
     </g>
     
     <!-- Corporate reaction -->
-    <rect x="40" y="265" width="320" height="25" fill="#ffebee" stroke="#ff6b6b" stroke-width="1" rx="3"/>
-    <text x="200" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#c62828">
-      Corporate Reaction: "Why does cost-cutting need more infrastructure spending?"
+    <rect x="40" y="265" width="320" height="35" fill="#ffebee" stroke="#ff6b6b" stroke-width="1" rx="3"/>
+    <text x="200" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#c62828">
+      Corporate Reaction: "Why does cost-cutting
+    </text>
+    <text x="200" y="292" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#c62828">
+      need more infrastructure spending?"
     </text>
   </g>
   
   <!-- Serverless Infrastructure Section -->
   <g>
     <!-- Main container -->
-    <rect x="420" y="20" width="360" height="280" fill="url(#serverlessGrad)" stroke="#4ecdc4" stroke-width="2" rx="10"/>
+    <rect x="420" y="20" width="360" height="290" fill="url(#serverlessGrad)" stroke="#4ecdc4" stroke-width="2" rx="10"/>
     
     <!-- Title -->
     <text x="600" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">
@@ -118,9 +121,12 @@
     </g>
     
     <!-- Corporate reaction -->
-    <rect x="440" y="265" width="320" height="25" fill="#e8f5e8" stroke="#4ecdc4" stroke-width="1" rx="3"/>
-    <text x="600" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2e7d32">
-      Corporate Reaction: "Analysis costs appear only when we're generating savings insights"
+    <rect x="440" y="265" width="320" height="35" fill="#e8f5e8" stroke="#4ecdc4" stroke-width="1" rx="3"/>
+    <text x="600" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2e7d32">
+      Corporate Reaction: "Analysis costs appear only
+    </text>
+    <text x="600" y="292" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2e7d32">
+      when we're generating savings insights"
     </text>
   </g>
   
