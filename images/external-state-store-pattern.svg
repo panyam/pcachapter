@@ -1,0 +1,126 @@
+<svg width="850" height="320" viewBox="0 0 850 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="func1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="stateGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="func2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="425" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Pattern 3: External State Store (Stateless Function Coordination)
+  </text>
+  
+  <!-- Function Call 1 -->
+  <g>
+    <rect x="50" y="70" width="180" height="140" fill="url(#func1Grad)" stroke="#667eea" stroke-width="2" rx="12"/>
+    <text x="140" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Function Call 1</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="65" y="120">• Process chunk 1/5</text>
+      <text x="65" y="135">• Store partial results</text>
+      <text x="65" y="150">• Update progress</text>
+      <text x="65" y="165">• Calculate covariance</text>
+      <text x="65" y="180">• Write checkpoint</text>
+      <text x="65" y="195">• Trigger next chunk</text>
+    </g>
+  </g>
+  
+  <!-- State Store -->
+  <g>
+    <rect x="310" y="70" width="180" height="140" fill="url(#stateGrad)" stroke="#f5576c" stroke-width="2" rx="12"/>
+    <text x="400" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">State Store</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="325" y="120">• Job status tracking</text>
+      <text x="325" y="135">• Partial PCA results</text>
+      <text x="325" y="150">• Progress indicators</text>
+      <text x="325" y="165">• Covariance matrices</text>
+      <text x="325" y="180">• Error states</text>
+      <text x="325" y="195">• Coordination locks</text>
+    </g>
+  </g>
+  
+  <!-- Function Call 2 -->
+  <g>
+    <rect x="570" y="70" width="180" height="140" fill="url(#func2Grad)" stroke="#00f2fe" stroke-width="2" rx="12"/>
+    <text x="660" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Function Call 2</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="585" y="120">• Read state</text>
+      <text x="585" y="135">• Process chunk 2/5</text>
+      <text x="585" y="150">• Update state</text>
+      <text x="585" y="165">• Continue or finalize</text>
+      <text x="585" y="180">• Aggregate results</text>
+      <text x="585" y="195">• Handle completion</text>
+    </g>
+  </g>
+  
+  <!-- Flow arrows -->
+  <g>
+    <path d="M 230 140 L 300 140" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 490 140 L 560 140" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Bidirectional state interaction arrows -->
+  <g>
+    <!-- Function 1 to State Store -->
+    <path d="M 230 120 L 300 120" stroke="#667eea" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#func1Arrow)"/>
+    <text x="265" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#667eea">Write</text>
+    
+    <!-- Function 2 from State Store -->
+    <path d="M 490 160 L 560 160" stroke="#00f2fe" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#func2Arrow)"/>
+    <text x="525" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#00f2fe">Read</text>
+  </g>
+  
+  <!-- Progress indicators -->
+  <g>
+    <rect x="50" y="230" width="700" height="40" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+    <text x="400" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">
+      Chunked Processing Progress
+    </text>
+    
+    <!-- Progress bars -->
+    <rect x="70" y="255" width="120" height="8" fill="#e9ecef" stroke="#adb5bd" stroke-width="1" rx="4"/>
+    <rect x="70" y="255" width="96" height="8" fill="#667eea" rx="4"/>
+    <text x="130" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Chunk 1: 80%</text>
+    
+    <rect x="230" y="255" width="120" height="8" fill="#e9ecef" stroke="#adb5bd" stroke-width="1" rx="4"/>
+    <rect x="230" y="255" width="36" height="8" fill="#f5576c" rx="4"/>
+    <text x="290" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">State: 30%</text>
+    
+    <rect x="390" y="255" width="120" height="8" fill="#e9ecef" stroke="#adb5bd" stroke-width="1" rx="4"/>
+    <rect x="390" y="255" width="48" height="8" fill="#00f2fe" rx="4"/>
+    <text x="450" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Chunk 2: 40%</text>
+    
+    <rect x="550" y="255" width="120" height="8" fill="#e9ecef" stroke="#adb5bd" stroke-width="1" rx="4"/>
+    <text x="610" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Remaining: 0%</text>
+  </g>
+  
+  <!-- Multi-cloud services note -->
+  <rect x="50" y="285" width="700" height="25" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="400" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-style="italic" fill="#666">
+    State Store: GCP (Firestore + Cloud Storage), AWS (DynamoDB + S3), Azure (Cosmos DB + Blob Storage)
+  </text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="func1Arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#667eea"/>
+    </marker>
+    <marker id="func2Arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#00f2fe"/>
+    </marker>
+  </defs>
+</svg>

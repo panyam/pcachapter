@@ -722,17 +722,7 @@ Traditional PCA implementations assume synchronous processing where data arrives
 
 **Pattern 1: Upload-Trigger-Analyze Pattern**
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   File Upload   │    │  Storage Event  │    │ PCA Processing  │
-│                 │    │    Trigger      │    │                 │
-│ • CSV upload    ├───▶│                 ├───▶│ • Load data     │
-│   to bucket     │    │ • Object        │    │ • Validate      │
-│ • Metadata      │    │   created       │    │ • Run PCA       │
-│   validation    │    │ • Filter by     │    │ • Store results │
-│ • Size check    │    │   file type     │    │ • Send notify   │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![Upload-Trigger-Analyze Pattern](images/upload-trigger-analyze-pattern.svg)
 
 **Maya's SensorScope Application:**
 When coffee shop managers upload monthly sensor data at irregular times (end of month, after busy periods, or when they remember), Maya no longer needs to monitor for uploads manually. The moment a file lands in the GCS bucket, analysis begins automatically. This eliminated the bottleneck where Maya had to manually trigger 47 separate analyses each month. Coffee shops now get their optimization reports within minutes of upload completion, and Maya's workload shifted from monitoring uploads to reviewing results. The pattern also handles weekend uploads and holiday data drops without requiring Maya to work outside business hours.
@@ -746,19 +736,7 @@ When coffee shop managers upload monthly sensor data at irregular times (end of 
 
 For Maya's monthly analysis across 47 locations, she needed orchestrated batch processing that could handle failures gracefully and provide progress visibility.
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Scheduler     │    │  Orchestrator   │    │ Parallel PCA    │
-│                 │    │                 │    │   Workers       │
-│ • Cron: 1st     ├───▶│                 ├───▶│                 │
-│   of month      │    │ • Discover      │    │ • Worker 1:     │
-│ • Business      │    │   locations     │    │   Locations 1-10│
-│   hours only    │    │ • Fan-out       │    │ • Worker 2:     │
-│ • Retry on      │    │   to workers    │    │   Locations 11-20│
-│   holidays      │    │ • Track         │    │ • Worker N:     │
-│                 │    │   progress      │    │   Locations N..47│
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![Scheduled Batch Processing Pattern](images/scheduled-batch-processing-pattern.svg)
 
 **Maya's SensorScope Application:**
 Maya discovered that not all coffee shops upload data by month-end, and some locations consistently lag by several days. The scheduled batch processor runs on the 5th of each month, automatically discovers which locations have submitted data, and processes them in parallel batches of 10. If a location's data fails to process (corrupted files, sensor malfunctions), the system continues with other locations and queues the failed ones for manual review. Maya now gets a single comprehensive monthly report instead of tracking 47 individual analyses, and late-uploading shops are automatically processed in a follow-up batch a week later.
@@ -774,18 +752,7 @@ PCA processing often requires coordination across multiple function invocations,
 
 **Pattern 3: External State Store Pattern**
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│ Function Call 1 │    │   State Store   │    │ Function Call 2 │
-│                 │    │                 │    │                 │
-│ • Process       ├───▶│ • Job status    ├───▶│ • Read state    │
-│   chunk 1/5     │    │ • Partial       │    │ • Process       │
-│ • Store partial │    │   results       │    │   chunk 2/5     │
-│   results       │    │ • Progress      │    │ • Update state  │
-│ • Update        │    │   tracking      │    │ • Continue or   │
-│   progress      │    │                 │    │   finalize      │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![External State Store Pattern](images/external-state-store-pattern.svg)
 
 **Maya's SensorScope Application:**
 When Maya's largest coffee shop (the airport location) started generating 5GB monthly sensor files that exceeded memory limits, she needed to process the data in chunks without losing intermediate PCA calculations. The state store pattern allows her to process 20 sensors in groups of 5, storing covariance matrices and eigenvalue calculations between function calls. Each chunk updates a progress indicator that corporate executives can monitor, showing "Processing sensors 11-15 of 20" rather than a black box. If any chunk fails due to timeout, only that specific sensor group needs reprocessing, not the entire month's data.
@@ -799,21 +766,7 @@ When Maya's largest coffee shop (the airport location) started generating 5GB mo
 
 When Maya needed to run multiple analysis types (PCA, correlation analysis, business impact calculation) as part of a single request, she implemented the Saga pattern to ensure consistent completion or rollback.
 
-```
-Saga: Complete Sensor Analysis
-├─ Step 1: Data Validation
-│  ├─ Success → Continue to Step 2
-│  └─ Failure → Cancel workflow, notify user
-├─ Step 2: PCA Analysis  
-│  ├─ Success → Continue to Step 3
-│  └─ Failure → Clean up Step 1, notify user
-├─ Step 3: Business Impact Calculation
-│  ├─ Success → Continue to Step 4
-│  └─ Failure → Clean up Steps 1-2, notify user
-└─ Step 4: Generate Report
-   ├─ Success → Complete workflow, notify user
-   └─ Failure → Clean up Steps 1-3, retry once
-```
+![Saga Pattern Workflow](images/saga-pattern-workflow.svg)
 
 **Maya's SensorScope Application:**
 Corporate requested that Maya's monthly reports include not just PCA results, but also correlation analysis, cost-benefit calculations, and formatted executive summaries. Initially, Maya ran these steps manually, often losing work when later steps failed. The Saga pattern ensures that if report generation fails (due to formatting errors or template issues), the PCA and business calculations aren't lost - they're preserved and the report step simply retries with corrected templates. This saved Maya from re-running expensive PCA calculations when only the final presentation step had problems, reducing analysis time from 3 hours to 45 minutes when issues occurred.
@@ -831,39 +784,7 @@ PCA workloads often involve complex data transformations before mathematical pro
 
 Maya realized that coffee shop operations needed both real-time anomaly detection and monthly optimization analysis, requiring different processing approaches for the same sensor data.
 
-```
-┌─────────────────┐
-│  Sensor Data    │
-│   Streams       │
-└─────────┬───────┘
-          │
-          ├─────────────────────────────────────────────────────────┐
-          │                                                         │
-          ▼                                                         ▼
-┌─────────────────┐                                       ┌─────────────────┐
-│  Speed Layer    │                                       │  Batch Layer    │
-│                 │                                       │                 │
-│ • Real-time     │                                       │ • Historical    │
-│   streaming     │                                       │   data store    │
-│ • 5-minute      │                                       │ • Monthly       │
-│   windows       │                                       │   aggregation   │
-│ • Anomaly PCA   │                                       │ • Complete PCA  │
-│ • Immediate     │                                       │ • Optimization  │
-│   alerts        │                                       │   analysis      │
-└─────────┬───────┘                                       └─────────┬───────┘
-          │                                                         │
-          └─────────────────┬───────────────────────────────────────┘
-                            ▼
-                  ┌─────────────────┐
-                  │ Serving Layer   │
-                  │                 │
-                  │ • Unified view  │
-                  │ • Historical +  │
-                  │   real-time     │
-                  │ • Dashboard     │
-                  │ • API access    │
-                  └─────────────────┘
-```
+![Lambda Architecture for PCA](images/lambda-architecture-pca.svg)
 
 **Maya's SensorScope Application:**
 After a coffee machine fire went undetected for 20 minutes (all temperature sensors failed simultaneously but Maya only ran monthly analysis), corporate demanded real-time monitoring alongside optimization analysis. Maya's lambda architecture now runs lightweight PCA every 5 minutes on streaming sensor data to detect when all sensors in a category (temperature, humidity, vibration) show identical readings - indicating sensor failure rather than environmental consistency. Monthly optimization analysis continues using complete historical datasets for thorough redundancy analysis. The dual approach caught 3 sensor malfunctions in the first month, preventing equipment damage that would have cost more than the entire annual sensor budget.
@@ -1117,30 +1038,13 @@ Maya's reflection on the future: *"When I started SensorScope, I thought I was s
 
 Throughout this chapter, we've demonstrated SensorScope using Google Cloud services, but Maya's architecture translates directly to AWS and Azure with equivalent functionality:
 
-**Core Function Runtime:**
-- **Google Cloud**: Cloud Functions Gen 2 (Python 3.11)
-- **AWS**: Lambda (Python 3.11 runtime)
-- **Azure**: Azure Functions (Python 3.11 on Linux)
-
-**File Storage & Event Triggers:**
-- **Google Cloud**: Cloud Storage + Pub/Sub triggers
-- **AWS**: S3 + Event Notifications or EventBridge
-- **Azure**: Blob Storage + Event Grid
-
-**Monitoring & Observability:**
-- **Google Cloud**: Cloud Monitoring + Cloud Logging
-- **AWS**: CloudWatch + X-Ray
-- **Azure**: Azure Monitor + Application Insights
-
-**Orchestration & Workflows:**
-- **Google Cloud**: Cloud Workflows + Cloud Scheduler
-- **AWS**: Step Functions + EventBridge Scheduler
-- **Azure**: Logic Apps + Azure Scheduler
-
-**State Management:**
-- **Google Cloud**: Cloud Firestore + Cloud Storage
-- **AWS**: DynamoDB + S3
-- **Azure**: Cosmos DB + Blob Storage
+| **Service Category** | **Google Cloud** | **AWS** | **Azure** |
+|---------------------|------------------|---------|-----------|
+| **Core Function Runtime** | Cloud Functions Gen 2<br/>(Python 3.11) | Lambda<br/>(Python 3.11 runtime) | Azure Functions<br/>(Python 3.11 on Linux) |
+| **File Storage & Event Triggers** | Cloud Storage +<br/>Pub/Sub triggers | S3 + Event Notifications<br/>or EventBridge | Blob Storage +<br/>Event Grid |
+| **Monitoring & Observability** | Cloud Monitoring +<br/>Cloud Logging | CloudWatch +<br/>X-Ray | Azure Monitor +<br/>Application Insights |
+| **Orchestration & Workflows** | Cloud Workflows +<br/>Cloud Scheduler | Step Functions +<br/>EventBridge Scheduler | Logic Apps +<br/>Azure Scheduler |
+| **State Management** | Cloud Firestore +<br/>Cloud Storage | DynamoDB +<br/>S3 | Cosmos DB +<br/>Blob Storage |
 
 Maya's architectural insight on multi-cloud: *"The beauty of our serverless PCA approach is that the mathematical logic remains identical across platforms. Only the plumbing changes - the science stays the same. This gives organizations flexibility to choose cloud providers based on cost, compliance, or existing relationships rather than being locked into a specific platform for analytics capabilities."*
 

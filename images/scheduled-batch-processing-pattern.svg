@@ -1,0 +1,118 @@
+<svg width="900" height="320" viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="schedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="orchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="workerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Pattern 2: Scheduled Batch Processing (Orchestrated Monthly Analysis)
+  </text>
+  
+  <!-- Scheduler Stage -->
+  <g>
+    <rect x="50" y="70" width="200" height="140" fill="url(#schedGrad)" stroke="#667eea" stroke-width="2" rx="12"/>
+    <text x="150" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Scheduler</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="65" y="120">• Cron: 1st of month</text>
+      <text x="65" y="135">• Business hours only</text>
+      <text x="65" y="150">• Retry on holidays</text>
+      <text x="65" y="165">• Timezone awareness</text>
+      <text x="65" y="180">• Failure notifications</text>
+      <text x="65" y="195">• Health monitoring</text>
+    </g>
+  </g>
+  
+  <!-- Orchestrator Stage -->
+  <g>
+    <rect x="320" y="70" width="200" height="140" fill="url(#orchGrad)" stroke="#f5576c" stroke-width="2" rx="12"/>
+    <text x="420" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Orchestrator</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="335" y="120">• Discover locations</text>
+      <text x="335" y="135">• Fan-out to workers</text>
+      <text x="335" y="150">• Track progress</text>
+      <text x="335" y="165">• Handle failures</text>
+      <text x="335" y="180">• Aggregate results</text>
+      <text x="335" y="195">• Generate reports</text>
+    </g>
+  </g>
+  
+  <!-- Parallel PCA Workers Stage -->
+  <g>
+    <rect x="590" y="70" width="240" height="140" fill="url(#workerGrad)" stroke="#00f2fe" stroke-width="2" rx="12"/>
+    <text x="710" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Parallel PCA Workers</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="605" y="120">• Worker 1: Locations 1-10</text>
+      <text x="605" y="135">• Worker 2: Locations 11-20</text>
+      <text x="605" y="150">• Worker 3: Locations 21-30</text>
+      <text x="605" y="165">• Worker 4: Locations 31-40</text>
+      <text x="605" y="180">• Worker 5: Locations 41-47</text>
+      <text x="605" y="195">• Auto-scaling as needed</text>
+    </g>
+  </g>
+  
+  <!-- Flow arrows -->
+  <g>
+    <path d="M 250 140 L 310 140" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 520 140 L 580 140" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Fan-out arrows from orchestrator to multiple workers -->
+  <g>
+    <path d="M 520 120 L 580 105" stroke="#f5576c" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#smallArrow)"/>
+    <path d="M 520 135 L 580 125" stroke="#f5576c" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#smallArrow)"/>
+    <path d="M 520 150 L 580 145" stroke="#f5576c" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#smallArrow)"/>
+    <path d="M 520 165 L 580 165" stroke="#f5576c" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#smallArrow)"/>
+    <path d="M 520 180 L 580 185" stroke="#f5576c" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#smallArrow)"/>
+  </g>
+  
+  <!-- Progress tracking indicators -->
+  <g>
+    <circle cx="150" cy="230" r="6" fill="#667eea"/>
+    <text x="150" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Monthly Trigger</text>
+    
+    <circle cx="420" cy="230" r="6" fill="#f5576c"/>
+    <text x="420" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Coordination</text>
+    
+    <circle cx="710" cy="230" r="6" fill="#00f2fe"/>
+    <text x="710" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Parallel Execution</text>
+  </g>
+  
+  <!-- Multi-cloud services note -->
+  <rect x="50" y="265" width="780" height="25" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="440" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-style="italic" fill="#666">
+    Orchestration: GCP (Cloud Scheduler → Cloud Workflows), AWS (EventBridge → Step Functions), Azure (Logic Apps)
+  </text>
+  
+  <!-- Results aggregation arrow -->
+  <g>
+    <path d="M 710 210 L 420 210" stroke="#00f2fe" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#returnArrow)"/>
+    <text x="565" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Results Aggregation</text>
+  </g>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="smallArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f5576c"/>
+    </marker>
+    <marker id="returnArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#00f2fe"/>
+    </marker>
+  </defs>
+</svg>
