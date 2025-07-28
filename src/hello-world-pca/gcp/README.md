@@ -79,11 +79,11 @@ cd sensorscope/src/hello-world-pca/gcp
 ```
 
 The script will:
-- ✅ Validate prerequisites (authentication, project, billing)
-- ✅ Enable required Google Cloud APIs
-- ✅ Deploy the function with proper configuration
-- ✅ Test the deployment automatically
-- ✅ Provide function URL and test commands
+- Validate prerequisites (authentication, project, billing)
+- Enable required Google Cloud APIs
+- Deploy the function with proper configuration
+- Test the deployment automatically
+- Provide function URL and test commands
 
 ## Testing Your Deployment
 
@@ -151,6 +151,7 @@ This simulates Maya's exact use case: analyzing a downtown coffee shop's sensors
 This test demonstrates Maya's production workflow where sensor data is uploaded to Google Cloud Storage and processed by the Cloud Function.
 
 #### Step 1: Generate Sample Datasets
+
 ```bash
 # Generate sample sensor datasets locally
 cd ../datasets
