@@ -912,19 +912,7 @@ Maya's experience with SensorScope positioned her to evaluate emerging trends th
 
 With increasing sensor sophistication and 5G connectivity, some coffee shops began deploying edge computing devices capable of lightweight analytics. Maya explored hybrid patterns where edge devices perform initial PCA approximation, with cloud functions handling complex analysis.
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│  Edge Device    │    │  Cloud Function │    │   Dashboard     │
-│  (Coffee Shop)  │    │  (Analysis)     │    │  (Corporate)    │
-│                 │    │                 │    │                 │
-│ • Lightweight   ├───▶│ • Full PCA      ├───▶│ • Business      │
-│   approximation │    │ • Verification  │    │   insights      │
-│ • Local alerts  │    │ • Deep analysis │    │ • Optimization  │
-│ • Bandwidth     │    │ • Cross-        │    │   recommendations│
-│   optimization  │    │   location      │    │ • Trend         │
-│                 │    │   patterns      │    │   analysis      │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![Edge-Cloud Hybrid PCA](images/edge-cloud-hybrid-pca.svg)
 
 **Maya's Exploration:**
 Maya piloted edge-cloud hybrid processing at three high-traffic locations with dedicated edge devices. Local edge computation identifies obvious sensor failures within seconds (all temperature readings identical), while cloud functions perform comprehensive monthly optimization analysis. This hybrid approach substantially reduced cloud processing costs while significantly improving response time for critical alerts. The pattern shows promise for IoT scenarios where bandwidth costs and latency requirements favor local preprocessing with cloud-based deep analysis.
@@ -933,17 +921,7 @@ Maya piloted edge-cloud hybrid processing at three high-traffic locations with d
 
 The convergence of serverless computing and AI services creates opportunities for sophisticated analytics workflows that automatically adapt to data characteristics and business requirements.
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│  Smart Router   │    │  Analysis Pool  │    │ Adaptive Output │
-│                 │    │                 │    │                 │
-│ • Data profiling├───▶│ • PCA (standard)├───▶│ • Format        │
-│ • Algorithm     │    │ • Sparse PCA    │    │   selection     │
-│   selection     │    │ • Kernel PCA    │    │ • Visualization │
-│ • Resource      │    │ • Custom algos  │    │ • Integration   │
-│   optimization  │    │                 │    │ • Distribution  │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![Serverless AI/ML Orchestration](images/serverless-aiml-orchestration.svg)
 
 **Maya's Vision:**
 Maya envisions SensorScope evolution toward intelligent analytics that automatically selects optimal PCA variants based on data characteristics. Sparse sensor data would trigger sparse PCA algorithms, while non-linear sensor relationships would invoke kernel PCA approaches. Serverless functions would orchestrate algorithm selection, resource allocation, and output formatting based on business context and data properties. This adaptive approach could make advanced analytics accessible to non-technical users while optimizing computational efficiency.

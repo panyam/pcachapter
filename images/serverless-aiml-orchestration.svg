@@ -1,0 +1,145 @@
+<svg width="900" height="450" viewBox="0 0 900 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="routerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="poolGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Pattern 11: Serverless AI/ML Orchestration
+  </text>
+  
+  <!-- Smart Router -->
+  <g>
+    <rect x="50" y="80" width="220" height="180" fill="url(#routerGrad)" stroke="#667eea" stroke-width="2" rx="12"/>
+    <text x="160" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Smart Router</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="65" y="135">• Data profiling</text>
+      <text x="65" y="150">• Algorithm selection</text>
+      <text x="65" y="165">• Resource optimization</text>
+      <text x="65" y="180">• Workload classification</text>
+      <text x="65" y="195">• Performance prediction</text>
+      <text x="65" y="210">• Cost optimization</text>
+      <text x="65" y="225">• Auto-scaling decisions</text>
+      <text x="65" y="240">• Quality requirements</text>
+    </g>
+  </g>
+  
+  <!-- Analysis Pool -->
+  <g>
+    <rect x="340" y="80" width="220" height="180" fill="url(#poolGrad)" stroke="#f5576c" stroke-width="2" rx="12"/>
+    <text x="450" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Analysis Pool</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="355" y="135">• PCA (standard)</text>
+      <text x="355" y="150">• Sparse PCA</text>
+      <text x="355" y="165">• Kernel PCA</text>
+      <text x="355" y="180">• Incremental PCA</text>
+      <text x="355" y="195">• Custom algorithms</text>
+      <text x="355" y="210">• Parallel processing</text>
+      <text x="355" y="225">• Dynamic allocation</text>
+      <text x="355" y="240">• Quality validation</text>
+    </g>
+  </g>
+  
+  <!-- Adaptive Output -->
+  <g>
+    <rect x="630" y="80" width="220" height="180" fill="url(#outputGrad)" stroke="#00f2fe" stroke-width="2" rx="12"/>
+    <text x="740" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Adaptive Output</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="645" y="135">• Format selection</text>
+      <text x="645" y="150">• Visualization</text>
+      <text x="645" y="165">• Integration</text>
+      <text x="645" y="180">• Distribution</text>
+      <text x="645" y="195">• API responses</text>
+      <text x="645" y="210">• Dashboard updates</text>
+      <text x="645" y="225">• Report generation</text>
+      <text x="645" y="240">• Notification routing</text>
+    </g>
+  </g>
+  
+  <!-- Flow arrows -->
+  <g>
+    <path d="M 270 170 L 330 170" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 560 170 L 620 170" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Algorithm Selection Logic -->
+  <g>
+    <rect x="50" y="280" width="800" height="100" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="10"/>
+    <text x="450" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+      Intelligent Algorithm Selection Logic
+    </text>
+    
+    <!-- Decision criteria -->
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <!-- Sparse data -->
+      <rect x="70" y="315" width="150" height="25" fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5"/>
+      <text x="145" y="330" text-anchor="middle" fill="#333">Sparse Data → Sparse PCA</text>
+      
+      <!-- Non-linear -->
+      <rect x="250" y="315" width="150" height="25" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="5"/>
+      <text x="325" y="330" text-anchor="middle" fill="#333">Non-linear → Kernel PCA</text>
+      
+      <!-- Streaming -->
+      <rect x="430" y="315" width="150" height="25" fill="#f3e5f5" stroke="#9c27b0" stroke-width="1" rx="5"/>
+      <text x="505" y="330" text-anchor="middle" fill="#333">Streaming → Incremental</text>
+      
+      <!-- Large scale -->
+      <rect x="610" y="315" width="150" height="25" fill="#e8f5e8" stroke="#4caf50" stroke-width="1" rx="5"/>
+      <text x="685" y="330" text-anchor="middle" fill="#333">Large Scale → Distributed</text>
+    </g>
+    
+    <!-- Context-aware routing -->
+    <g font-family="Arial, sans-serif" font-size="10" fill="#666">
+      <text x="70" y="355">Business Priority:</text>
+      <text x="70" y="368">High → Standard PCA (accuracy)</text>
+      
+      <text x="280" y="355">Cost Sensitivity:</text>
+      <text x="280" y="368">High → Approximate methods</text>
+      
+      <text x="490" y="355">Latency Requirements:</text>
+      <text x="490" y="368">Low → Parallel processing</text>
+      
+      <text x="700" y="355">Data Quality:</text>
+      <text x="700" y="368">Poor → Robust algorithms</text>
+    </g>
+  </g>
+  
+  <!-- Maya's Vision Example -->
+  <g>
+    <rect x="50" y="390" width="800" height="45" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="8"/>
+    <text x="450" y="408" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">
+      Maya's Vision: Democratizing Advanced Analytics
+    </text>
+    <g font-family="Arial, sans-serif" font-size="10" fill="#666">
+      <text x="60" y="425">Vision: "Coffee shop managers select 'optimize sensors' → system automatically chooses algorithms → delivers actionable insights"</text>
+      <text x="60" y="440">Impact: Advanced analytics becomes accessible to non-technical users while maintaining computational efficiency</text>
+    </g>
+  </g>
+  
+  <!-- Multi-cloud services note -->
+  <rect x="200" y="50" width="500" height="20" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="3"/>
+  <text x="450" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-style="italic" fill="#666">
+    AI Orchestration: Vertex AI Pipelines/SageMaker Pipelines/Azure ML + Auto ML + Functions for routing logic
+  </text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+</svg>
