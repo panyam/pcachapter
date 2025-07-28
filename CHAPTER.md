@@ -1201,7 +1201,7 @@ The convergence of serverless computing and mathematical analysis represents a p
 
 13. Majors, C., Fong-Jones, L., & Miranda, G. (2022). *Observability Engineering: Achieving Production Excellence*. O'Reilly Media. Chapters 4-6: Monitoring and Alerting and Distributed Tracing. [O'Reilly Link](https://www.oreilly.com/library/view/observability-engineering/9781492076438/)
 
-14. Godard, B. (2020). The RED Method: A New Strategy for Monitoring Microservices. *Weave Works Engineering Blog*. [https://www.weave.works/blog/the-red-method-key-metrics-for-microservices-architecture/](https://www.weave.works/blog/the-red-method-key-metrics-for-microservices-architecture/)
+14. Wilkie, T. (2018). The RED Method: How to Instrument Your Services. *Grafana Labs Blog*. [https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/](https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/)
 
 **DevOps and CI/CD Practices**
 
@@ -1213,7 +1213,7 @@ The convergence of serverless computing and mathematical analysis represents a p
 
 **Cloud-Native Patterns and Event-Driven Architecture**
 
-18. Indrasiri, K. & Siriwardena, P. (2021). *Microservices for the Enterprise: Designing, Developing, and Deploying*. Apress. Chapters 8-10: Data Management and Event-Driven Architecture. [Apress Link](https://link.springer.com/book/10.1007/978-1-4842-4994-6)
+18. Indrasiri, K. & Siriwardena, P. (2021). *[Microservices for the Enterprise: Designing, Developing, and Deploying](https://www.amazon.com/Microservices-Enterprise-Designing-Developing-Deploying/dp/1484238575)*. Apress. Chapters 8-10: Data Management and Event-Driven Architecture.
 
 19. Vernon, V. (2013). *Implementing Domain-Driven Design*. Addison-Wesley Professional. Chapter 8: Domain Events. [Pearson Link](https://www.pearson.com/us/higher-education/program/Vernon-Implementing-Domain-Driven-Design/PGM182436.html)
 
@@ -1221,7 +1221,7 @@ The convergence of serverless computing and mathematical analysis represents a p
 
 **Error Handling and Resilience Patterns**
 
-21. Tanenbaum, A.S. & Van Steen, M. (2016). *Distributed Systems: Principles and Paradigms* (3rd ed.). Pearson. Chapter 8: Fault Tolerance. [Pearson Link](https://www.pearson.com/us/higher-education/program/Tanenbaum-Distributed-Systems-Principles-and-Paradigms-3rd-Edition/PGM85042.html)
+21. Tanenbaum, A.S. & Van Steen, M. (2016). *[Distributed Systems: Principles and Paradigms](https://www.distributed-systems.net/index.php/books/ds4/)* (3rd ed.). Pearson. Chapter 8: Fault Tolerance.
 
 22. Kleppmann, M. (2017). *Designing Data-Intensive Applications*. O'Reilly Media. Chapter 8: The Trouble with Distributed Systems. [O'Reilly Link](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/)
 
