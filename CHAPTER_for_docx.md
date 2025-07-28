@@ -37,7 +37,7 @@ Sita's infrastructure decision was driven as much by what the coffee chain could
 The contrast between traditional and serverless approaches for SensorScope became stark when Sita mapped out the options:
 
 <center>
-![Traditional vs Serverless Infrastructure Comparison](images/traditional-vs-serverless-infrastructure.svg)
+![Traditional vs Serverless Infrastructure Comparison](images/traditional-vs-serverless-infrastructure.png)
 </center>
 
 SensorScope's computational requirements aligned perfectly with serverless execution models. The underlying Principal Component Analysis algorithm requires loading complete datasets into memory for eigenvalue decomposition, making it memory-intensive but temporally bounded - exactly the workload profile that serverless computing handles efficiently. SensorScope would process months of sensor data in minutes, then remain dormant until the next analysis cycle, making traditional always-on infrastructure economically wasteful for Sita's intermittent optimization needs.
@@ -114,7 +114,7 @@ The SensorScope implementation demonstrates core serverless patterns through a p
 The SensorScope implementation follows a stateless request-response pattern that translates consistently across serverless platforms:
 
 <center>
-![Architecture Pattern](images/sensorscope-architecture-pattern.svg)
+![Architecture Pattern](images/sensorscope-architecture-pattern.png)
 </center>
 
 **Platform-Specific Adapters:**
@@ -453,7 +453,7 @@ Sita's operational challenge: *"Our 47 coffee shops generate 20-sensor readings 
 The production SensorScope system implements a file-based processing architecture that aligns with typical enterprise data workflows:
 
 <center>
-![File Processing Pipeline](images/file-processing-pipeline.svg)
+![File Processing Pipeline](images/file-processing-pipeline.png)
 </center>
 
 ### File Processing Workflow
@@ -523,7 +523,7 @@ Accumulated data enables deeper insights:
 ### Sita's Production Workflow
 
 <center>
-![Sita's Monthly SensorScope Analysis Routine](images/sita-monthly-routine.svg)
+![Sita's Monthly SensorScope Analysis Routine](images/sita-monthly-routine.png)
 </center>
 
 ### Technical Implementation
@@ -558,7 +558,7 @@ The coffee chain's sensor data contained surprisingly sensitive operational inte
 **Authentication and Authorization Patterns**
 
 <center>
-![Authentication Architecture](images/authentication-architecture.svg)
+![Authentication Architecture](images/authentication-architecture.png)
 </center>
 
 Sita implemented layered security following the principle of defense in depth [10,11]:
@@ -602,7 +602,7 @@ Production serverless PCA requires comprehensive monitoring to detect performanc
 **Three-Tier Monitoring Strategy**
 
 <center>
-![Sita's Monitoring Dashboard](images/monitoring-dashboard.svg)
+![Sita's Monitoring Dashboard](images/monitoring-dashboard.png)
 </center>
 
 **Cloud Services for Monitoring Implementation:**
@@ -705,7 +705,7 @@ Sita established deployment practices that ensure mathematical correctness and b
 **Deployment Pipeline Stages**
 
 <center>
-![CI/CD Pipeline Stages](images/deployment-pipeline-stages.svg)
+![CI/CD Pipeline Stages](images/deployment-pipeline-stages.png)
 </center>
 
 **Cloud Services for CI/CD Implementation:**
@@ -731,7 +731,7 @@ Traditional PCA implementations assume synchronous processing where data arrives
 **Pattern 1: Upload-Trigger-Analyze Pattern**
 
 <center>
-![Upload-Trigger-Analyze Pattern](images/upload-trigger-analyze-pattern.svg)
+![Upload-Trigger-Analyze Pattern](images/upload-trigger-analyze-pattern.png)
 </center>
 
 **Sita's SensorScope Application:**
@@ -747,7 +747,7 @@ When coffee shop managers upload monthly sensor data at irregular times (end of 
 For Sita's monthly analysis across 47 locations, she needed orchestrated batch processing that could handle failures gracefully and provide progress visibility.
 
 <center>
-![Scheduled Batch Processing Pattern](images/scheduled-batch-processing-pattern.svg)
+![Scheduled Batch Processing Pattern](images/scheduled-batch-processing-pattern.png)
 </center>
 
 **Sita's SensorScope Application:**
@@ -765,7 +765,7 @@ PCA processing often requires coordination across multiple function invocations,
 **Pattern 3: External State Store Pattern**
 
 <center>
-![External State Store Pattern](images/external-state-store-pattern.svg)
+![External State Store Pattern](images/external-state-store-pattern.png)
 </center>
 
 **Sita's SensorScope Application:**
@@ -781,7 +781,7 @@ When Sita's largest coffee shop (the airport location) started generating 5GB mo
 When Sita needed to run multiple analysis types (PCA, correlation analysis, business impact calculation) as part of a single request, she implemented the Saga pattern to ensure consistent completion or rollback.
 
 <center>
-![Saga Pattern Workflow](images/saga-pattern-workflow.svg)
+![Saga Pattern Workflow](images/saga-pattern-workflow.png)
 </center>
 
 **Sita's SensorScope Application:**
@@ -801,7 +801,7 @@ PCA workloads often involve complex data transformations before mathematical pro
 Sita realized that coffee shop operations needed both real-time anomaly detection and monthly optimization analysis, requiring different processing approaches for the same sensor data.
 
 <center>
-![Lambda Architecture for PCA](images/lambda-architecture-pca.svg)
+![Lambda Architecture for PCA](images/lambda-architecture-pca.png)
 </center>
 
 **Sita's SensorScope Application:**
@@ -812,7 +812,7 @@ After a coffee machine fire went undetected for 20 minutes (all temperature sens
 Sita needed to transform raw sensor logs into analysis-ready datasets before PCA processing could begin.
 
 <center>
-![ETL Pipeline with PCA Integration](images/etl-pipeline-pca-integration.svg)
+![ETL Pipeline with PCA Integration](images/etl-pipeline-pca-integration.png)
 </center>
 
 **Sita's SensorScope Application:**
@@ -830,7 +830,7 @@ PCA algorithms can fail for mathematical reasons (singular matrices, insufficien
 **Pattern 7: Circuit Breaker with Mathematical Fallbacks** [7,8]
 
 <center>
-![Circuit Breaker with Mathematical Fallbacks](images/circuit-breaker-mathematical-fallbacks.svg)
+![Circuit Breaker with Mathematical Fallbacks](images/circuit-breaker-mathematical-fallbacks.png)
 </center>
 
 **Sita's SensorScope Application:**
@@ -881,7 +881,7 @@ Sita's success with batch processing led to demands for real-time sensor optimiz
 Traditional PCA requires complete datasets for eigenvalue computation, but streaming scenarios demand continuous updates as new data arrives. Sita developed an incremental PCA pattern using sliding windows and mathematical approximation techniques.
 
 <center>
-![Incremental PCA with Streaming Windows](images/incremental-pca-streaming-windows.svg)
+![Incremental PCA with Streaming Windows](images/incremental-pca-streaming-windows.png)
 </center>
 
 **Sita's Implementation:**
@@ -901,7 +901,7 @@ Sita's success attracted attention from corporate real estate, which manages sen
 Large-scale PCA computation can be decomposed into distributed covariance matrix calculation followed by centralized eigenvalue computation, enabling horizontal scaling across multiple serverless functions.
 
 <center>
-![MapReduce PCA with Serverless Coordination](images/mapreduce-pca-serverless-coordination.svg)
+![MapReduce PCA with Serverless Coordination](images/mapreduce-pca-serverless-coordination.png)
 </center>
 
 **Sita's Application:**
@@ -921,7 +921,7 @@ As Sita's analysis capabilities matured, corporate began requesting integration 
 Modern ML workflows require PCA as a preprocessing step rather than standalone analysis. Sita designed SensorScope to integrate seamlessly with MLOps platforms while maintaining its serverless characteristics.
 
 <center>
-![PCA as a Service in MLOps Pipelines](images/pca-service-mlops-pipelines.svg)
+![PCA as a Service in MLOps Pipelines](images/pca-service-mlops-pipelines.png)
 </center>
 
 **Sita's Implementation:**
@@ -941,7 +941,7 @@ Sita's experience with SensorScope positioned her to evaluate emerging trends th
 With increasing sensor sophistication and 5G connectivity, some coffee shops began deploying edge computing devices capable of lightweight analytics. Sita explored hybrid patterns where edge devices perform initial PCA approximation, with cloud functions handling complex analysis.
 
 <center>
-![Edge-Cloud Hybrid PCA](images/edge-cloud-hybrid-pca.svg)
+![Edge-Cloud Hybrid PCA](images/edge-cloud-hybrid-pca.png)
 </center>
 
 **Sita's Exploration:**
@@ -952,7 +952,7 @@ Sita piloted edge-cloud hybrid processing at three high-traffic locations with d
 The convergence of serverless computing and AI services creates opportunities for sophisticated analytics workflows that automatically adapt to data characteristics and business requirements.
 
 <center>
-![Serverless AI/ML Orchestration](images/serverless-aiml-orchestration.svg)
+![Serverless AI/ML Orchestration](images/serverless-aiml-orchestration.png)
 </center>
 
 **Sita's Vision:**

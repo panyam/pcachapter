@@ -1,0 +1,175 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="step1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="step2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="step3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="step4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00b894;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00a085;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Sita's Monthly SensorScope Analysis Routine
+  </text>
+  
+  <!-- Step 1: Data Collection -->
+  <g>
+    <rect x="50" y="70" width="180" height="150" fill="url(#step1Grad)" stroke="#667eea" stroke-width="2" rx="12"/>
+    
+    <!-- Step number circle -->
+    <circle cx="90" cy="90" r="15" fill="#667eea" stroke="#fff" stroke-width="2"/>
+    <text x="90" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">1</text>
+    
+    <text x="140" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Step 1</text>
+    <text x="140" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Data Collection</text>
+    <text x="140" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">(Week 1)</text>
+    
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="65" y="150">• Coffee shops upload</text>
+      <text x="65" y="162">  previous month's data</text>
+      <text x="65" y="177">• Validate file completeness</text>
+      <text x="65" y="189">• Format consistency check</text>
+      <text x="65" y="201">• Metadata verification</text>
+    </g>
+  </g>
+  
+  <!-- Step 2: Batch Analysis -->
+  <g>
+    <rect x="280" y="70" width="180" height="150" fill="url(#step2Grad)" stroke="#f5576c" stroke-width="2" rx="12"/>
+    
+    <!-- Step number circle -->
+    <circle cx="320" cy="90" r="15" fill="#f5576c" stroke="#fff" stroke-width="2"/>
+    <text x="320" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">2</text>
+    
+    <text x="370" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Step 2</text>
+    <text x="370" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Batch Analysis</text>
+    <text x="370" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">(Week 2)</text>
+    
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="295" y="150">• Process all 47 locations</text>
+      <text x="295" y="162">• Standardized parameters</text>
+      <text x="295" y="177">• Individual reports per</text>
+      <text x="295" y="189">  location</text>
+      <text x="295" y="201">• Trend analysis vs. history</text>
+    </g>
+  </g>
+  
+  <!-- Step 3: Business Intelligence -->
+  <g>
+    <rect x="510" y="70" width="180" height="150" fill="url(#step3Grad)" stroke="#00f2fe" stroke-width="2" rx="12"/>
+    
+    <!-- Step number circle -->
+    <circle cx="550" cy="90" r="15" fill="#00f2fe" stroke="#fff" stroke-width="2"/>
+    <text x="550" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">3</text>
+    
+    <text x="600" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Step 3</text>
+    <text x="600" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Business Intelligence</text>
+    <text x="600" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">(Week 3)</text>
+    
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="525" y="150">• Aggregate results across</text>
+      <text x="525" y="162">  all locations</text>
+      <text x="525" y="177">• Identify high-impact</text>
+      <text x="525" y="189">  opportunities</text>
+      <text x="525" y="201">• Executive summary + ROI</text>
+    </g>
+  </g>
+  
+  <!-- Step 4: Implementation Planning -->
+  <g>
+    <rect x="740" y="70" width="180" height="150" fill="url(#step4Grad)" stroke="#00b894" stroke-width="2" rx="12"/>
+    
+    <!-- Step number circle -->
+    <circle cx="780" cy="90" r="15" fill="#00b894" stroke="#fff" stroke-width="2"/>
+    <text x="780" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#fff">4</text>
+    
+    <text x="830" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Step 4</text>
+    <text x="830" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">Implementation</text>
+    <text x="830" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">(Week 4)</text>
+    
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="755" y="150">• Select locations for</text>
+      <text x="755" y="162">  optimization trials</text>
+      <text x="755" y="177">• Coordinate with ops teams</text>
+      <text x="755" y="189">• Infrastructure changes</text>
+      <text x="755" y="201">• Schedule validation</text>
+    </g>
+  </g>
+  
+  <!-- Flow arrows -->
+  <g>
+    <path d="M 230 145 L 270 145" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 460 145 L 500 145" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 690 145 L 730 145" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Timeline indicator -->
+  <g>
+    <rect x="50" y="250" width="820" height="60" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="8"/>
+    <text x="460" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+      Monthly Processing Timeline
+    </text>
+    
+    <!-- Week indicators -->
+    <rect x="80" y="285" width="150" height="15" fill="#667eea" rx="3"/>
+    <text x="155" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">Week 1</text>
+    
+    <rect x="280" y="285" width="150" height="15" fill="#f5576c" rx="3"/>
+    <text x="355" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">Week 2</text>
+    
+    <rect x="480" y="285" width="150" height="15" fill="#00f2fe" rx="3"/>
+    <text x="555" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">Week 3</text>
+    
+    <rect x="680" y="285" width="150" height="15" fill="#00b894" rx="3"/>
+    <text x="755" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#fff">Week 4</text>
+  </g>
+  
+  <!-- Key Metrics -->
+  <g>
+    <rect x="50" y="330" width="820" height="80" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="8"/>
+    <text x="460" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+      Monthly Analysis Scale &amp; Impact
+    </text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="70" y="370">📊 Data Volume: 47 locations × 2GB sensor data per location = ~100GB monthly</text>
+      <text x="70" y="385">⚡ Processing Time: Week 2 batch analysis completes in 2-3 hours (vs. weeks manually)</text>
+      <text x="70" y="400">💰 Business Impact: Monthly recommendations average $15,000 in sensor optimization savings</text>
+    </g>
+  </g>
+  
+  <!-- Multi-cloud services note -->
+  <rect x="200" y="430" width="500" height="25" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="450" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-style="italic" fill="#666">
+    Automation: Cloud Scheduler/EventBridge/Logic Apps + Functions + Storage triggers for systematic processing
+  </text>
+  
+  <!-- Cycle indicator -->
+  <g>
+    <path d="M 870 145 Q 890 145 890 165 Q 890 350 140 350 Q 120 350 120 330 Q 120 290 140 290" 
+          stroke="#ff9800" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#cycleArrow)"/>
+    <text x="890" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#ff9800" 
+          transform="rotate(90 890 250)">Monthly Cycle</text>
+  </g>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="cycleArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ff9800"/>
+    </marker>
+  </defs>
+</svg>
