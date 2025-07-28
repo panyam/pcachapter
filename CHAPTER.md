@@ -793,19 +793,7 @@ After a coffee machine fire went undetected for 20 minutes (all temperature sens
 
 Maya needed to transform raw sensor logs into analysis-ready datasets before PCA processing could begin.
 
-```
-Extract → Transform → Load → Analyze → Store → Notify
-   ↓         ↓         ↓        ↓        ↓       ↓
-Sensor    Clean &   Validated  PCA     Results  Business
- Logs     Format    Dataset   Analysis Database  Users
-   │         │         │        │        │       │
-   └─────────┼─────────┼────────┼────────┼───────┘
-             │         │        │        │
-          Serverless Serverless │     Serverless
-          Function   Function   │     Function  
-                                │
-                         Cloud Storage
-```
+![ETL Pipeline with PCA Integration](images/etl-pipeline-pca-integration.svg)
 
 **Maya's SensorScope Application:**
 Coffee shop POS systems generate sensor logs in different formats - some as CSV, others as JSON, and newer locations using XML exports. Maya's ETL pipeline standardizes all formats into consistent datasets before PCA analysis, automatically handling timezone conversions (shops span 3 time zones), unit standardization (some sensors report Celsius, others Fahrenheit), and missing data interpolation. The pipeline prevented a month of failed analyses when the mall location's POS system started exporting sensor data with different column names after a software update. Now format changes are handled automatically, and Maya focuses on interpreting results rather than debugging data inconsistencies.
@@ -821,18 +809,7 @@ PCA algorithms can fail for mathematical reasons (singular matrices, insufficien
 
 **Pattern 7: Circuit Breaker with Mathematical Fallbacks** [7,8]
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   PCA Request   │    │ Circuit Breaker │    │  Fallback PCA   │
-│                 │    │                 │    │                 │
-│ • Full dataset  ├───▶│ • Monitor       ├───▶│ • Reduced       │
-│ • 20 components │    │   failures      │    │   components    │
-│ • High precision│    │ • Trip after    │    │ • Sample data   │
-│                 │    │   3 failures    │    │ • Approximate   │
-│                 │    │ • Reset after   │    │   results       │
-│                 │    │   cool-down     │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![Circuit Breaker with Mathematical Fallbacks](images/circuit-breaker-mathematical-fallbacks.svg)
 
 **Maya's SensorScope Application:**
 The university coffee shop had a sensor malfunction where 8 of 20 sensors reported identical readings for three weeks, creating singular matrices that crashed PCA analysis. Instead of manual intervention, Maya's circuit breaker detected the repeated mathematical failures and automatically switched to approximate PCA with fewer components. The fallback analysis still identified optimization opportunities (5 sensors instead of the requested 3), and Maya received clear error reports explaining the mathematical issues. This kept monthly reporting on schedule while technical teams fixed the sensor calibration, rather than blocking all analysis until hardware issues were resolved.
@@ -881,18 +858,7 @@ Maya's success with batch processing led to demands for real-time sensor optimiz
 
 Traditional PCA requires complete datasets for eigenvalue computation, but streaming scenarios demand continuous updates as new data arrives. Maya developed an incremental PCA pattern using sliding windows and mathematical approximation techniques.
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│  Sensor Stream  │    │ Windowed Buffer │    │ Incremental PCA │
-│                 │    │                 │    │                 │
-│ • 15-min batch  ├───▶│ • 4-hour window ├───▶│ • Update eigen- │
-│ • 20 sensors    │    │ • 16 batches    │    │   vectors       │
-│ • JSON format   │    │ • Sliding       │    │ • Preserve      │
-│ • Event-driven  │    │   overlap       │    │   variance      │
-│                 │    │ • Memory-       │    │ • Stream        │
-│                 │    │   efficient     │    │   results       │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![Incremental PCA with Streaming Windows](images/incremental-pca-streaming-windows.svg)
 
 **Maya's Implementation:**
 When the downtown location experienced fluctuating customer patterns during a street festival, traditional monthly analysis couldn't capture the rapid operational changes. Maya's streaming PCA detected that customer flow sensors became highly correlated with ambient noise during events - a pattern invisible in monthly aggregates. This insight allowed operations to temporarily reduce monitoring complexity during special events while maintaining operational visibility. The streaming approach processes 15-minute sensor batches, updating PCA models continuously and alerting when correlation patterns shift significantly from baseline behavior.
@@ -910,27 +876,7 @@ Maya's success attracted attention from corporate real estate, which manages sen
 
 Large-scale PCA computation can be decomposed into distributed covariance matrix calculation followed by centralized eigenvalue computation, enabling horizontal scaling across multiple serverless functions.
 
-```
-Map Phase (Parallel)          Reduce Phase (Centralized)
-┌─────────────────┐          ┌─────────────────┐
-│ Function 1:     │          │ Coordination    │
-│ Sensors 1-100   ├─────────▶│ Function:       │
-│ • Compute       │          │                 │
-│   covariance    │          │ • Aggregate     │
-└─────────────────┘          │   covariances   │
-┌─────────────────┐          │ • Compute       │
-│ Function 2:     │          │   eigenvalues   │
-│ Sensors 101-200 ├─────────▶│ • Generate      │
-│ • Compute       │          │   components    │
-│   covariance    │          │ • Distribute    │
-└─────────────────┘          │   results       │
-┌─────────────────┐          │                 │
-│ Function N:     │          │                 │
-│ Sensors N*100   ├─────────▶│                 │
-│ • Compute       │          │                 │
-│   covariance    │          │                 │
-└─────────────────┘          └─────────────────┘
-```
+![MapReduce PCA with Serverless Coordination](images/mapreduce-pca-serverless-coordination.svg)
 
 **Maya's Application:**
 When corporate real estate wanted to optimize sensor placement across their entire portfolio (847 buildings, 50,000+ sensors), single-function processing became impractical. Maya's distributed approach processes sensor groups in parallel, computing partial covariance matrices simultaneously across multiple Cloud Functions. A coordination function aggregates results and performs final eigenvalue decomposition. This enabled analysis of building portfolios that would timeout in single-function approaches, revealing cross-building patterns like shared HVAC optimization opportunities and equipment failure correlations across properties.
@@ -948,18 +894,7 @@ As Maya's analysis capabilities matured, corporate began requesting integration 
 
 Modern ML workflows require PCA as a preprocessing step rather than standalone analysis. Maya designed SensorScope to integrate seamlessly with MLOps platforms while maintaining its serverless characteristics.
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Data Source   │    │ SensorScope PCA │    │  ML Pipeline    │
-│                 │    │                 │    │                 │
-│ • Raw sensors   ├───▶│ • Dimensionality├───▶│ • Predictive    │
-│ • Timestamps    │    │   reduction     │    │   modeling      │
-│ • Metadata      │    │ • Feature       │    │ • Training      │
-│                 │    │   engineering   │    │ • Inference     │
-│                 │    │ • Standardized  │    │ • Monitoring    │
-│                 │    │   output        │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-```
+![PCA as a Service in MLOps Pipelines](images/pca-service-mlops-pipelines.svg)
 
 **Maya's Implementation:**
 The predictive maintenance team wanted to forecast equipment failures using sensor data, but raw 20-dimensional sensor readings created overfitting in their models. Maya integrated SensorScope into their MLflow pipeline, automatically reducing sensor dimensions to 5-7 key components before model training. The PCA preprocessing significantly improved model accuracy while substantially reducing training time. SensorScope now runs automatically whenever new sensor data arrives, feeding dimensionality-reduced features into multiple downstream ML models for different business applications.

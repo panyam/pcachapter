@@ -1,0 +1,184 @@
+<svg width="900" height="400" viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="extractGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#ee5a52;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="transformGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ecdc4;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#44a08d;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="loadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#45b7d1;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#96c93d;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="analyzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="storeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="notifyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Pattern 6: ETL Pipeline with PCA Integration
+  </text>
+  
+  <!-- Main Pipeline Flow (Top) -->
+  <g>
+    <!-- Extract -->
+    <rect x="50" y="60" width="120" height="80" fill="url(#extractGrad)" stroke="#ff6b6b" stroke-width="2" rx="10"/>
+    <text x="110" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Extract</text>
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="60" y="105">• Sensor Logs</text>
+      <text x="60" y="118">• CSV, JSON, XML</text>
+      <text x="60" y="131">• Multi-format</text>
+    </g>
+    
+    <!-- Transform -->
+    <rect x="200" y="60" width="120" height="80" fill="url(#transformGrad)" stroke="#4ecdc4" stroke-width="2" rx="10"/>
+    <text x="260" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Transform</text>
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="210" y="105">• Clean and Format</text>
+      <text x="210" y="118">• Standardize Units</text>
+      <text x="210" y="131">• Handle Missing Data</text>
+    </g>
+    
+    <!-- Load -->
+    <rect x="350" y="60" width="120" height="80" fill="url(#loadGrad)" stroke="#45b7d1" stroke-width="2" rx="10"/>
+    <text x="410" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Load</text>
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="360" y="105">• Validated Dataset</text>
+      <text x="360" y="118">• Schema Check</text>
+      <text x="360" y="131">• Quality Gates</text>
+    </g>
+    
+    <!-- Analyze (PCA) -->
+    <rect x="500" y="60" width="120" height="80" fill="url(#analyzeGrad)" stroke="#f5576c" stroke-width="2" rx="10"/>
+    <text x="560" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Analyze</text>
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="510" y="105">• PCA Analysis</text>
+      <text x="510" y="118">• Dimensionality Reduction</text>
+      <text x="510" y="131">• Component Analysis</text>
+    </g>
+    
+    <!-- Store -->
+    <rect x="650" y="60" width="120" height="80" fill="url(#storeGrad)" stroke="#4facfe" stroke-width="2" rx="10"/>
+    <text x="710" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Store</text>
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="660" y="105">• Results Database</text>
+      <text x="660" y="118">• Optimization Reports</text>
+      <text x="660" y="131">• Historical Trends</text>
+    </g>
+    
+    <!-- Notify -->
+    <rect x="800" y="60" width="80" height="80" fill="url(#notifyGrad)" stroke="#667eea" stroke-width="2" rx="10"/>
+    <text x="840" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Notify</text>
+    <g font-family="Arial, sans-serif" font-size="10" fill="#555">
+      <text x="810" y="105">• Business Users</text>
+      <text x="810" y="118">• Dashboard Updates</text>
+      <text x="810" y="131">• Alerts</text>
+    </g>
+  </g>
+  
+  <!-- Pipeline Flow Arrows -->
+  <g>
+    <path d="M 170 100 L 190 100" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 320 100 L 340 100" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 470 100 L 490 100" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 620 100 L 640 100" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 770 100 L 790 100" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Implementation Details -->
+  <g>
+    <rect x="50" y="170" width="830" height="100" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="10"/>
+    <text x="465" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+      Serverless Implementation Architecture
+    </text>
+    
+    <!-- Serverless Functions -->
+    <rect x="70" y="210" width="100" height="25" fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5"/>
+    <text x="120" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Cloud Function</text>
+    
+    <rect x="220" y="210" width="100" height="25" fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5"/>
+    <text x="270" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Cloud Function</text>
+    
+    <!-- Cloud Storage -->
+    <rect x="370" y="210" width="100" height="25" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="5"/>
+    <text x="420" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Cloud Storage</text>
+    
+    <!-- PCA Function -->
+    <rect x="520" y="210" width="100" height="25" fill="#f3e5f5" stroke="#9c27b0" stroke-width="1" rx="5"/>
+    <text x="570" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">PCA Function</text>
+    
+    <rect x="670" y="210" width="100" height="25" fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5"/>
+    <text x="720" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Cloud Function</text>
+    
+    <rect x="780" y="210" width="80" height="25" fill="#e8f5e8" stroke="#4caf50" stroke-width="1" rx="5"/>
+    <text x="820" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Notification</text>
+    
+    <!-- Event triggers -->
+    <g font-family="Arial, sans-serif" font-size="10" fill="#666">
+      <text x="70" y="255">Triggered by:</text>
+      <text x="70" y="268">File upload events</text>
+      
+      <text x="220" y="255">Triggered by:</text>
+      <text x="220" y="268">Pub/Sub message</text>
+      
+      <text x="370" y="255">Stores:</text>
+      <text x="370" y="268">Validated data</text>
+      
+      <text x="520" y="255">Triggered by:</text>
+      <text x="520" y="268">Storage event</text>
+      
+      <text x="670" y="255">Triggered by:</text>
+      <text x="670" y="268">Analysis complete</text>
+      
+      <text x="780" y="255">Sends:</text>
+      <text x="780" y="268">Alerts and updates</text>
+    </g>
+  </g>
+  
+  <!-- Maya's Coffee Shop Example -->
+  <g>
+    <rect x="50" y="290" width="830" height="60" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="8"/>
+    <text x="465" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+      Maya's SensorScope ETL Pipeline in Action
+    </text>
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="60" y="330">Input: CSV files from 47 coffee shops with different formats (CSV/JSON/XML), timezones, and units</text>
+      <text x="60" y="345">Output: Standardized PCA analysis showing sensor redundancy opportunities across all locations</text>
+    </g>
+  </g>
+  
+  <!-- Multi-cloud services note -->
+  <rect x="50" y="360" width="830" height="25" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="465" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-style="italic" fill="#666">
+    ETL Services: GCP (Cloud Functions + Pub/Sub + Cloud Storage), AWS (Lambda + SQS + S3), Azure (Functions + Service Bus + Blob Storage)
+  </text>
+  
+  <!-- Connection lines from pipeline to implementation -->
+  <g stroke="#ccc" stroke-width="1" stroke-dasharray="2,2">
+    <line x1="110" y1="140" x2="120" y2="210"/>
+    <line x1="260" y1="140" x2="270" y2="210"/>
+    <line x1="410" y1="140" x2="420" y2="210"/>
+    <line x1="560" y1="140" x2="570" y2="210"/>
+    <line x1="710" y1="140" x2="720" y2="210"/>
+    <line x1="840" y1="140" x2="820" y2="210"/>
+  </g>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

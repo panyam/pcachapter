@@ -1,0 +1,136 @@
+<svg width="900" height="400" viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="pcaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="mlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Pattern 9: PCA as a Service in MLOps Pipelines
+  </text>
+  
+  <!-- Data Source -->
+  <g>
+    <rect x="50" y="80" width="200" height="160" fill="url(#dataGrad)" stroke="#667eea" stroke-width="2" rx="12"/>
+    <text x="150" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Data Source</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="65" y="130">• Raw sensors (20 dimensions)</text>
+      <text x="65" y="145">• Timestamps</text>
+      <text x="65" y="160">• Metadata</text>
+      <text x="65" y="175">• Equipment IDs</text>
+      <text x="65" y="190">• Building locations</text>
+      <text x="65" y="205">• Environmental context</text>
+      <text x="65" y="220">• Continuous streams</text>
+    </g>
+  </g>
+  
+  <!-- SensorScope PCA Service -->
+  <g>
+    <rect x="350" y="80" width="200" height="160" fill="url(#pcaGrad)" stroke="#f5576c" stroke-width="2" rx="12"/>
+    <text x="450" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">SensorScope PCA</text>
+    <text x="450" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#666">(Service)</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="365" y="145">• Dimensionality reduction</text>
+      <text x="365" y="160">• Feature engineering</text>
+      <text x="365" y="175">• Standardized output</text>
+      <text x="365" y="190">• Auto-scaling</text>
+      <text x="365" y="205">• Quality validation</text>
+      <text x="365" y="220">• Model versioning</text>
+    </g>
+  </g>
+  
+  <!-- ML Pipeline -->
+  <g>
+    <rect x="650" y="80" width="200" height="160" fill="url(#mlGrad)" stroke="#00f2fe" stroke-width="2" rx="12"/>
+    <text x="750" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">ML Pipeline</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="665" y="130">• Predictive modeling</text>
+      <text x="665" y="145">• Training (5-7 features)</text>
+      <text x="665" y="160">• Inference</text>
+      <text x="665" y="175">• Monitoring</text>
+      <text x="665" y="190">• A/B testing</text>
+      <text x="665" y="205">• Model deployment</text>
+      <text x="665" y="220">• Performance tracking</text>
+    </g>
+  </g>
+  
+  <!-- Flow arrows -->
+  <g>
+    <path d="M 250 160 L 340 160" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 550 160 L 640 160" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Data transformation labels -->
+  <g font-family="Arial, sans-serif" font-size="10" fill="#666">
+    <text x="295" y="140" text-anchor="middle">Raw 20D</text>
+    <text x="295" y="152" text-anchor="middle">sensor data</text>
+    
+    <text x="595" y="140" text-anchor="middle">Reduced 5-7D</text>
+    <text x="595" y="152" text-anchor="middle">features</text>
+  </g>
+  
+  <!-- MLOps Integration Details -->
+  <g>
+    <rect x="50" y="260" width="800" height="80" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="10"/>
+    <text x="450" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+      MLOps Integration Architecture
+    </text>
+    
+    <!-- MLflow Integration -->
+    <rect x="70" y="295" width="120" height="25" fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5"/>
+    <text x="130" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">MLflow Pipeline</text>
+    
+    <!-- Automatic Triggers -->
+    <rect x="220" y="295" width="120" height="25" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="5"/>
+    <text x="280" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Auto Triggers</text>
+    
+    <!-- Model Registry -->
+    <rect x="370" y="295" width="120" height="25" fill="#f3e5f5" stroke="#9c27b0" stroke-width="1" rx="5"/>
+    <text x="430" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Model Registry</text>
+    
+    <!-- Feature Store -->
+    <rect x="520" y="295" width="120" height="25" fill="#e8f5e8" stroke="#4caf50" stroke-width="1" rx="5"/>
+    <text x="580" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Feature Store</text>
+    
+    <!-- Monitoring -->
+    <rect x="670" y="295" width="120" height="25" fill="#ffebee" stroke="#f44336" stroke-width="1" rx="5"/>
+    <text x="730" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#333">Monitoring</text>
+  </g>
+  
+  <!-- Maya's Implementation Example -->
+  <g>
+    <rect x="50" y="350" width="800" height="35" fill="#fff3e0" stroke="#ff9800" stroke-width="1" rx="8"/>
+    <text x="450" y="368" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">
+      Maya's Predictive Maintenance Success Story
+    </text>
+    <text x="450" y="382" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
+      "Reduced training time by 60% and improved model accuracy by 23% using PCA-preprocessed features for equipment failure prediction"
+    </text>
+  </g>
+  
+  <!-- Multi-cloud services note -->
+  <rect x="200" y="325" width="500" height="20" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="3"/>
+  <text x="450" y="337" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-style="italic" fill="#666">
+    MLOps: Vertex AI/SageMaker/Azure ML + Functions for PCA preprocessing + Feature stores for caching
+  </text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

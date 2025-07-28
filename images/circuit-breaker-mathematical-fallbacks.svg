@@ -1,0 +1,135 @@
+<svg width="850" height="350" viewBox="0 0 850 350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="requestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="breakerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="fallbackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="425" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Pattern 7: Circuit Breaker with Mathematical Fallbacks
+  </text>
+  
+  <!-- PCA Request -->
+  <g>
+    <rect x="50" y="70" width="180" height="140" fill="url(#requestGrad)" stroke="#667eea" stroke-width="2" rx="12"/>
+    <text x="140" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">PCA Request</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="65" y="120">• Full dataset (5GB)</text>
+      <text x="65" y="135">• 20 components requested</text>
+      <text x="65" y="150">• High precision mode</text>
+      <text x="65" y="165">• Complex correlations</text>
+      <text x="65" y="180">• Tight memory constraints</text>
+      <text x="65" y="195">• Business critical results</text>
+    </g>
+  </g>
+  
+  <!-- Circuit Breaker -->
+  <g>
+    <rect x="310" y="70" width="180" height="140" fill="url(#breakerGrad)" stroke="#f5576c" stroke-width="2" rx="12"/>
+    <text x="400" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Circuit Breaker</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="325" y="120">• Monitor failures</text>
+      <text x="325" y="135">• Trip after 3 failures</text>
+      <text x="325" y="150">• Reset after cool-down</text>
+      <text x="325" y="165">• Track error patterns</text>
+      <text x="325" y="180">• Mathematical health check</text>
+      <text x="325" y="195">• Failure type classification</text>
+    </g>
+  </g>
+  
+  <!-- Fallback PCA -->
+  <g>
+    <rect x="570" y="70" width="180" height="140" fill="url(#fallbackGrad)" stroke="#00f2fe" stroke-width="2" rx="12"/>
+    <text x="660" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Fallback PCA</text>
+    
+    <g font-family="Arial, sans-serif" font-size="11" fill="#555">
+      <text x="585" y="120">• Reduced components (5)</text>
+      <text x="585" y="135">• Sample data (20%)</text>
+      <text x="585" y="150">• Approximate results</text>
+      <text x="585" y="165">• Lower precision</text>
+      <text x="585" y="180">• Graceful degradation</text>
+      <text x="585" y="195">• Business-useful insights</text>
+    </g>
+  </g>
+  
+  <!-- Flow arrows -->
+  <g>
+    <path d="M 230 140 L 300 140" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 490 140 L 560 140" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Circuit Breaker States -->
+  <g>
+    <rect x="50" y="240" width="700" height="70" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="8"/>
+    <text x="400" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">
+      Circuit Breaker States
+    </text>
+    
+    <!-- Closed State -->
+    <circle cx="120" cy="285" r="15" fill="#28a745" stroke="#fff" stroke-width="2"/>
+    <text x="120" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#fff">CLOSED</text>
+    <text x="120" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#333">Normal Operation</text>
+    
+    <!-- Open State -->
+    <circle cx="400" cy="285" r="15" fill="#dc3545" stroke="#fff" stroke-width="2"/>
+    <text x="400" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#fff">OPEN</text>
+    <text x="400" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#333">Fallback Mode</text>
+    
+    <!-- Half-Open State -->
+    <circle cx="680" cy="285" r="15" fill="#ffc107" stroke="#fff" stroke-width="2"/>
+    <text x="680" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#fff">HALF</text>
+    <text x="680" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#333">Testing Recovery</text>
+    
+    <!-- State transition arrows -->
+    <path d="M 140 285 L 370 285" stroke="#dc3545" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#failArrow)"/>
+    <text x="255" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#dc3545">3 failures</text>
+    
+    <path d="M 650 285 L 430 285" stroke="#28a745" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#successArrow)"/>
+    <text x="540" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#28a745">success</text>
+    
+    <path d="M 420 285 L 650 285" stroke="#ffc107" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#testArrow)"/>
+    <text x="535" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#ffc107">timeout</text>
+  </g>
+  
+  <!-- Multi-cloud services note -->
+  <rect x="50" y="320" width="700" height="25" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="400" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-style="italic" fill="#666">
+    Circuit Breaker: Custom logic in Cloud Functions/Lambda/Azure Functions + CloudWatch/Application Insights monitoring
+  </text>
+  
+  <!-- Mathematical Failure Types -->
+  <g>
+    <rect x="250" y="220" width="200" height="15" fill="#ffebee" stroke="#f5576c" stroke-width="1" rx="3"/>
+    <text x="350" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d32f2f">
+      Failure Types: Singular Matrix, Memory Limit, Timeout
+    </text>
+  </g>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="failArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#dc3545"/>
+    </marker>
+    <marker id="successArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#28a745"/>
+    </marker>
+    <marker id="testArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ffc107"/>
+    </marker>
+  </defs>
+</svg>
